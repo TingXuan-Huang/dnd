@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bent Plow Inn — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#d4b870;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(0,0,0,0.9);}
+header .sub{font-style:italic;color:#7a5820;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#7a5020,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#7a5020;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);border:2px solid #8a5820;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(0,0,0,0.1);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3810;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a4010;background:rgba(12,7,1,0.92);color:#bfa060;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a4010;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#7a4e10;margin-bottom:10px;border-bottom:1px solid rgba(90,48,16,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(90,48,16,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1808;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3810;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a2008;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a2008;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5020;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a4010;color:#c0982a;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a4010;color:#e8d090;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>The Bent Plow Inn</h1>
+    <p class="sub">The only inn in Fallowton · Est. before living memory</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+        </defs>
+        <!-- background -->
+        <rect width="500" height="310" fill="#e0cc90" filter="url(#parch)"/>
+
+        <!-- kitchen wing floor -->
+        <rect x="364" y="12" width="124" height="148" fill="#cbb472" stroke="none"/>
+        <!-- main hall floor -->
+        <rect x="12" y="12" width="352" height="286" fill="#d8c284" stroke="none"/>
+
+        <!-- outer walls -->
+        <rect x="12" y="12" width="476" height="286" fill="none" stroke="#5a3010" stroke-width="3"/>
+        <!-- kitchen partition -->
+        <line x1="364" y1="12" x2="364" y2="160" stroke="#5a3010" stroke-width="2"/>
+        <!-- kitchen door gap -->
+        <line x1="364" y1="100" x2="364" y2="128" stroke="#d8c284" stroke-width="3"/>
+        <line x1="364" y1="100" x2="364" y2="128" stroke="#d8c284" stroke-width="3"/>
+
+        <!-- bar counter -->
+        <rect x="80" y="148" width="284" height="14" fill="#5a3010" stroke="#3a1808" stroke-width="1" rx="1"/>
+        <text x="222" y="143" font-family="'IM Fell English',serif" font-size="8" fill="#3a1808" text-anchor="middle" font-style="italic">The Bar</text>
+
+        <!-- fireplace -->
+        <rect x="12" y="88" width="24" height="50" fill="#2e1508" stroke="#5a2808" stroke-width="1"/>
+        <rect x="16" y="94" width="16" height="38" fill="#1a0a04"/>
+        <text x="47" y="116" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a1808" font-style="italic">hearth</text>
+
+        <!-- tables (common room) -->
+        <rect x="50" y="175" width="58" height="34" fill="#b89858" stroke="#6a3810" stroke-width="1" rx="2"/>
+        <text x="79" y="196" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle">table</text>
+        <rect x="148" y="175" width="58" height="34" fill="#b89858" stroke="#6a3810" stroke-width="1" rx="2"/>
+        <text x="177" y="196" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle">table</text>
+        <rect x="246" y="175" width="58" height="34" fill="#b89858" stroke="#6a3810" stroke-width="1" rx="2"/>
+        <text x="275" y="196" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle">table</text>
+        <rect x="80" y="235" width="58" height="34" fill="#b89858" stroke="#6a3810" stroke-width="1" rx="2"/>
+        <text x="109" y="256" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle">table</text>
+        <rect x="200" y="235" width="58" height="34" fill="#b89858" stroke="#6a3810" stroke-width="1" rx="2"/>
+        <text x="229" y="256" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle">table</text>
+
+        <!-- stairs NE -->
+        <rect x="312" y="12" width="52" height="90" fill="#c8aa70" stroke="#7a5020" stroke-width="1"/>
+        <line x1="312" y1="27" x2="364" y2="27" stroke="#7a5020" stroke-width="0.8"/>
+        <line x1="312" y1="42" x2="364" y2="42" stroke="#7a5020" stroke-width="0.8"/>
+        <line x1="312" y1="57" x2="364" y2="57" stroke="#7a5020" stroke-width="0.8"/>
+        <line x1="312" y1="72" x2="364" y2="72" stroke="#7a5020" stroke-width="0.8"/>
+        <line x1="312" y1="87" x2="364" y2="87" stroke="#7a5020" stroke-width="0.8"/>
+        <text x="338" y="110" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic">stairs up</text>
+
+        <!-- kitchen interior -->
+        <rect x="376" y="22" width="50" height="30" fill="#a87840" stroke="#6a3810" stroke-width="1" rx="1"/>
+        <text x="401" y="42" font-family="'IM Fell English',serif" font-size="7.5" fill="#e8d090" text-anchor="middle">hearth</text>
+        <rect x="376" y="70" width="50" height="22" fill="#b89850" stroke="#6a3810" stroke-width="1"/>
+        <text x="401" y="85" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle">prep</text>
+        <text x="419" y="130" font-family="'IM Fell English',serif" font-size="8" fill="#3a2008" text-anchor="middle" font-style="italic">Kitchen</text>
+
+        <!-- main door gap (S wall) -->
+        <line x1="155" y1="298" x2="215" y2="298" stroke="#d8c284" stroke-width="4"/>
+        <path d="M155,298 Q185,284 215,298" stroke="#7a5020" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+
+        <!-- room labels -->
+        <text x="180" y="50" font-family="'IM Fell English',serif" font-size="11" fill="#3a2008" text-anchor="middle" font-style="italic">Common Room</text>
+
+        <!-- compass -->
+        <g transform="translate(455,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3010" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3010"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3010" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Ground Floor Plan — The Bent Plow Inn</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        The low door scrapes open and a wall of warm, smoky air hits you — woodsmoke, spilled ale, wet wool, and the faint bitterness of old grease. The common room is wide and dark, lit by candles on rough-hewn tables and a great stone hearth that hungers along the west wall. Several faces turn toward you. Most look away. The barkeep — a broad woman with flour-dusted arms — does not look away.
+      </div>
+
+      <div class="parch info">
+        <h3>Who's Here</h3>
+        <div class="npc">
+          <div class="npc-name">Bessa Thorn</div>
+          <div class="npc-role">Innkeeper · rumor hub · sharp-eyed · third generation</div>
+          <div class="npc-desc">Runs the Bent Plow with brisk hands and a sharper memory. Bessa knows every rumor in Fallowton because she feeds the people who make them. She is quietly terrified about the cave, but she would rather overcharge a stranger than admit fear in her own common room.</div>
+        </div>
+        <div class="npc">
+          <div class="npc-name">Mordren Vale</div>
+          <div class="npc-role">Wizard-scholar · uneasy regular · arrived three days after the sinkhole opened</div>
+          <div class="npc-desc">Does not sleep here; he rents the old west cottage. He comes to the Bent Plow for hot water, a corner table, and quiet questions about the hill. Bessa dislikes him because he listens like a man measuring a grave.</div>
+        </div>
+        <div class="npc">
+          <div class="npc-name">Three Farmers</div>
+          <div class="npc-role">Regulars · drinking · arguing</div>
+          <div class="npc-desc">Argue every evening about whether the sinkhole is an omen, a mining opportunity, or someone's fault. They will share everything they know for the price of a round.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>Notable Details</h3>
+        <ul class="notable">
+          <li>The sign out front shows a plow with a bent blade — the original bent plow, framed above the bar.</li>
+          <li>Bessa can point the party toward Mordren's rented cottage, but warns them not to steal from a wizard unless they enjoy becoming a story.</li>
+          <li>A wanted notice is tacked near the door — old, water-stained, for someone three counties away. Nobody removes it.</li>
+          <li>The east window of the common room faces the Old Hill. Someone has tied black thread and dry wheat over it as a village charm.</li>
+          <li>A chalkboard behind the bar lists prices — ale 1cp, stew 2cp, room 3sp/night.</li>
+          <li>The kitchen has a back door that opens to the north alley behind the inn.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>Bessa has heard Mordren say "House of First Light" once, under his breath, when someone mentioned the blue glow. She does not know what it means. If the party gains her trust (DC 12 Persuasion) or buys two rounds for the farmers, she says Mordren rents the old west cottage and sometimes returns from the north field with silver-gray dust on his cuffs.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="elders-hall.html">Elder's Hall →</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>

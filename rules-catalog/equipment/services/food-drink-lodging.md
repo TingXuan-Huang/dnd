@@ -1,0 +1,5 @@
+# Food, Drink, and Lodging
+
+The Food, Drink, and Lodging table gives prices for food and a single night’s lodging. Prices for daily lodging and meals are included in your lifestyle’s expenses.
+
+<table><thead><tr><th>Item</th><th>Cost</th></tr></thead><tbody><tr><td>Ale (mug)</td><td>4 CP</td></tr><tr><td>Bread (loaf)</td><td>2 CP</td></tr><tr><td>Cheese (wedge)</td><td>1 SP</td></tr><tr><td colspan="2"><em>Inn Stay per Day</em></td></tr><tr><td>Squalid</td><td>7 CP</td></tr><tr><td>Poor</td><td>1 SP</td></tr><tr><td>Modest</td><td>5 SP</td></tr><tr><td>Comfortable</td><td>8 SP</td></tr><tr><td>Wealthy</td><td>2 GP</td></tr><tr><td>Aristocratic</td><td>4 GP</td></tr><tr><td colspan="2"><em>Meal</em></td></tr><tr><td>Squalid</td><td>1 CP</td></tr><tr><td>Poor</td><td>2 CP</td></tr><tr><td>Modest</td><td>1 SP</td></tr><tr><td>Comfortable</td><td>2 SP</td></tr><tr><td>Wealthy</td><td>3 SP</td></tr><tr><td>Aristocratic</td><td>6 SP</td></tr><tr><td colspan="2"><em>Wine (bottle)</em></td></tr><tr><td>Common</td><td>2 SP</td></tr><tr><td>Fine</td><td>10 GP</td></tr></tbody></table>

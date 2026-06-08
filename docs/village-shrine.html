@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Village Shrine — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#d4b870;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(0,0,0,0.9);}
+header .sub{font-style:italic;color:#7a5820;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#7a5020,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#7a5020;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);border:2px solid #8a5820;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(0,0,0,0.1);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3810;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a4010;background:rgba(12,7,1,0.92);color:#bfa060;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a4010;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#7a4e10;margin-bottom:10px;border-bottom:1px solid rgba(90,48,16,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(90,48,16,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1808;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3810;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a2008;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a2008;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5020;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a4010;color:#c0982a;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a4010;color:#e8d090;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>The Village Shrine</h1>
+    <p class="sub">Tended by Sister Elra · unnamed deity · older than the village</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+          <radialGradient id="altar-glow" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#e8d488" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#e8d488" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="500" height="310" fill="#e0cc90" filter="url(#parch)"/>
+
+        <!-- sacred zone floor (north) -->
+        <rect x="40" y="12" width="420" height="88" fill="#c8b870" stroke="none"/>
+        <!-- nave floor -->
+        <rect x="40" y="100" width="420" height="198" fill="#d8c484" stroke="none"/>
+
+        <!-- outer walls (stone) -->
+        <rect x="40" y="12" width="420" height="286" fill="none" stroke="#5a3010" stroke-width="3.5"/>
+        <!-- altar rail -->
+        <line x1="40" y1="100" x2="460" y2="100" stroke="#7a5020" stroke-width="2"/>
+
+        <!-- altar platform -->
+        <rect x="140" y="20" width="220" height="72" fill="url(#altar-glow)" stroke="#8a6020" stroke-width="0.5" rx="2"/>
+        <rect x="160" y="28" width="180" height="56" fill="#c8a848" stroke="#7a4810" stroke-width="1.5" rx="1"/>
+        <!-- altar top surface -->
+        <rect x="168" y="36" width="164" height="40" fill="#d8b858" stroke="#8a5820" stroke-width="1" rx="1"/>
+        <!-- candles on altar -->
+        <rect x="172" y="30" width="5" height="18" fill="#e8d890" stroke="#c8a830" stroke-width="0.5"/>
+        <rect x="323" y="30" width="5" height="18" fill="#e8d890" stroke="#c8a830" stroke-width="0.5"/>
+        <circle cx="174" cy="28" r="3" fill="#ffcc22" opacity="0.8"/>
+        <circle cx="325" cy="28" r="3" fill="#ffcc22" opacity="0.8"/>
+        <text x="250" y="65" font-family="'IM Fell English',serif" font-size="9" fill="#2a1808" text-anchor="middle" font-style="italic">Stone Altar</text>
+        <text x="250" y="94" font-family="'IM Fell English',serif" font-size="7.5" fill="#5a3010" text-anchor="middle" font-style="italic">— sacred ground —</text>
+
+        <!-- prayer benches (4) -->
+        <rect x="70" y="118" width="155" height="28" fill="#a87838" stroke="#6a4010" stroke-width="1" rx="1"/>
+        <text x="148" y="136" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">bench</text>
+        <rect x="275" y="118" width="155" height="28" fill="#a87838" stroke="#6a4010" stroke-width="1" rx="1"/>
+        <text x="353" y="136" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">bench</text>
+        <rect x="70" y="165" width="155" height="28" fill="#a87838" stroke="#6a4010" stroke-width="1" rx="1"/>
+        <text x="148" y="183" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">bench</text>
+        <rect x="275" y="165" width="155" height="28" fill="#a87838" stroke="#6a4010" stroke-width="1" rx="1"/>
+        <text x="353" y="183" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">bench</text>
+
+        <!-- prayer cushion (Sister Elra's) -->
+        <rect x="210" y="108" width="30" height="18" fill="#8a6040" stroke="#5a3820" stroke-width="1" rx="2"/>
+        <text x="225" y="120" font-family="'IM Fell English',serif" font-size="6" fill="#e8d090" text-anchor="middle" font-style="italic">Elra's</text>
+
+        <!-- oil lamps (4 corners of bench area) -->
+        <circle cx="65" cy="113" r="7" fill="#e8a820" stroke="#8a5010" stroke-width="1" opacity="0.7"/>
+        <circle cx="435" cy="113" r="7" fill="#e8a820" stroke="#8a5010" stroke-width="1" opacity="0.7"/>
+        <circle cx="65" cy="202" r="7" fill="#e8a820" stroke="#8a5010" stroke-width="1" opacity="0.7"/>
+        <circle cx="435" cy="202" r="7" fill="#e8a820" stroke="#8a5010" stroke-width="1" opacity="0.7"/>
+
+        <!-- central aisle -->
+        <line x1="250" y1="100" x2="250" y2="298" stroke="#c0a860" stroke-width="1.5" stroke-dasharray="4,6" opacity="0.5"/>
+
+        <!-- Sister Elra's small side cabinet -->
+        <rect x="42" y="220" width="40" height="50" fill="#b89050" stroke="#7a5020" stroke-width="1" rx="1"/>
+        <text x="62" y="249" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle" font-style="italic">supply</text>
+
+        <!-- offering bowl -->
+        <ellipse cx="250" cy="246" rx="22" ry="12" fill="#d8a840" stroke="#8a5810" stroke-width="1"/>
+        <text x="250" y="268" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic">offering bowl</text>
+
+        <!-- main door gap (south) -->
+        <line x1="196" y1="298" x2="306" y2="298" stroke="#d8c484" stroke-width="4"/>
+        <path d="M196,298 Q251,280 306,298" stroke="#7a5020" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+
+        <!-- compass -->
+        <g transform="translate(442,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3010" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3010"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3010" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Floor Plan — The Village Shrine · Stone walls, older than the village name</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        The shrine is made of the same gray stone as the Old Hill above it — placed here long before Fallowton had its current name. Oil lamps burn at the four corners of the bench rows. The altar at the far end is plain, no icons, no face. Sister Elra kneels before it. She does not turn when you enter, but her back stiffens.
+      </div>
+
+      <div class="parch info">
+        <h3>Who's Here</h3>
+        <div class="npc">
+          <div class="npc-name">Sister Elra</div>
+          <div class="npc-role">Faith keeper · no formal church · serves "the old unnamed one" · 50s, silver-haired</div>
+          <div class="npc-desc">Elra is not a healer by trade, but she knows which plants reduce fever and how to set a bone. She tends to people who have no one else. Since the cave opened, she has been here at the shrine from dawn until midnight, burning offerings and watching the hill. She does not sleep well. She believes the cave's blue light is not a haunting — it is something older, and that is worse.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>What Elra Offers</h3>
+        <ul class="notable">
+          <li>Blessings: +1 to one saving throw of choice for the next 24 hours (once per character per long rest). She will not bless "those going to disturb what's buried."</li>
+          <li>Herbal kit: poultices, fever teas, basic antitoxin equivalent (2 doses, 2sp each).</li>
+          <li>Knowledge: She knows three fragments of the old legend about the Dawnweave — the "world full of light" version. She does not know the rest.</li>
+          <li>The offering bowl currently contains: 12cp, a child's clay animal, three dried flowers, and a pinch of gray ash wrapped in cloth. Elra did not put the ash there.</li>
+          <li>The supply cabinet holds ritual candles, blessed salt, chalk, dried herbs, and a leather-bound copy of prayers in a script the party cannot read.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>Sister Elra's unreadable prayer script is in proto-Dawnweave — a liturgical language used before the Converter era. She inherited the text and cannot read it herself. If the party has a character with Arcana or History proficiency and can examine it (DC 14), they can identify the script. With a 18+ check, they can partially translate it: it describes the ritual of "memory offering" — the act of giving a personal memory to the altar in exchange for something. It is a Converter activation rite, written as a prayer. Elra does not know what this means. If she finds out, she will spend three days in silence and emerge with a decision the party will not expect. She is not naive — she is steady. She has been waiting for something to confirm her worst fear, and now it has.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="elders-hall.html">Elder's Hall</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>

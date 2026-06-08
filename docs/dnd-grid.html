@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fallowton — Combat Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ───────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --cell: 46px;
+  --bg:     #0c0a07;
+  --panel:  #131008;
+  --border: rgba(180,150,60,0.18);
+  --gold:   #c8a040;
+  --gold2:  #e8c060;
+  --text:   #d4c088;
+  --dim:    #7a6838;
+  --cell-bg:   #181410;
+  --cell-alt:  #1e1a12;
+  --cell-hover:rgba(200,170,60,0.15);
+  --sidebar-w: 268px;
+  --topbar-h:  58px;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Crimson Pro', Georgia, serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top bar ────────────────────────────────────── */
+#top-bar {
+  height: var(--topbar-h);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 16px;
+  flex-shrink: 0;
+  z-index: 30;
+}
+
+.round-badge {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 110px;
+}
+.round-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold2);
+  line-height: 1;
+}
+.round-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+#top-title {
+  flex: 1;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 0.12em;
+}
+
+.turn-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+  justify-content: flex-end;
+}
+.turn-now {
+  font-size: 0.78rem;
+  color: var(--dim);
+  font-style: italic;
+  line-height: 1.3;
+}
+.turn-now strong {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-style: normal;
+  display: block;
+}
+
+#btn-next {
+  padding: 7px 16px;
+  background: #5a3a10;
+  border: 1px solid var(--gold);
+  color: var(--gold2);
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+#btn-next:hover { background: #7a5020; }
+#btn-next:active { background: #3a2008; }
+
+/* ── Main layout ────────────────────────────────── */
+#main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Sidebar ────────────────────────────────────── */
+#sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#sidebar-header {
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#sidebar-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+#coord-display {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+}
+
+#init-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #5a4020 transparent;
+}
+#init-list::-webkit-scrollbar { width: 4px; }
+#init-list::-webkit-scrollbar-thumb { background: #5a4020; border-radius: 2px; }
+
+/* ── Character rows ─────────────────────────────── */
+.char-row {
+  padding: 8px 12px 6px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.1s;
+  position: relative;
+  border-bottom: 1px solid rgba(180,150,60,0.07);
+}
+.char-row:hover { background: rgba(200,170,60,0.07); }
+.char-row.is-current {
+  background: rgba(200,170,60,0.10);
+  border-left-color: var(--gold);
+}
+.char-row.is-selected {
+  background: rgba(100,160,255,0.10);
+  border-left-color: #6699ff;
+  outline: 1px solid rgba(100,160,255,0.25);
+}
+.char-row.is-dead { opacity: 0.45; }
+
+.char-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.char-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
+}
+.char-name-block { flex: 1; min-width: 0; }
+.char-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.char-badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  padding: 1px 4px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.badge-player { background: rgba(60,120,255,0.25); color: #88aaff; }
+.badge-enemy  { background: rgba(200,50,50,0.25);  color: #ff8888; }
+.badge-npc    { background: rgba(120,120,120,0.25); color: #aaaacc; }
+
+.char-stats {
+  font-size: 0.68rem;
+  color: var(--dim);
+  margin-top: 1px;
+  font-style: italic;
+}
+.char-hp-block {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.hp-val {
+  font-size: 0.75rem;
+  color: var(--text);
+  min-width: 40px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+}
+.hp-btn {
+  width: 18px; height: 18px;
+  background: rgba(180,150,60,0.15);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 0.75rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s;
+  line-height: 1;
+}
+.hp-btn:hover { background: rgba(180,150,60,0.3); }
+
+.hp-bar-wrap {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+.hp-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s, background 0.3s;
+}
+
+.char-remove {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 16px; height: 16px;
+  background: none;
+  border: none;
+  color: #5a4020;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.1s, color 0.1s;
+}
+.char-row:hover .char-remove { opacity: 1; }
+.char-remove:hover { color: #cc4444; }
+
+/* Current-turn indicator */
+.char-row.is-current::after {
+  content: '▶';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+/* ── Sidebar actions ────────────────────────────── */
+#sidebar-actions {
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.action-hint {
+  font-size: 0.65rem;
+  color: var(--dim);
+  font-style: italic;
+  text-align: center;
+  padding: 2px 0 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2px;
+}
+#btn-add, #btn-clear, #btn-reset {
+  width: 100%;
+  padding: 7px;
+  background: rgba(180,150,60,0.10);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+  transition: background 0.15s;
+  text-align: center;
+}
+#btn-add    { border-color: rgba(100,200,120,0.3); color: #88cc99; }
+#btn-add:hover    { background: rgba(100,200,120,0.15); }
+#btn-clear:hover  { background: rgba(180,150,60,0.20); }
+#btn-reset:hover  { background: rgba(180,150,60,0.20); }
+
+/* ── Grid area ──────────────────────────────────── */
+#grid-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+#grid-scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #5a4020 transparent;
+}
+#grid-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+#grid-scroll::-webkit-scrollbar-thumb { background: #5a4020; border-radius: 4px; }
+#grid-scroll::-webkit-scrollbar-corner { background: var(--bg); }
+
+#grid-outer {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0;
+  user-select: none;
+}
+
+/* Column labels */
+#col-labels {
+  display: flex;
+  padding-left: 22px; /* offset for row labels */
+  margin-bottom: 2px;
+}
+.col-label {
+  width: var(--cell);
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+#grid-row-wrap {
+  display: flex;
+  gap: 0;
+}
+
+/* Row labels */
+#row-labels {
+  display: flex;
+  flex-direction: column;
+  width: 22px;
+  flex-shrink: 0;
+}
+.row-label {
+  height: var(--cell);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* The grid itself */
+#grid {
+  display: grid;
+  border: 1px solid rgba(180,150,60,0.22);
+  position: relative;
+  background: var(--cell-bg);
+}
+
+/* Cells */
+.cell {
+  width: var(--cell);
+  height: var(--cell);
+  position: relative;
+  border-right: 1px solid rgba(180,150,60,0.10);
+  border-bottom: 1px solid rgba(180,150,60,0.10);
+  cursor: crosshair;
+  transition: background 0.08s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cell:hover {
+  background: var(--cell-hover);
+  z-index: 2;
+}
+.cell.cell-alt { background: var(--cell-alt); }
+.cell.cell-alt:hover { background: var(--cell-hover); }
+.cell.cell-target {
+  background: rgba(100,160,255,0.12) !important;
+  border-color: rgba(100,160,255,0.3);
+}
+
+/* ── Tokens ─────────────────────────────────────── */
+.token {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+  transition: transform 0.12s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.token:hover { transform: scale(1.12); z-index: 10; }
+
+.token-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.token.token-current {
+  box-shadow:
+    0 0 0 3px var(--gold),
+    0 0 14px var(--gold),
+    0 2px 8px rgba(0,0,0,0.7);
+  animation: pulse-ring 1.6s ease-in-out infinite;
+}
+@keyframes pulse-ring {
+  0%,100% { box-shadow: 0 0 0 3px var(--gold), 0 0 10px var(--gold), 0 2px 8px rgba(0,0,0,0.7); }
+  50%      { box-shadow: 0 0 0 5px var(--gold), 0 0 22px var(--gold), 0 2px 8px rgba(0,0,0,0.7); }
+}
+
+.token.token-selected {
+  box-shadow:
+    0 0 0 3px #6699ff,
+    0 0 12px rgba(100,160,255,0.6),
+    0 2px 8px rgba(0,0,0,0.7);
+}
+
+.token.token-dead {
+  opacity: 0.35;
+  filter: grayscale(0.7);
+  animation: none !important;
+}
+
+/* Dead cross mark */
+.token.token-dead::after {
+  content: '✕';
+  position: absolute;
+  font-size: 1.1rem;
+  color: #ff4444;
+  text-shadow: 0 0 4px #cc0000;
+  opacity: 0.8;
+}
+
+/* ── Context menu ───────────────────────────────── */
+#ctx-menu {
+  position: fixed;
+  background: #1a1508;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  z-index: 1000;
+  min-width: 160px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  display: none;
+}
+#ctx-menu.show { display: block; }
+.ctx-item {
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: 'Crimson Pro', serif;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.1s;
+}
+.ctx-item:hover { background: rgba(200,170,60,0.15); }
+.ctx-item.danger:hover { background: rgba(200,50,50,0.2); color: #ff8888; }
+.ctx-sep { border-top: 1px solid var(--border); margin: 3px 0; }
+
+/* ── Modal ──────────────────────────────────────── */
+#modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+#modal-overlay.show { display: flex; }
+
+#modal {
+  background: #181208;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  width: 380px;
+  max-width: 95vw;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.9);
+  animation: modal-in 0.15s ease-out;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95) translateY(-10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.modal-close:hover { color: var(--text); }
+
+.modal-body { padding: 16px 18px; }
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.form-group label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+.form-group input, .form-group select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  padding: 6px 8px;
+  width: 100%;
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.form-group input[type="color"] {
+  padding: 2px 4px;
+  height: 34px;
+  cursor: pointer;
+}
+select option { background: #1a1208; }
+
+.color-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.color-preset {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.1s;
+}
+.color-preset:hover { transform: scale(1.2); }
+.color-preset.active { border-color: white; }
+
+.modal-footer {
+  padding: 12px 18px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.btn-cancel {
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  cursor: pointer;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.88rem;
+  border-radius: 2px;
+  transition: background 0.1s;
+}
+.btn-cancel:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+.btn-submit {
+  padding: 8px 20px;
+  background: #5a3a10;
+  border: 1px solid var(--gold);
+  color: var(--gold2);
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  transition: background 0.1s;
+}
+.btn-submit:hover { background: #7a5020; }
+
+/* ── Status bar ─────────────────────────────────── */
+#status-bar {
+  height: 24px;
+  background: #0a0805;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.status-item {
+  font-size: 0.65rem;
+  color: var(--dim);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.status-item span { color: var(--gold); font-style: normal; }
+
+/* ── HP edit input ──────────────────────────────── */
+.hp-edit-input {
+  width: 44px;
+  background: rgba(200,170,60,0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold2);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  text-align: center;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+.hp-edit-input:focus { outline: none; }
+
+/* ── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #4a3010; border-radius: 3px; }
+
+/* ── Movement range highlight ───────────────────── */
+.cell.cell-in-range {
+  background: rgba(80,160,255,0.12) !important;
+  border-color: rgba(80,160,255,0.22) !important;
+}
+.cell.cell-in-range::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(80,160,255,0.18);
+  pointer-events: none;
+}
+.cell.cell-range-edge {
+  background: rgba(80,160,255,0.22) !important;
+  border-color: rgba(80,160,255,0.45) !important;
+}
+
+/* ── Condition dots on tokens ───────────────────── */
+.condition-tray {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  z-index: 6;
+  pointer-events: none;
+}
+.cond-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 3px currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Condition submenu in ctx menu ──────────────── */
+.ctx-sub-title {
+  padding: 5px 14px 3px;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+.ctx-cond-grid {
+  padding: 4px 10px 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.ctx-cond-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 4px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-family: 'Crimson Pro', serif;
+  color: var(--text);
+  transition: background 0.1s;
+}
+.ctx-cond-item:hover { background: rgba(200,170,60,0.12); }
+.ctx-cond-item.active { background: rgba(200,170,60,0.18); }
+.ctx-cond-pip {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Zone region overlays ───────────────────────── */
+#zone-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.zone-region {
+  position: absolute;
+  border: 2px solid;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.zone-region-label {
+  position: absolute;
+  top: 3px; left: 5px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.zone-draw-preview {
+  position: absolute;
+  border: 2px dashed rgba(255,200,60,0.7);
+  background: rgba(255,200,60,0.08);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ── Zone toolbar ───────────────────────────────── */
+#zone-toolbar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(255,180,40,0.07);
+  border-bottom: 1px solid rgba(255,180,40,0.2);
+  flex-shrink: 0;
+}
+#zone-toolbar.show { display: flex; }
+#zone-toolbar label {
+  font-size: 0.7rem;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.08em;
+}
+#zone-toolbar input[type="text"] {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.82rem;
+  padding: 3px 7px;
+  border-radius: 2px;
+  width: 130px;
+}
+#zone-toolbar input[type="color"] {
+  width: 28px; height: 24px;
+  padding: 0 2px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.zone-tb-btn {
+  padding: 3px 10px;
+  background: rgba(180,150,60,0.12);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.1s;
+}
+.zone-tb-btn:hover { background: rgba(180,150,60,0.25); }
+.zone-tb-btn.danger { border-color: rgba(200,60,60,0.3); }
+.zone-tb-btn.danger:hover { background: rgba(200,60,60,0.2); color: #ff8888; }
+#zone-mode-hint {
+  font-size: 0.65rem;
+  color: var(--dim);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+/* ── Legend strip in grid area ──────────────────── */
+#grid-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 16px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  color: var(--dim);
+  font-style: italic;
+}
+.legend-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+  flex-shrink: 0;
+}
+.ld-player { border-color: #5588ee; background: rgba(85,136,238,0.2); }
+.ld-enemy  { border-color: #ee4444; background: rgba(238,68,68,0.2); }
+.ld-npc    { border-color: #99aacc; background: rgba(153,170,204,0.2); }
+.ld-cur    {
+  border-color: var(--gold);
+  background: rgba(200,160,64,0.2);
+  box-shadow: 0 0 6px var(--gold);
+}
+#scene-label {
+  margin-left: auto;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+}
+</style>
+</head>
+<body>
+
+<!-- ── Top bar ─────────────────────────────────── -->
+<div id="top-bar">
+  <div class="round-badge">
+    <div class="round-num" id="round-num">1</div>
+    <div class="round-label">Round</div>
+  </div>
+
+  <div id="top-title">⚔ Combat Grid — Fallowton</div>
+
+  <div class="turn-info">
+    <div class="turn-now">
+      <strong id="curr-name">—</strong>
+      <span id="turn-counter">Turn 1 of 8</span>
+    </div>
+    <button id="btn-next" onclick="nextTurn()">Next Turn ▶</button>
+  </div>
+</div>
+
+<!-- ── Main ───────────────────────────────────── -->
+<div id="main">
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <h2>Initiative Order</h2>
+      <div id="coord-display"></div>
+    </div>
+
+    <div id="init-list"></div>
+
+    <div id="sidebar-actions">
+      <div class="action-hint">
+        Select a character → click a cell to place
+      </div>
+      <button id="btn-add" onclick="openModal()">＋ Add Character</button>
+      <button id="btn-clear" onclick="clearGrid()">Clear Board</button>
+      <button id="btn-reset" onclick="resetRound()">↺ Reset Round</button>
+    </div>
+  </div>
+
+  <!-- Grid area -->
+  <div id="grid-area">
+    <!-- Legend -->
+    <div id="grid-legend">
+      <div class="legend-item"><div class="legend-dot ld-player"></div>Player</div>
+      <div class="legend-item"><div class="legend-dot ld-enemy"></div>Enemy</div>
+      <div class="legend-item"><div class="legend-dot ld-npc"></div>NPC</div>
+      <div class="legend-item"><div class="legend-dot ld-cur"></div>Active turn</div>
+      <div class="legend-item" style="margin-left:8px; color: var(--dim);">
+        Click a name → select · Click cell → place/move · Right-click token → options · ESC → deselect
+      </div>
+      <div id="scene-label">Template Scene</div>
+      <button onclick="toggleZoneMode()" id="btn-zone-mode"
+        style="margin-left:auto; padding:3px 10px; background:rgba(80,160,255,0.1);
+          border:1px solid rgba(80,160,255,0.3); color:#88aaff; font-family:'Crimson Pro',serif;
+          font-size:0.75rem; cursor:pointer; border-radius:2px; transition:background 0.1s;"
+        onmouseover="this.style.background='rgba(80,160,255,0.2)'"
+        onmouseout="this.style.background='rgba(80,160,255,0.1)'">
+        ◻ Zone Labels
+      </button>
+    </div>
+
+    <!-- Zone toolbar (shown when zone mode active) -->
+    <div id="zone-toolbar">
+      <label>Zone Mode</label>
+      <input type="text" id="zone-name-input" placeholder="Zone name…" maxlength="24"/>
+      <input type="color" id="zone-color-input" value="#4488ff"/>
+      <button class="zone-tb-btn" onclick="toggleZoneMode()">✕ Exit Zone Mode</button>
+      <button class="zone-tb-btn danger" onclick="clearZones()">Clear All Zones</button>
+      <span id="zone-mode-hint">Drag on grid to draw · Right-click zone to delete</span>
+    </div>
+
+    <!-- Grid scroll area -->
+    <div id="grid-scroll">
+      <div id="grid-outer">
+        <!-- Column labels -->
+        <div id="col-labels"></div>
+        <div id="grid-row-wrap">
+          <div id="row-labels"></div>
+          <div style="position:relative; display:inline-block;">
+            <div id="grid"></div>
+            <div id="zone-overlay"></div>
+            <div id="zone-preview" class="zone-draw-preview" style="display:none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Status bar -->
+<div id="status-bar">
+  <div class="status-item">Grid: <span id="stat-size">24 × 18</span></div>
+  <div class="status-item">Characters: <span id="stat-chars">8</span></div>
+  <div class="status-item">On board: <span id="stat-placed">0</span></div>
+  <div class="status-item" id="stat-selected-wrap" style="display:none">
+    Selected: <span id="stat-selected">—</span> · DEL to remove from board
+  </div>
+  <div class="status-item" style="margin-left:auto">5 ft / square</div>
+</div>
+
+<!-- Context menu -->
+<div id="ctx-menu">
+  <div class="ctx-item" id="ctx-remove-board">↩ Remove from board</div>
+  <div class="ctx-item" id="ctx-hp-set">♥ Set HP…</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-sub-title">Conditions</div>
+  <div class="ctx-cond-grid" id="ctx-cond-grid"></div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item danger" id="ctx-delete">✕ Delete character</div>
+</div>
+
+<!-- Add character modal -->
+<div id="modal-overlay">
+  <div id="modal">
+    <div class="modal-header">
+      <h2>Add Character</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group" style="flex:2">
+          <label>Name</label>
+          <input type="text" id="f-name" placeholder="e.g. Thorin" maxlength="20"/>
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <select id="f-type">
+            <option value="player">Player</option>
+            <option value="enemy">Enemy</option>
+            <option value="npc">NPC</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Max HP</label>
+          <input type="number" id="f-hp" min="1" max="999" value="10"/>
+        </div>
+        <div class="form-group">
+          <label>AC</label>
+          <input type="number" id="f-ac" min="1" max="30" value="14"/>
+        </div>
+        <div class="form-group">
+          <label>Initiative</label>
+          <input type="number" id="f-init" min="1" max="30" value="10"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Token Color</label>
+          <div class="color-presets" id="color-presets"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-submit" onclick="submitModal()">Add to Roster</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════
+   CONSTANTS
+════════════════════════════════════════════════ */
+const COLS = 24, ROWS = 18;
+const MOVE_RANGE = 6; // cells (30 ft / 5 ft)
+
+const CONDITIONS = [
+  { key:'prone',         label:'Prone',       color:'#aaaaaa' },
+  { key:'poisoned',      label:'Poisoned',    color:'#44cc44' },
+  { key:'frightened',    label:'Frightened',  color:'#cc44cc' },
+  { key:'paralyzed',     label:'Paralyzed',   color:'#ffcc00' },
+  { key:'grappled',      label:'Grappled',    color:'#4488ff' },
+  { key:'stunned',       label:'Stunned',     color:'#ff8822' },
+  { key:'invisible',     label:'Invisible',   color:'#eeeeff' },
+  { key:'blinded',       label:'Blinded',     color:'#333355' },
+  { key:'concentrating', label:'Conc.',       color:'#00cccc' },
+];
+
+/* ════════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════════ */
+const state = {
+  round:    1,
+  turnIdx:  0,
+  selected: null,
+  ctxId:    null,
+  chars:    [],
+  nextId:   1,
+  zones:    [],
+  nextZoneId: 1,
+  zoneMode: false,
+  zoneDrag: null,  // {startR, startC, curR, curC} while dragging
+};
+
+/* ── Template characters (Fallowton campaign) ── */
+const TEMPLATE = [
+  { name:'Fighter',  short:'FT', color:'#5588ee', type:'player', hp:12, ac:16, init:14 },
+  { name:'Ranger',   short:'RG', color:'#44cc77', type:'player', hp:10, ac:14, init:16 },
+  { name:'Wizard',   short:'WZ', color:'#aa55ee', type:'player', hp: 7, ac:11, init:12 },
+  { name:'Cleric',   short:'CL', color:'#eebb33', type:'player', hp: 9, ac:15, init:11 },
+  { name:'Goblin Minion', short:'G1', color:'#ee4444', type:'enemy',  hp: 7, ac:12, init:13 },
+  { name:'Goblin Minion', short:'G2', color:'#ee4444', type:'enemy',  hp: 7, ac:12, init:11 },
+  { name:'Grask',         short:'GK', color:'#cc2222', type:'enemy',  hp:22, ac:16, init: 9 },
+  { name:'Mordren',       short:'MV', color:'#99aacc', type:'npc',    hp:16, ac:12, init: 8 },
+];
+
+const COLOR_PRESETS = [
+  '#5588ee','#44cc77','#aa55ee','#eebb33',
+  '#ee4444','#cc2222','#ff7722','#44cccc',
+  '#99aacc','#cc88aa','#88cc44','#ccaa33',
+];
+
+/* ════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════ */
+function init() {
+  buildGrid();
+  buildLabels();
+  buildColorPresets();
+  TEMPLATE.forEach(t => {
+    state.chars.push({
+      id: `c${state.nextId++}`,
+      name: t.name,
+      short: t.short,
+      color: t.color,
+      type: t.type,
+      hp: t.hp,
+      maxHp: t.hp,
+      ac: t.ac,
+      init: t.init,
+      cell: null,
+      conditions: [],
+    });
+  });
+  render();
+}
+
+/* ════════════════════════════════════════════════
+   GRID BUILDING
+════════════════════════════════════════════════ */
+function buildGrid() {
+  const grid = document.getElementById('grid');
+  grid.style.gridTemplateColumns = `repeat(${COLS}, var(--cell))`;
+  grid.style.gridTemplateRows    = `repeat(${ROWS}, var(--cell))`;
+  grid.innerHTML = '';
+
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell' + ((r + c) % 2 === 1 ? ' cell-alt' : '');
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+
+      cell.addEventListener('click', () => handleCellClick(r, c));
+      cell.addEventListener('mouseenter', () => {
+        document.getElementById('coord-display').textContent =
+          String.fromCharCode(65 + c) + (r + 1);
+      });
+      cell.addEventListener('mouseleave', () => {
+        document.getElementById('coord-display').textContent = '';
+      });
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function buildLabels() {
+  const colWrap = document.getElementById('col-labels');
+  for (let c = 0; c < COLS; c++) {
+    const d = document.createElement('div');
+    d.className = 'col-label';
+    d.textContent = String.fromCharCode(65 + c);
+    colWrap.appendChild(d);
+  }
+  const rowWrap = document.getElementById('row-labels');
+  for (let r = 0; r < ROWS; r++) {
+    const d = document.createElement('div');
+    d.className = 'row-label';
+    d.textContent = r + 1;
+    rowWrap.appendChild(d);
+  }
+}
+
+function buildColorPresets() {
+  const wrap = document.getElementById('color-presets');
+  COLOR_PRESETS.forEach(col => {
+    const btn = document.createElement('div');
+    btn.className = 'color-preset';
+    btn.style.background = col;
+    btn.dataset.color = col;
+    btn.onclick = () => {
+      document.querySelectorAll('.color-preset').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    };
+    wrap.appendChild(btn);
+  });
+  // Activate first
+  wrap.firstChild.classList.add('active');
+}
+
+/* ════════════════════════════════════════════════
+   HELPERS
+════════════════════════════════════════════════ */
+function initOrder() {
+  return [...state.chars].sort((a, b) => b.init - a.init);
+}
+
+function currentChar() {
+  const order = initOrder();
+  if (!order.length) return null;
+  return order[state.turnIdx % order.length];
+}
+
+function charAtCell(r, c) {
+  return state.chars.find(ch => ch.cell && ch.cell.r === r && ch.cell.c === c);
+}
+
+function getChar(id) { return state.chars.find(c => c.id === id); }
+
+/* ════════════════════════════════════════════════
+   RENDER
+════════════════════════════════════════════════ */
+function render() {
+  renderTopBar();
+  renderSidebar();
+  renderTokens();
+  renderStatus();
+}
+
+function renderTopBar() {
+  const order = initOrder();
+  const curr  = currentChar();
+  const idx   = order.findIndex(c => c.id === curr?.id);
+  document.getElementById('round-num').textContent = state.round;
+  document.getElementById('curr-name').textContent = curr ? curr.name : '—';
+  document.getElementById('curr-name').style.color = curr ? curr.color : 'var(--dim)';
+  document.getElementById('turn-counter').textContent =
+    `Turn ${idx + 1} of ${order.length}`;
+}
+
+function renderSidebar() {
+  const order = initOrder();
+  const curr  = currentChar();
+  const list  = document.getElementById('init-list');
+  list.innerHTML = '';
+
+  order.forEach(c => {
+    const isCurrent  = curr && c.id === curr.id;
+    const isSelected = c.id === state.selected;
+    const pct = c.maxHp > 0 ? Math.max(0, c.hp / c.maxHp * 100) : 0;
+    const hpColor = pct > 60 ? '#44cc77' : pct > 30 ? '#ddaa22' : '#ee4444';
+    const dead = c.hp <= 0;
+
+    const row = document.createElement('div');
+    row.className = [
+      'char-row',
+      isCurrent  ? 'is-current'  : '',
+      isSelected ? 'is-selected' : '',
+      dead       ? 'is-dead'     : '',
+    ].filter(Boolean).join(' ');
+    row.dataset.id = c.id;
+
+    const badgeClass = { player: 'badge-player', enemy: 'badge-enemy', npc: 'badge-npc' }[c.type];
+
+    row.innerHTML = `
+      <div class="char-top-row">
+        <div class="char-dot" style="background:${c.color}; box-shadow:0 0 6px ${c.color}80"></div>
+        <div class="char-name-block">
+          <div class="char-name">
+            ${c.name}
+            <span class="char-badge ${badgeClass}">${c.type}</span>
+          </div>
+          <div class="char-stats">INIT ${c.init} · AC ${c.ac}${dead ? ' · <span style="color:#ee4444">DOWN</span>' : ''}</div>
+        </div>
+        <div class="char-hp-block">
+          <button class="hp-btn" title="Damage" onclick="adjustHp('${c.id}', -1)">−</button>
+          <span class="hp-val" title="Double-click to set HP"
+            ondblclick="setHpPrompt('${c.id}')"
+            style="color:${hpColor}">${c.hp}/${c.maxHp}</span>
+          <button class="hp-btn" title="Heal" onclick="adjustHp('${c.id}', 1)">+</button>
+        </div>
+        <button class="char-remove" title="Remove character" onclick="deleteChar('${c.id}')">✕</button>
+      </div>
+      <div class="hp-bar-wrap">
+        <div class="hp-bar" style="width:${pct}%; background:${hpColor}44; outline:none;
+          box-shadow: 0 0 4px ${hpColor}88;"></div>
+      </div>
+    `;
+    row.addEventListener('click', e => {
+      if (e.target.classList.contains('hp-btn') || e.target.classList.contains('char-remove')) return;
+      selectChar(c.id);
+    });
+    list.appendChild(row);
+  });
+}
+
+function renderTokens() {
+  const grid = document.getElementById('grid');
+
+  // Clear old decorations
+  grid.querySelectorAll('.token').forEach(t => t.remove());
+  grid.querySelectorAll('.cell-target, .cell-in-range, .cell-range-edge')
+    .forEach(c => c.classList.remove('cell-target', 'cell-in-range', 'cell-range-edge'));
+
+  const curr = currentChar();
+
+  // Movement range overlay for selected+placed character
+  const selChar = state.selected ? getChar(state.selected) : null;
+  if (selChar && selChar.cell) {
+    const { r: sr, c: sc } = selChar.cell;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const dist = Math.max(Math.abs(r - sr), Math.abs(c - sc)); // Chebyshev
+        if (dist === 0) continue;
+        if (dist <= MOVE_RANGE) {
+          const cell = grid.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+          if (cell) cell.classList.add(dist === MOVE_RANGE ? 'cell-range-edge' : 'cell-in-range');
+        }
+      }
+    }
+  }
+
+  state.chars.forEach(c => {
+    if (!c.cell) return;
+    const cell = grid.querySelector(`.cell[data-r="${c.cell.r}"][data-c="${c.cell.c}"]`);
+    if (!cell) return;
+
+    const isCurrent  = curr && c.id === curr.id;
+    const isSelected = c.id === state.selected;
+    const dead = c.hp <= 0;
+    const conds = (c.conditions || []).map(k => CONDITIONS.find(cd => cd.key === k)).filter(Boolean);
+
+    const tok = document.createElement('div');
+    tok.className = [
+      'token',
+      isCurrent  ? 'token-current'  : '',
+      isSelected ? 'token-selected' : '',
+      dead       ? 'token-dead'     : '',
+    ].filter(Boolean).join(' ');
+
+    tok.style.background  = c.color + '28';
+    tok.style.borderColor = c.color;
+    tok.dataset.id = c.id;
+    const condNames = conds.map(cd => cd.label).join(', ');
+    tok.title = `${c.name} (${c.type}) · HP ${c.hp}/${c.maxHp} · AC ${c.ac}${condNames ? ' · ' + condNames : ''}`;
+
+    let condDotsHtml = '';
+    if (conds.length) {
+      condDotsHtml = `<div class="condition-tray">${
+        conds.slice(0, 5).map(cd =>
+          `<div class="cond-dot" style="background:${cd.color}; color:${cd.color};" title="${cd.label}"></div>`
+        ).join('')
+      }</div>`;
+    }
+
+    tok.innerHTML = `<span class="token-label" style="color:${c.color}">${c.short}</span>${condDotsHtml}`;
+
+    tok.addEventListener('click', e => { e.stopPropagation(); selectChar(c.id); });
+    tok.addEventListener('contextmenu', e => { e.preventDefault(); openCtxMenu(e, c.id); });
+
+    cell.appendChild(tok);
+    if (isSelected) cell.classList.add('cell-target');
+  });
+
+  renderZones();
+}
+
+/* ── Zone rendering ──────────────────────────── */
+function renderZones() {
+  const overlay = document.getElementById('zone-overlay');
+  overlay.innerHTML = '';
+  const cell = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cell')) || 46;
+
+  state.zones.forEach(z => {
+    const r1 = Math.min(z.r1, z.r2), r2 = Math.max(z.r1, z.r2);
+    const c1 = Math.min(z.c1, z.c2), c2 = Math.max(z.c1, z.c2);
+    const div = document.createElement('div');
+    div.className = 'zone-region';
+    div.style.left   = (c1 * cell) + 'px';
+    div.style.top    = (r1 * cell) + 'px';
+    div.style.width  = ((c2 - c1 + 1) * cell) + 'px';
+    div.style.height = ((r2 - r1 + 1) * cell) + 'px';
+    div.style.borderColor = z.color;
+    div.style.background  = z.color + '18';
+    div.innerHTML = `<div class="zone-region-label" style="color:${z.color}">${z.label}</div>`;
+    div.dataset.zoneId = z.id;
+    div.addEventListener('contextmenu', e => {
+      if (!state.zoneMode) return;
+      e.preventDefault(); e.stopPropagation();
+      state.zones = state.zones.filter(zn => zn.id !== z.id);
+      renderZones();
+    });
+    overlay.appendChild(div);
+  });
+}
+
+/* ── Zone mode toggle & drawing ──────────────── */
+function toggleZoneMode() {
+  state.zoneMode = !state.zoneMode;
+  document.getElementById('zone-toolbar').classList.toggle('show', state.zoneMode);
+  document.getElementById('btn-zone-mode').textContent = state.zoneMode ? '◼ Zone Mode ON' : '◻ Zone Labels';
+  document.getElementById('btn-zone-mode').style.background = state.zoneMode
+    ? 'rgba(80,160,255,0.25)' : 'rgba(80,160,255,0.1)';
+  const grid = document.getElementById('grid');
+  grid.style.cursor = state.zoneMode ? 'crosshair' : '';
+}
+
+function clearZones() {
+  state.zones = [];
+  renderZones();
+}
+
+function cellFromPoint(e) {
+  const cell = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cell')) || 46;
+  const grid = document.getElementById('grid');
+  const rect = grid.getBoundingClientRect();
+  const c = Math.floor((e.clientX - rect.left) / cell);
+  const r = Math.floor((e.clientY - rect.top)  / cell);
+  return { r: Math.max(0, Math.min(ROWS-1, r)), c: Math.max(0, Math.min(COLS-1, c)) };
+}
+
+function updateZonePreview(drag) {
+  const cell = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cell')) || 46;
+  const prev = document.getElementById('zone-preview');
+  const r1 = Math.min(drag.startR, drag.curR), r2 = Math.max(drag.startR, drag.curR);
+  const c1 = Math.min(drag.startC, drag.curC), c2 = Math.max(drag.startC, drag.curC);
+  prev.style.display = 'block';
+  prev.style.left   = (c1 * cell) + 'px';
+  prev.style.top    = (r1 * cell) + 'px';
+  prev.style.width  = ((c2 - c1 + 1) * cell) + 'px';
+  prev.style.height = ((r2 - r1 + 1) * cell) + 'px';
+}
+
+// Zone drag handlers attached to grid
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('grid');
+  grid.addEventListener('mousedown', e => {
+    if (!state.zoneMode || e.button !== 0) return;
+    const { r, c } = cellFromPoint(e);
+    state.zoneDrag = { startR: r, startC: c, curR: r, curC: c };
+    e.preventDefault();
+  });
+  grid.addEventListener('mousemove', e => {
+    if (!state.zoneDrag) return;
+    const { r, c } = cellFromPoint(e);
+    state.zoneDrag.curR = r;
+    state.zoneDrag.curC = c;
+    updateZonePreview(state.zoneDrag);
+  });
+  grid.addEventListener('mouseup', e => {
+    if (!state.zoneDrag) return;
+    const drag = state.zoneDrag;
+    state.zoneDrag = null;
+    document.getElementById('zone-preview').style.display = 'none';
+    const label = document.getElementById('zone-name-input').value.trim() || 'Zone';
+    const color = document.getElementById('zone-color-input').value;
+    state.zones.push({
+      id: `z${state.nextZoneId++}`,
+      r1: drag.startR, c1: drag.startC,
+      r2: drag.curR,   c2: drag.curC,
+      label, color,
+    });
+    renderZones();
+  });
+});
+
+/* ── Conditions ──────────────────────────────── */
+function buildCondGrid(id) {
+  const c = getChar(id);
+  const wrap = document.getElementById('ctx-cond-grid');
+  wrap.innerHTML = '';
+  CONDITIONS.forEach(cond => {
+    const active = c && c.conditions && c.conditions.includes(cond.key);
+    const item = document.createElement('div');
+    item.className = 'ctx-cond-item' + (active ? ' active' : '');
+    item.innerHTML = `<div class="ctx-cond-pip" style="background:${cond.color}"></div>${cond.label}`;
+    item.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleCondition(id, cond.key);
+      item.classList.toggle('active');
+    });
+    wrap.appendChild(item);
+  });
+}
+
+function toggleCondition(id, key) {
+  const c = getChar(id);
+  if (!c) return;
+  if (!c.conditions) c.conditions = [];
+  const idx = c.conditions.indexOf(key);
+  if (idx >= 0) c.conditions.splice(idx, 1);
+  else c.conditions.push(key);
+  renderTokens();
+}
+
+function renderStatus() {
+  const placed = state.chars.filter(c => c.cell !== null).length;
+  document.getElementById('stat-chars').textContent  = state.chars.length;
+  document.getElementById('stat-placed').textContent = placed;
+
+  const selWrap = document.getElementById('stat-selected-wrap');
+  if (state.selected) {
+    const c = getChar(state.selected);
+    selWrap.style.display = 'flex';
+    document.getElementById('stat-selected').textContent = c ? c.name : '—';
+  } else {
+    selWrap.style.display = 'none';
+  }
+}
+
+/* ════════════════════════════════════════════════
+   ACTIONS
+════════════════════════════════════════════════ */
+function selectChar(id) {
+  state.selected = (state.selected === id) ? null : id;
+  render();
+}
+
+function handleCellClick(r, c) {
+  if (!state.selected) {
+    // Click on cell with no selection → maybe select the character there
+    const there = charAtCell(r, c);
+    if (there) { selectChar(there.id); }
+    return;
+  }
+
+  const char   = getChar(state.selected);
+  if (!char) return;
+
+  const already = charAtCell(r, c);
+  if (already && already.id !== char.id) {
+    // Swap positions
+    const oldCell = char.cell ? { ...char.cell } : null;
+    char.cell   = { r, c };
+    already.cell = oldCell;
+    render();
+    return;
+  }
+
+  // Place / move
+  char.cell = { r, c };
+  state.selected = null;
+  render();
+}
+
+function nextTurn() {
+  const order = initOrder();
+  const n = order.length;
+  if (n === 0) return;
+  state.turnIdx = (state.turnIdx + 1) % n;
+  if (state.turnIdx === 0) state.round++;
+  render();
+}
+
+function adjustHp(id, delta) {
+  const c = getChar(id);
+  if (!c) return;
+  c.hp = Math.max(0, Math.min(c.maxHp, c.hp + delta));
+  render();
+}
+
+function setHpPrompt(id) {
+  const c = getChar(id);
+  if (!c) return;
+  const val = prompt(`Set HP for ${c.name} (max ${c.maxHp}):`, c.hp);
+  if (val === null) return;
+  const n = parseInt(val);
+  if (!isNaN(n)) {
+    c.hp = Math.max(0, Math.min(c.maxHp, n));
+    render();
+  }
+}
+
+function deleteChar(id) {
+  if (!confirm(`Remove character from roster?`)) return;
+  state.chars = state.chars.filter(c => c.id !== id);
+  if (state.selected === id) state.selected = null;
+  // Adjust turnIdx
+  const n = state.chars.length;
+  if (n > 0) state.turnIdx = state.turnIdx % n;
+  render();
+}
+
+function clearGrid() {
+  state.chars.forEach(c => c.cell = null);
+  state.selected = null;
+  render();
+}
+
+function resetRound() {
+  state.round    = 1;
+  state.turnIdx  = 0;
+  state.selected = null;
+  render();
+}
+
+/* ── Context menu ─────────────────────────────── */
+const ctxMenu = document.getElementById('ctx-menu');
+
+function openCtxMenu(e, id) {
+  state.ctxId = id;
+  state.selected = id;
+  render();
+  buildCondGrid(id);
+
+  ctxMenu.style.left = e.clientX + 'px';
+  ctxMenu.style.top  = e.clientY + 'px';
+  ctxMenu.classList.add('show');
+  e.stopPropagation();
+}
+
+function closeCtxMenu() { ctxMenu.classList.remove('show'); }
+
+document.getElementById('ctx-remove-board').onclick = () => {
+  const c = getChar(state.ctxId);
+  if (c) { c.cell = null; state.selected = null; render(); }
+  closeCtxMenu();
+};
+
+document.getElementById('ctx-hp-set').onclick = () => {
+  closeCtxMenu();
+  setHpPrompt(state.ctxId);
+};
+
+document.getElementById('ctx-delete').onclick = () => {
+  closeCtxMenu();
+  deleteChar(state.ctxId);
+};
+
+/* ── Modal ────────────────────────────────────── */
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('show');
+  document.getElementById('f-name').focus();
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('show');
+}
+
+function submitModal() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { document.getElementById('f-name').focus(); return; }
+
+  const hp   = parseInt(document.getElementById('f-hp').value)   || 10;
+  const ac   = parseInt(document.getElementById('f-ac').value)   || 14;
+  const init = parseInt(document.getElementById('f-init').value) || 10;
+  const type = document.getElementById('f-type').value;
+
+  const activePreset = document.querySelector('.color-preset.active');
+  const color = activePreset ? activePreset.dataset.color : '#888888';
+
+  const short = name.replace(/\s+/g, '').slice(0, 2).toUpperCase();
+
+  state.chars.push({
+    id: `c${state.nextId++}`,
+    name, short, color, type,
+    hp, maxHp: hp, ac, init,
+    cell: null,
+    conditions: [],
+  });
+
+  closeModal();
+  // Reset form
+  document.getElementById('f-name').value  = '';
+  document.getElementById('f-hp').value    = '10';
+  document.getElementById('f-ac').value    = '14';
+  document.getElementById('f-init').value  = '10';
+  render();
+}
+
+/* ════════════════════════════════════════════════
+   KEYBOARD SHORTCUTS
+════════════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeCtxMenu();
+    closeModal();
+    state.selected = null;
+    render();
+  }
+  if ((e.key === 'Delete' || e.key === 'Backspace') &&
+      state.selected &&
+      document.activeElement === document.body) {
+    const c = getChar(state.selected);
+    if (c && c.cell) { c.cell = null; state.selected = null; render(); }
+    e.preventDefault();
+  }
+  // N = next turn
+  if (e.key === 'n' && !e.ctrlKey && !e.metaKey && document.activeElement === document.body) {
+    nextTurn();
+  }
+  // Enter in modal = submit
+  if (e.key === 'Enter' && document.getElementById('modal-overlay').classList.contains('show')) {
+    submitModal();
+  }
+});
+
+document.addEventListener('click', e => {
+  if (!ctxMenu.contains(e.target)) closeCtxMenu();
+});
+
+/* ════════════════════════════════════════════════
+   KICK OFF
+════════════════════════════════════════════════ */
+init();
+</script>
+</body>
+</html>

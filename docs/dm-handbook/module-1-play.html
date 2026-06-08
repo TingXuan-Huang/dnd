@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 — From Village to Ruin · Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Noto+Serif+SC:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English','Noto Serif SC',Georgia,serif;color:#c8a860;line-height:1.7;}
+.nav{position:sticky;top:0;z-index:100;background:linear-gradient(to bottom,#0d0a04 70%,transparent);padding:14px 22px;display:flex;gap:18px;align-items:center;border-bottom:1px solid rgba(122,80,32,0.3);}
+.nav a{color:#8a6030;font-size:0.72rem;letter-spacing:0.14em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav a:hover{color:#d4b870;}
+.nav .spacer{flex:1;}
+.page-wrap{max-width:1100px;margin:0 auto;padding:32px 26px 80px;}
+header{text-align:center;margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid rgba(122,80,32,0.3);}
+.overline{font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+header h1{font-size:2.6rem;color:#e4cc94;letter-spacing:0.04em;text-shadow:0 2px 22px rgba(0,0,0,0.9);margin-bottom:10px;}
+.subtitle{font-style:italic;color:#a08040;font-size:1.0rem;letter-spacing:0.04em;margin-bottom:14px;}
+.meta{font-size:0.78rem;color:#7a5020;letter-spacing:0.1em;}
+.meta span{margin:0 8px;}
+h2{font-size:1.6rem;color:#d4b870;margin-bottom:18px;letter-spacing:0.03em;border-bottom:1px solid rgba(122,80,32,0.25);padding-bottom:10px;}
+h3{font-size:1.15rem;color:#c8a860;margin:18px 0 10px;letter-spacing:0.04em;}
+h4{font-size:0.98rem;color:#b89040;margin:14px 0 6px;letter-spacing:0.05em;}
+p{margin-bottom:10px;}
+
+/* Legend */
+.legend{background:rgba(20,14,4,0.6);border:1px solid rgba(122,80,32,0.4);padding:20px 24px;margin-bottom:30px;border-radius:2px;}
+.legend h2{font-size:1.1rem;border:none;padding:0;margin-bottom:14px;}
+.legend-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:680px){.legend-grid{grid-template-columns:1fr;}}
+.legend-item{font-size:0.78rem;padding:6px 12px;border-left:3px solid;color:#bca870;}
+.legend-item .lbl{font-weight:bold;letter-spacing:0.12em;text-transform:uppercase;font-size:0.68rem;margin-right:8px;}
+
+/* Block types */
+.beat{margin:22px 0;}
+.beat .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+.beat .tag{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;padding:3px 10px;border-radius:1px;}
+.tag.fixed{background:#5a1810;color:#f0c8a0;border:1px solid #8a2820;}
+.tag.free{background:#1a3a14;color:#a8d090;border:1px solid #4a7838;}
+.tag.silent{background:#1c1838;color:#a890e0;border:1px solid #4a3a78;}
+.tag.open{background:#1c2a48;color:#90b8e0;border:1px solid #3a5a98;}
+.beat .time{font-size:0.72rem;color:#7a5020;letter-spacing:0.12em;font-style:italic;}
+.beat h3{margin-top:0;}
+
+/* Borders by beat type */
+.fixed-beat{border-left:3px solid #8a2820;padding-left:18px;background:linear-gradient(to right,rgba(90,24,16,0.08),transparent 70%);padding-top:6px;padding-bottom:6px;}
+.free-beat{border-left:3px solid #4a7838;padding-left:18px;background:linear-gradient(to right,rgba(26,58,20,0.08),transparent 70%);padding-top:6px;padding-bottom:6px;}
+
+/* Read-aloud — Chinese narration parchment */
+.read-aloud{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);color:#2a1808;padding:22px 26px;margin:14px 0;border:1px solid #8a5820;font-family:'Noto Serif SC','IM Fell English',serif;font-size:0.94rem;line-height:1.85;position:relative;box-shadow:0 4px 22px rgba(0,0,0,0.5),inset 0 0 30px rgba(90,40,10,0.1);border-radius:2px;}
+.read-aloud::before{content:'朗读 · READ ALOUD';position:absolute;top:-9px;left:18px;background:#0d0a04;padding:2px 10px;font-size:0.62rem;letter-spacing:0.24em;color:#7a5020;font-family:'IM Fell English',serif;}
+.read-aloud p{margin-bottom:0.7em;}
+.read-aloud p:last-child{margin-bottom:0;}
+
+/* DM block */
+.dm-block{background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;padding:16px 20px;margin:14px 0;font-size:0.84rem;line-height:1.68;border-radius:1px;position:relative;}
+.dm-block::before{content:'DM ONLY';position:absolute;top:-9px;left:18px;background:#0d0a04;padding:2px 10px;font-size:0.62rem;letter-spacing:0.24em;color:#7a5020;}
+.dm-block ul{margin-left:18px;margin-top:6px;}
+.dm-block li{margin-bottom:4px;}
+.dm-block strong{color:#d4b870;}
+
+/* Check blocks */
+.check{padding:10px 16px;margin:8px 0;font-size:0.82rem;border-left:3px solid;background:rgba(0,0,0,0.25);}
+.check.open{border-color:#3a5a98;color:#90b8e0;}
+.check.silent{border-color:#4a3a78;color:#a890e0;}
+.check .lbl{font-weight:bold;letter-spacing:0.12em;text-transform:uppercase;font-size:0.62rem;margin-right:8px;}
+.check .dc{color:#e4cc94;font-weight:bold;}
+.check .outcome{display:block;margin-top:4px;color:#a89060;font-size:0.78rem;font-style:italic;}
+
+/* Awakening Clock marker */
+.clock-mark{display:inline-block;background:#3a1c2a;color:#e4a8c0;border:1px solid #6a3a4a;padding:3px 10px;font-size:0.72rem;letter-spacing:0.12em;margin:4px 6px 4px 0;border-radius:2px;}
+.clock-mark::before{content:'⏰ ';}
+
+/* Location cards in free-explore */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+@media(max-width:760px){.loc-grid{grid-template-columns:1fr;}}
+.loc-card{background:rgba(20,14,4,0.55);border:1px solid rgba(122,80,32,0.4);padding:16px 18px;border-radius:2px;transition:border-color .2s;}
+.loc-card:hover{border-color:#7a5020;}
+.loc-card h4{margin-top:0;color:#d4b870;font-size:1.0rem;letter-spacing:0.05em;}
+.loc-card .who{font-size:0.74rem;color:#8a6030;font-style:italic;margin-bottom:8px;}
+.loc-card .blurb{font-size:0.82rem;color:#a89060;line-height:1.6;margin-bottom:10px;}
+.loc-card a.full{font-size:0.7rem;letter-spacing:0.12em;color:#7a5020;text-decoration:none;text-transform:uppercase;}
+.loc-card a.full:hover{color:#d4b870;}
+
+/* Endings */
+.endings{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:18px 0;}
+@media(max-width:880px){.endings{grid-template-columns:1fr;}}
+.ending{background:rgba(40,20,10,0.5);border:1px solid #5a3010;padding:18px 20px;border-radius:2px;}
+.ending h4{color:#e4cc94;margin-top:0;}
+.ending .trigger{font-size:0.74rem;color:#a87830;font-style:italic;margin-bottom:10px;}
+
+/* HR */
+hr{border:none;border-top:1px solid rgba(122,80,32,0.3);margin:36px 0;}
+
+/* Pull-quote (Mordren, Bran, etc.) */
+.quote{border-left:2px solid #8a6030;padding:6px 18px;margin:10px 0;font-style:italic;color:#bca870;font-size:0.92rem;}
+.quote .speaker{display:block;font-style:normal;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:#7a5020;margin-bottom:4px;}
+
+/* Footer */
+footer{margin-top:50px;padding-top:24px;border-top:1px solid rgba(122,80,32,0.3);text-align:center;font-size:0.78rem;color:#7a5020;}
+footer .nav-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:14px;}
+footer .nav-links a{color:#a87830;text-decoration:none;letter-spacing:0.1em;padding:6px 14px;border:1px solid #5a3010;transition:all .2s;}
+footer .nav-links a:hover{background:#3a2008;color:#e4cc94;}
+
+/* TOC */
+.toc{background:rgba(20,14,4,0.5);border:1px solid rgba(122,80,32,0.3);padding:18px 22px;margin-bottom:28px;}
+.toc h2{font-size:1.0rem;border:none;padding:0;margin-bottom:10px;}
+.toc ol{list-style:none;}
+.toc li{padding:3px 0;font-size:0.82rem;}
+.toc li a{color:#a87830;text-decoration:none;letter-spacing:0.04em;}
+.toc li a:hover{color:#e4cc94;}
+.toc .sub{padding-left:22px;color:#6a4818;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../fallowton-map.html">← Map</a>
+  <a href="module-1-npcs.html">NPCs</a>
+  <a href="module-1-checks.md">Checks</a>
+  <a href="module-1-dm-flow.md">DM Flow</a>
+  <span class="spacer"></span>
+  <a href="../../docs/campaign/weave-strain-magic.md">Weave Strain</a>
+</nav>
+
+<div class="page-wrap">
+
+<header>
+  <p class="overline">Module 1 · 第一幕</p>
+  <h1>From Village to Ruin</h1>
+  <p class="subtitle">The Sampling · 一日村庄，三道隧道，一个无名的预感</p>
+  <div class="meta">
+    <span>~1 session (3–4h)</span> ·
+    <span>Level 1 · 3–5 PCs</span> ·
+    <span>End: cliffhanger</span>
+  </div>
+</header>
+
+<div class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#prep">Pre-session prep (5 min)</a></li>
+    <li><a href="#act1">Act I — A Day in Fallowton</a></li>
+    <li class="sub"><a href="#scene-inn">Opening · The Bent Plow Inn</a></li>
+    <li class="sub"><a href="#scene-day">Free Day · Pick 3–4 locations</a></li>
+    <li class="sub"><a href="#scene-bell">Sunset Bell · Convergence</a></li>
+    <li><a href="#act2">Act II — Descent</a></li>
+    <li><a href="#act3">Act III — The Sampling</a></li>
+    <li class="sub"><a href="#tunnel-blue">Left · Blue Light mouth</a></li>
+    <li class="sub"><a href="#tunnel-sound">Middle · Sound mouth</a></li>
+    <li class="sub"><a href="#tunnel-wind">Right · Wind mouth</a></li>
+    <li class="sub"><a href="#scene-shudder">Pool Shudder · Exit pivot</a></li>
+    <li><a href="#act4">Act IV — Return &amp; Cliffhanger</a></li>
+    <li><a href="#after">After the session</a></li>
+  </ol>
+</div>
+
+<section class="legend">
+  <h2>Legend</h2>
+  <div class="legend-grid">
+    <div class="legend-item" style="border-color:#d4b868;"><span class="lbl" style="color:#e4cc94;">朗读</span> Read-aloud — DM narrates or paraphrases on the parchment block</div>
+    <div class="legend-item" style="border-color:#8a2820;"><span class="lbl" style="color:#f0c8a0;">Fixed Pivot</span> Must happen this session; narrate it</div>
+    <div class="legend-item" style="border-color:#4a7838;"><span class="lbl" style="color:#a8d090;">Free Explore</span> Players choose order, depth, or skip</div>
+    <div class="legend-item" style="border-color:#3a5a98;"><span class="lbl" style="color:#90b8e0;">Open Check</span> Player rolls; result is known</div>
+    <div class="legend-item" style="border-color:#4a3a78;"><span class="lbl" style="color:#a890e0;">Silent Check</span> DM rolls in secret; on fail, simply don't reveal</div>
+    <div class="legend-item" style="border-color:#5a3010;background:rgba(40,28,8,0.5);"><span class="lbl" style="color:#b89030;">DM Only</span> Lore or staging; do not show players</div>
+    <div class="legend-item" style="border-color:#6a3a4a;background:rgba(58,28,42,0.2);"><span class="lbl" style="color:#e4a8c0;">⏰ Clock +N</span> Advance the Awakening Clock secretly</div>
+  </div>
+</section>
+
+<hr>
+
+<section id="prep">
+  <h2>Pre-session prep · 5 minutes</h2>
+  <div class="dm-block">
+    <ul>
+      <li>Open <strong>module-1-npcs.html</strong> in a second window — six NPCs you'll voice today.</li>
+      <li>Open <strong>module-1-checks.md</strong> if you want the master DC list within reach.</li>
+      <li>Write the <strong>Awakening Clock</strong> on a sticky note: <code>0 / 6</code>. Hide it.</li>
+      <li>Write the <strong>Day Clock</strong> on another note: <code>Sunrise → Forenoon → Midday → Afternoon → Sunset</code>. Tick across as locations are visited.</li>
+      <li>Tell players, before the first read-aloud:<br>
+        <span style="color:#d4b870;">"You have one day in Fallowton before the village forces a decision about the sinkhole. Use it however you like — but the village will not wait for you forever."</span></li>
+      <li>Make sure each PC has answered: <em>Why are you in Fallowton?</em> (use d8 hook table in npcs file if stuck).</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<!-- ====================================================================== -->
+<!-- ACT I -->
+<!-- ====================================================================== -->
+
+<section id="act1">
+  <h2>Act I — A Day in Fallowton</h2>
+  <p style="font-size:0.84rem;color:#8a6030;font-style:italic;margin-bottom:24px;">Time: Sunrise → Sunset · Day 1 of the campaign · ~90 minutes table time</p>
+
+  <!-- SCENE: OPENING -->
+  <div id="scene-inn" class="fixed-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag fixed">Fixed Pivot</span>
+        <h3>Opening · The Bent Plow Inn</h3>
+        <span class="time">Sunrise · ~15 min</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>清晨，雨终于停了。</p>
+        <p>The Bent Plow Inn 的窗户结着薄薄一层水汽，木门半开着，让一缕灰白色的晨光斜斜地落在地板上。屋里有炉火残留的烟味、湿羊毛味，还有 Bessa Thorn 正在揉面的声音。她的手腕沾着面粉，头也不抬。</p>
+        <p>角落里坐着三个农夫，已经在低声争吵。</p>
+        <p>"那个洞自己会闭上的。"<br>"它会闭上的吗？我可没听见它闭上。"<br>"老 Henric 的麦田全毁了——他这把年纪还能再种一季吗？"</p>
+        <p>窗边那张桌子边，独自坐着一个穿着黑色旅袍的男人。他的手指上戴着几枚银戒，面前摆着一盏不曾点燃的 pale wood staff。他听见你们进门的脚步，抬起头——眼神平静，却让屋里其他几张脸不约而同地转开。</p>
+        <p>他向你们点了点头。</p>
+        <p class="quote">"早安。我叫 Mordren Vale。坐下吧——如果你们今天有空，我有一份工作给你们。"</p>
+      </div>
+
+      <div class="dm-block">
+        <strong>What this scene does:</strong>
+        <ul>
+          <li>Plants Mordren as the job-giver. He is polite, never overbearing.</li>
+          <li>Establishes that the village is afraid of the sinkhole — three farmers' argument seeds the rumor.</li>
+          <li>Lets every PC introduce themselves to each other if they don't yet know one another.</li>
+        </ul>
+        <strong>Mordren's offer (deliver in your own words):</strong>
+        <ul>
+          <li>Descend the sinkhole stairs. Look. Report. Return.</li>
+          <li>Touch nothing you do not understand. Bring back any writing, relic, or "living flame."</li>
+          <li>Pay: <strong>1 sp each in advance</strong>, plus a fair share of anything recovered. If they bring back a relic he wants, <strong>+5 gp each</strong>.</li>
+          <li>He does NOT tell them: he suspects this is a Dawnweave Converter, not a temple. He does NOT tell them: he has royal backing. <em>(Save these for later modules.)</em></li>
+        </ul>
+        <strong>If players ask why him:</strong> "I am a scholar of ruins. The village does not want one of its own to die down there. I do not want this to be sealed before I understand what it is."
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Insight DC 12 — <span class="dc">Mordren is telling part of the truth.</span>
+        <span class="outcome">Success: "He is hiding more than he is saying, but he believes what he says." Fail: "Seems sincere."</span>
+      </div>
+      <div class="check silent">
+        <span class="lbl">Silent check</span> Passive Perception 13 — <span class="dc">Mordren's silver ring flickers blue when the farmers say 'cave.'</span>
+        <span class="outcome">On a quiet beat, narrate it only to the highest passive PC. No need to call for a roll.</span>
+      </div>
+
+      <div class="dm-block">
+        <strong>End of scene:</strong> Mordren says he'll be at the cottage west of the mill if they need him. He stands, leaves a coin under his mug, and goes. The day is theirs.
+        <span class="clock-mark">Clock +0 — nothing in the ruin has noticed yet.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE: FREE DAY -->
+  <div id="scene-day" class="free-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag free">Free Explore</span>
+        <h3>Free Day · Pick 3–4 locations</h3>
+        <span class="time">Forenoon → Afternoon · ~50 min</span>
+      </div>
+
+      <div class="dm-block">
+        <strong>How the freedom works:</strong>
+        <ul>
+          <li>The party can split up or stick together. <strong>Each location visited burns one "time slot."</strong> They have <strong>4 slots</strong> before the sunset bell rings.</li>
+          <li>If they try to visit a 5th location, narrate the bell ringing partway through — they only get half of what was there.</li>
+          <li>If they linger at one location ("we spend two hours here"), that's 2 slots. Let them choose.</li>
+          <li>Locations they skip stay <strong>available in Module 2</strong> the next morning — but the NPCs will remember being ignored.</li>
+        </ul>
+        <strong>Suggested party split:</strong> If a Sinkhole Witness PC exists, encourage them to visit the Mill Shed or the actual sinkhole rim alone — Garret will speak more freely to one of their own.
+      </div>
+
+      <p style="margin:14px 0 10px;font-size:0.86rem;color:#a89060;">Seven locations. Three to four are realistic. Each has one open check and one silent check; both are catalogued in <code>module-1-checks.md</code>. Quick blurbs below — click "Full scene" for the dedicated location page.</p>
+
+      <div class="loc-grid">
+
+        <div class="loc-card">
+          <h4>1 · The Bent Plow Inn</h4>
+          <div class="who">Bessa Thorn · innkeeper · rumor hub</div>
+          <div class="blurb">Returning lets PCs press Bessa for what she overheard. She knows Mordren mutters "House of First Light" in his sleep — but only if they buy two rounds for the farmers OR pass Persuasion DC 12.</div>
+          <a class="full" href="../bent-plow-inn.html">Full scene →</a>
+        </div>
+
+        <div class="loc-card">
+          <h4>2 · Elder's Hall</h4>
+          <div class="who">Elder Bran Orwick · authority · gatekeeper</div>
+          <div class="blurb">Bran will demand the party justify why strangers should be allowed under Fallowton land. He fronts hostile but wants the same thing they do: nobody dies. Bond is 10 gp OR a useful item left as collateral.</div>
+          <a class="full" href="../elders-hall.html">Full scene →</a>
+        </div>
+
+        <div class="loc-card">
+          <h4>3 · Village Shrine</h4>
+          <div class="who">Sister Elra · faith leader</div>
+          <div class="blurb">Elra prays in the old tongue. Religion DC 12 catches one phrase: <em>"keeper of the first light, do not wake."</em> She fears the sinkhole is "holy failure" — but she may bless a torch, water, or weapon if asked respectfully.</div>
+          <a class="full" href="../village-shrine.html">Full scene →</a>
+        </div>
+
+        <div class="loc-card">
+          <h4>4 · Smith Shed</h4>
+          <div class="who">Tamsin Bellows · smith</div>
+          <div class="blurb">Sells weapons and metalwork only — no general goods. Can sharpen a blade in an hour (+1 to first damage roll in the ruin) for 5 sp. Knows the sinkhole stone is <em>not</em> from local quarries.</div>
+          <a class="full" href="../smith-shed.html">Full scene →</a>
+        </div>
+
+        <div class="loc-card">
+          <h4>5 · Grain Store</h4>
+          <div class="who">Quiet keeper · food pressure</div>
+          <div class="blurb">Goods are vanishing at night. Investigation DC 12 finds a small tooth-mark on a bag — goblin sign. The keeper hasn't told Bran; he doesn't want the bond raised.</div>
+          <a class="full" href="../grain-store.html">Full scene →</a>
+        </div>
+
+        <div class="loc-card">
+          <h4>6 · Mill Shed</h4>
+          <div class="who">Garret · miller · first witness</div>
+          <div class="blurb">Garret saw <strong>blue light leaking from the ground three nights before</strong> the field collapsed. He told no one because his wife thought he was drunk. He will tell a Sinkhole Witness PC freely.</div>
+          <a class="full" href="../mill-shed.html">Full scene →</a>
+        </div>
+
+        <div class="loc-card">
+          <h4>7 · Mordren's Cottage</h4>
+          <div class="who">Wizard's rented room · locked boxes</div>
+          <div class="blurb">Only accessible with invitation (Persuasion DC 14 at the inn) OR Stealth DC 14 to slip in. Inside: candles, books, a sealed letter with a royal wax seal — they cannot open it without breaking it. If broken, <strong>Mordren knows.</strong></div>
+          <a class="full" href="../wizards-cottage.html">Full scene →</a>
+        </div>
+
+      </div>
+
+      <div class="dm-block">
+        <strong>Awakening Clock from the village day:</strong>
+        <ul>
+          <li>If they visit Mordren's cottage and read the sealed letter — <span class="clock-mark">Clock +1</span> (he reaches the cottage by sunset, knows something is wrong).</li>
+          <li>If a player casts a leveled spell in town — <span class="clock-mark">Clock +1</span>, and the caster also rolls Weave Strain (see <a href="../campaign/weave-strain-magic.md" style="color:#d4b870;">campaign rules</a>).</li>
+          <li>Otherwise — <span class="clock-mark">Clock +0</span>.</li>
+        </ul>
+        <strong>What the party should walk away with (any 2 of these means Act II goes smoothly):</strong>
+        <ul>
+          <li>Bran's permission (or paid bond)</li>
+          <li>A blessing, torch, or sharpened weapon</li>
+          <li>The goblin clue from grain store</li>
+          <li>Garret's blue-light testimony</li>
+          <li>A guess at "House of First Light"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE: SUNSET BELL -->
+  <div id="scene-bell" class="fixed-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag fixed">Fixed Pivot</span>
+        <h3>Sunset Bell · Convergence</h3>
+        <span class="time">Sunset · ~15 min</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>太阳落到树林后面，整个 Fallowton 被染成了一种潮湿的橙红色。</p>
+        <p>就在天色将暗未暗的那一刻，村中央 Elder's Hall 外面的 old bronze bell 被人撞响了。一声，两声，三声。低沉，缓慢，像有人在敲打整个村子的胸口。</p>
+        <p>村民们从田里、屋里、谷仓里走出来，沉默地朝那口钟聚拢。他们手里握着叉、铲、灯——不是武器，只是平日的农具，但今天看起来像在等待一个判决。</p>
+        <p>Elder Bran Orwick 站在钟下，雨水般灰白的胡须贴在颈口。Henric 站在他半步之后，眼眶发红。Sister Elra 已经在低声诵念。Mordren Vale 站在人群最外圈，背着那根 pale wood staff，没有走近。</p>
+        <p>Bran 没有看你们。他对着整个村子说话——但所有人都知道，这句话是说给你们听的。</p>
+        <p class="quote"><span class="speaker">Elder Bran Orwick</span>"今晚之前，这件事要有一个回答。要么把它封上，要么有人下去看清楚。Fallowton 不能在每个晚上都听着那个洞呼吸。"</p>
+        <p>所有人转过头，望向你们。</p>
+      </div>
+
+      <div class="dm-block">
+        <strong>The pivot:</strong> The party must declare one of three choices before the night ends. <strong>All three lead to descent within 12 in-fiction hours.</strong> Do not let them stall.
+        <ul>
+          <li><strong>A · Descend now (torchlit night descent).</strong> Most common. Skip to Act II.</li>
+          <li><strong>B · Wait till dawn.</strong> Mordren says quietly, "Then I will go tonight alone." If they don't stop him, he descends — and by morning his pale staff is propped against the sinkhole stairs, but he is gone. Skip to Act II at dawn; treat the staff as a found relic (it weighs nothing and pulses faintly when held in the ruin).</li>
+          <li><strong>C · Refuse / try to seal.</strong> The sinkhole exhales after midnight — Henric's daughter Lila is missing by sunrise. Forced descent at dawn. Skip to Act II. <span class="clock-mark">Clock +1</span> (the ruin is no longer just listening).</li>
+        </ul>
+        <strong>Bran's posture:</strong> He prefers seal-or-descend, not delay. If the players want to negotiate the bond, this is the moment — see Bran's check matrix in <code>module-1-checks.md</code>.
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Persuasion DC 13 — convince Bran the descent will protect Fallowton.
+        <span class="outcome">Success: bond waived; the village contributes 2 torches, 50 ft rope, and a small loaf. Fail: pay 10 gp OR leave one useful item as collateral.</span>
+      </div>
+      <div class="check silent">
+        <span class="lbl">Silent check</span> Insight 14 vs Mordren — does he <em>want</em> them to go alone tonight?
+        <span class="outcome">Success → narrate: "There is something almost relieved in his face when you say you'll wait." (He plans to go alone.)</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr>
+
+<!-- ====================================================================== -->
+<!-- ACT II -->
+<!-- ====================================================================== -->
+
+<section id="act2">
+  <h2>Act II — Descent</h2>
+  <p style="font-size:0.84rem;color:#8a6030;font-style:italic;margin-bottom:24px;">Time: That night (option A) or the next dawn (option B/C) · ~30 min</p>
+
+  <div class="fixed-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag fixed">Fixed Pivot</span>
+        <h3>The Stairs · Down</h3>
+      </div>
+
+      <div class="read-aloud">
+        <p>你们沿着黑色石阶向下走。</p>
+        <p>雨声逐渐远去，取而代之的是一种低沉、潮湿的寂静。石阶两侧的墙壁上刻着古老的浮雕：农夫托着光，孩子仰望星辰，河流从大地流向天空，树木弯下枝条，好像正在听人说话。</p>
+        <p>但越往深处走，浮雕越残破。</p>
+        <p>有些人的脸被刮掉。<br>有些星星被凿成黑色的空洞。<br>有些手掌被刻意毁去，仿佛有人不希望后人知道他们曾经握着什么。<br>还有一些跪下的人没有名字。他们的影子被刻成细长的线，沿着地面流向同一个方向，像溪水流入井中。</p>
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Athletics DC 10 — the lower stairs are slick with mud and seepage.
+        <span class="outcome">Fail: 1d4 bludgeoning, drop one held item one step. Success: keep footing.</span>
+      </div>
+      <div class="check silent">
+        <span class="lbl">Silent check</span> Wisdom DC 12 — does any PC sense the ruin <em>noticing</em>?
+        <span class="outcome">On highest success, whisper to that one player only: "The stones at your back feel like they are turning their faces toward you." Do not narrate aloud.</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>最后，石阶结束了。</p>
+        <p>你们来到一片塌陷的地下大厅。这里不像完整的 temple，更像一座已经死去很久、又被泥土重新吞下的 ruin。断裂的石柱倒在地上，墙壁裂开，树根从天花板垂下。</p>
+        <p>大厅中央立着那座从地面上看见过的阶梯状建筑。它的上半部分像金字塔，苍白、冷硬、层层收拢；它的下半部分却沉入更深的黑暗，像一根石钉钉进大地。围绕它的地面刻着一圈又一圈的纹路，某些沟槽里积着灰色尘土，仿佛很久以前曾有什么东西在其中流动。</p>
+        <p>在金字塔前方，有一个干涸的石池。池底没有水，只有薄薄一层灰尘。灰尘中隐约能看见许多重叠的掌印，小的、大的、人的，几乎像人的。</p>
+        <p>大厅前方，有三条长长的黑暗隧道。</p>
+      </div>
+
+      <div class="dm-block">
+        <strong>Hand the players a 30-second silence here.</strong> Let them look at each other. Let them ask, "Which way?" before you describe the tunnels in detail. That hesitation is the scene.
+        <span class="clock-mark">Clock +0 (unless a spell was cast on the way down — then +1)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ====================================================================== -->
+<!-- ACT III -->
+<!-- ====================================================================== -->
+
+<section id="act3">
+  <h2>Act III — The Sampling</h2>
+  <p style="font-size:0.84rem;color:#8a6030;font-style:italic;margin-bottom:24px;">In-fiction: ~30 minutes underground · Table: ~45 min</p>
+
+  <div class="dm-block">
+    <strong>Read this to yourself before the act:</strong>
+    <ul>
+      <li><strong>No combat this session.</strong> The party is sampling — peering, listening, smelling. The boss fights live in Module 2.</li>
+      <li>The party may peer into all three tunnels in any order. Each peek = one in-fiction "minute" + <span class="clock-mark">Clock +1</span>.</li>
+      <li>After they've peeked into <strong>2 tunnels</strong>, foreshadow the Pool Shudder. After the <strong>3rd</strong>, fire it.</li>
+      <li>If a player tries to enter a tunnel beyond the mouth: allow <strong>one</strong> small room of exploration only, then the Shudder forces retreat. Award the clue, deny the combat.</li>
+    </ul>
+  </div>
+
+  <!-- TUNNEL LEFT -->
+  <div id="tunnel-blue" class="free-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag free">Free Explore</span>
+        <h3>Left Tunnel · Blue Light</h3>
+        <span class="time">Mouth-peek only</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>最左边的隧道飘着一些细小的蓝色光点。</p>
+        <p>它们漂浮在半空中，像萤火虫，又像有人在黑暗中慢慢眨眼。它们既不靠近你，也不远离你。它们就只是<em>看着</em>。</p>
+        <p>在隧道入口前的地上，半埋在尘土里，有一把 broken dagger。刀身已经断裂，但握柄上还残留着古老的纹路，以及一对几乎被磨平的字母——你看不太清。</p>
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Investigation DC 12 — the dagger.
+        <span class="outcome">Success: initials <strong>H.V.</strong> or <strong>W.V.</strong> (DM picks; either reads as "a Voss"). History DC 12 piggyback: local make, 60–100 years old.</span>
+      </div>
+      <div class="check silent">
+        <span class="lbl">Silent check</span> Wisdom 11 — what do the motes feel like?
+        <span class="outcome">Highest success: whisper to that PC: "Not malice. Vigilance." Do not call for a roll. If no one passes, motes feel cold and indifferent.</span>
+      </div>
+
+      <div class="dm-block">
+        <strong>Atmosphere clues to drop (1–2 of these):</strong>
+        <ul>
+          <li>Cold dry air; faint smell of old iron.</li>
+          <li>The motes brighten by half a shade when a PC speaks softly. They dim if a PC raises their voice.</li>
+          <li>Far back in the dark, the outline of a figure that does not move. (Do not describe it as armored or alive yet. Just shape.)</li>
+        </ul>
+        <strong>If they take the dagger:</strong> note it on the player choice log. Henric will react when shown — see Module 2.<br>
+        <strong>If they leave it:</strong> Edras (the guardian, Module 2) will note its absence positively.
+        <span class="clock-mark">Clock +1 for the peek itself. +1 more if they touch a mote with bare skin.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TUNNEL MIDDLE -->
+  <div id="tunnel-sound" class="free-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag free">Free Explore</span>
+        <h3>Middle Tunnel · Sound</h3>
+        <span class="time">Mouth-peek only</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>中间的隧道传来奇怪的声音。</p>
+        <p>像是小东西在石头上爬行。像是骨头被拖过地面。像是一个孩子在很远的地方笑——又像是有人在<em>模仿</em>一个孩子笑。</p>
+        <p>有什么东西被吃过的金属在咯吱响。从隧道深处的方向，飘出一阵酸臭的烟味——油脂、毛发、和别的不该燃烧的东西。</p>
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Perception DC 11 — tracks at the mouth.
+        <span class="outcome">Success: small clawed footprints in the dust, three-toed, going both directions. Several days of traffic.</span>
+      </div>
+      <div class="check silent">
+        <span class="lbl">Silent check</span> Insight 13 — the laugh.
+        <span class="outcome">Highest success: whisper: "That is not a child. Something has been listening to children, and learned the shape."</span>
+      </div>
+
+      <div class="dm-block">
+        <strong>If a PC calls out / shouts:</strong> the sounds stop instantly. Then, after three breaths, the laugh returns — closer. <span class="clock-mark">Clock +1.</span><br>
+        <strong>If they cross-reference the grain-store goblin clue (from Act I):</strong> reward them — they recognize this as the same intruder. Advantage on first social roll vs goblin captives in Module 2.<br>
+        <strong>Atmosphere drop:</strong> a single iron nail rolls out of the tunnel, comes to rest near a PC's boot. (Goblin "currency" — they chew nails.)
+      </div>
+    </div>
+  </div>
+
+  <!-- TUNNEL RIGHT -->
+  <div id="tunnel-wind" class="free-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag free">Free Explore</span>
+        <h3>Right Tunnel · Empty Wind</h3>
+        <span class="time">Mouth-peek only</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>最右边的隧道最安静。</p>
+        <p>没有脚步声。没有低语。没有萤火般的光。只有一阵空洞的冷风从深处缓缓吹来，仿佛某个很大、很深、很久没有呼吸过的胸腔，正在试着记起怎样呼气。</p>
+        <p>那风经过你们身边时，像是在寻找某个人的名字。</p>
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Arcana or Nature DC 13 — the wind.
+        <span class="outcome">Success: this is not weather. The air pulses at roughly the rhythm of a sleeping heartbeat. Something is breathing, slowly, far below.</span>
+      </div>
+      <div class="check silent">
+        <span class="lbl">Silent check</span> Wisdom 12 — the name-searching.
+        <span class="outcome">Highest success: whisper to that PC only: "The wind passes your face and seems, for half a heartbeat, to know your name. Then it lets go." No mechanical effect. Just the dread.</span>
+      </div>
+
+      <div class="dm-block">
+        <strong>What's actually here (DM only):</strong> circulating Dawnweave ward magic, the closest thing to the ruin's "mind." It is searching for an owner — a name to bind to. The right tunnel is where the ruin <em>thinks</em>.<br>
+        <strong>Atmosphere drops:</strong>
+        <ul>
+          <li>A dead goblin half-impaled on a stone needle just inside the mouth. Already dead, days old. No loot but a leather cord with three iron nails.</li>
+          <li>Beyond the goblin, the tunnel turns once and disappears. You cannot see what is past the bend.</li>
+        </ul>
+        <span class="clock-mark">Clock +1 for the peek. +2 if any PC speaks their own name aloud in this tunnel mouth.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POOL SHUDDER PIVOT -->
+  <div id="scene-shudder" class="fixed-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag fixed">Fixed Pivot</span>
+        <h3>Pool Shudder · The Ruin Stirs</h3>
+        <span class="time">After the 3rd tunnel peek (or 30 in-fiction minutes)</span>
+      </div>
+
+      <div class="read-aloud">
+        <p>就在那一刻——</p>
+        <p>大厅中央那个干涸的石池，里面的灰尘忽然<em>轻轻震动了一下</em>。</p>
+        <p>不是被风吹动。不是被你们的脚步震动。是从下面，从更深的地方，传来一次低沉的、几乎听不见的<strong>呼气</strong>。</p>
+        <p>池底的尘土上，那些重叠的掌印，仿佛在那一瞬间——多了一只。</p>
+        <p>三条隧道里，所有的声音同时停下了一秒。</p>
+        <p>然后，左边的蓝光收得更近了。中间的笑声变成了某种警觉的咯咯。右边的风，停了。</p>
+      </div>
+
+      <div class="dm-block">
+        <strong>This is the exit cue.</strong> Mordren (if present) says quietly: <em>"Out. Now. We've seen enough."</em> If Mordren is not present (option B), the senior-Wisdom PC feels it instead — let them say the line.
+        <ul>
+          <li>If players obey: Act IV.</li>
+          <li>If players refuse and push into a tunnel: allow them <strong>one room only</strong>, no boss. Award them one extra clue, then the room shifts (a corridor closes, a ward flickers, the floor groans) and they must retreat. <span class="clock-mark">Clock +2.</span></li>
+          <li>If they insist on full combat — pause the session. Tell them: "Module 2 is the deep run. Tonight we leave alive or we don't have a Module 2 at all." This is OK to say out-of-character; it's a pacing contract, not railroading.</li>
+        </ul>
+      </div>
+
+      <div class="check open">
+        <span class="lbl">Open check</span> Constitution save DC 10 (group) — climb back up under the ruin's eye.
+        <span class="outcome">Anyone failing arrives at the top trembling, disadvantage on first Charisma roll back in the village. Narrative only.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ====================================================================== -->
+<!-- ACT IV -->
+<!-- ====================================================================== -->
+
+<section id="act4">
+  <h2>Act IV — Return &amp; Cliffhanger</h2>
+  <p style="font-size:0.84rem;color:#8a6030;font-style:italic;margin-bottom:24px;">Late night or pre-dawn · ~20 min</p>
+
+  <div class="fixed-beat">
+    <div class="beat">
+      <div class="head">
+        <span class="tag fixed">Fixed Pivot</span>
+        <h3>Surface · The First Night After</h3>
+      </div>
+
+      <div class="read-aloud">
+        <p>你们从沉睡的村庄边缘爬出来。北边的麦田一片死寂——只有那道塌陷处仍在缓缓呼气，像一头沉睡的兽。</p>
+        <p>云层被风撕开。月光落在你们身上的时候，你们才意识到——身上的尘土，是<strong>银灰色的</strong>。它不像泥，也不像石灰。它落在掌心，竟然<em>有一点温度</em>。</p>
+        <p>Fallowton 还在睡着。</p>
+        <p>但有什么，跟着你们一起回来了。</p>
+      </div>
+
+      <div class="dm-block">
+        <strong>Pick ONE ending below.</strong> Use the triggers to decide. If two triggers tie, pick whichever feels strongest for your table.
+      </div>
+
+      <div class="endings">
+
+        <div class="ending">
+          <h4>A · Mordren Disappears</h4>
+          <div class="trigger"><strong>Trigger:</strong> Party chose option B (wait till dawn), OR broke into Mordren's cottage, OR was hostile to him at the inn.</div>
+          <p>You sleep in fits. You dream of <strong>white towers under a black sun</strong>, and of a man kneeling at a stair of pale stone, whispering a word you cannot remember when you wake.</p>
+          <p>By sunrise, <strong>Mordren is gone.</strong> His pale wood staff is propped against the sinkhole stairs. It is not warm. It is not cold. It hums, very faintly, when held over the opening.</p>
+          <p>Bran says only: <em>"He went down. He did not come up."</em></p>
+        </div>
+
+        <div class="ending">
+          <h4>B · Silver Leaves in the Well</h4>
+          <div class="trigger"><strong>Trigger:</strong> Party took anything physical from the ruin (the broken dagger, the iron-nail cord, a chip of stone).</div>
+          <p>You sleep. You wake. The village is shouting.</p>
+          <p>The <strong>old well at the center of Fallowton has filled overnight with silver leaves.</strong> They are from a tree no one knows. They are dry. They do not float — they hang, suspended, in clean cold water.</p>
+          <p>When a villager pulls one out, it crumbles to <em>the same silver-gray dust</em> on your boots.</p>
+          <p>Sister Elra refuses to draw water from the well until the leaves are gone. The leaves do not go.</p>
+        </div>
+
+        <div class="ending">
+          <h4>C · The Forgotten Name</h4>
+          <div class="trigger"><strong>Trigger:</strong> Party ignored or were rude to an NPC, OR skipped 3+ village locations, OR cast a leveled spell in town.</div>
+          <p>You sleep. At dawn, someone is crying outside the inn.</p>
+          <p>It is <strong>Henric's wife, Maerla.</strong> She has forgotten the name of her own brother, dead twenty years. She remembers his face. She remembers the cart he drove. She does not remember his name.</p>
+          <p>Later that morning, a child climbing down the sinkhole rim out of curiosity finds something carved fresh into the pale stone, in a hand none of the villagers recognize:</p>
+          <p style="text-align:center;font-style:italic;color:#7a5020;">a single name no one alive can read.</p>
+        </div>
+
+      </div>
+
+      <div class="dm-block">
+        <strong>Closing line, choose one, end the session here:</strong>
+        <ul>
+          <li>"Tomorrow you go back down. Bran will not stop you this time."</li>
+          <li>"Mordren is gone. The staff is yours, if you want it."</li>
+          <li>"The well does not stop. The leaves keep coming."</li>
+        </ul>
+        <strong>Final clock readout (DM private):</strong> Note the Awakening Clock value. Module 2 begins at that stage. <strong>If clock ≥ 4, Mordren is gone regardless of which ending you picked.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ====================================================================== -->
+<!-- AFTER -->
+<!-- ====================================================================== -->
+
+<section id="after">
+  <h2>After the session</h2>
+  <div class="dm-block">
+    <strong>Log these in your campaign journal before next session:</strong>
+    <ul>
+      <li>Which 3–4 village locations the party visited (and which they skipped — those NPCs now feel slighted).</li>
+      <li>Whether they paid the bond, persuaded Bran, snuck in, or refused.</li>
+      <li>Which tunnels they peered into, and in what order.</li>
+      <li>Whether they took the broken dagger / iron-nail cord / any stone.</li>
+      <li>Which ending fired, and the final Awakening Clock value.</li>
+      <li>Any PC personal hook (a Sinkhole Witness's reaction, a wizard's Weave Strain ticks, a name the wind seemed to know).</li>
+    </ul>
+    <strong>Hand off to Module 2:</strong> The next session opens at sunrise. The cliffhanger image is fact, not dream. They choose a tunnel to enter fully. Bring stat blocks.
+  </div>
+</section>
+
+<footer>
+  <p>Module 1 · From Village to Ruin · last revised for play 2026-05-21</p>
+  <div class="nav-links">
+    <a href="../fallowton-map.html">Map</a>
+    <a href="module-1-npcs.html">NPCs</a>
+    <a href="module-1-checks.md">Checks Catalog</a>
+    <a href="module-1-dm-flow.md">DM Flow Cheat</a>
+    <a href="../campaign/weave-strain-magic.md">Weave Strain</a>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

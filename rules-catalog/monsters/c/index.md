@@ -1,0 +1,22 @@
+# Monsters (C)
+
+Stat blocks split from `/Users/tingxuanhuang/Desktop/raw/Creature Stat Blocks.md`.
+
+- [Carrion Crawler](carrion-crawler.md)
+- [Centaur Trooper](centaur-trooper.md)
+- [Chain Devil](chain-devil.md)
+- [Chimera](chimera.md)
+- [Chuul](chuul.md)
+- [Clay Golem](clay-golem.md)
+- [Cloaker](cloaker.md)
+- [Cloud Giant](cloud-giant.md)
+- [Cockatrice](cockatrice.md)
+- [Commoner](commoner.md)
+- [Copper Dragon Wyrmling](copper-dragon-wyrmling.md)
+- [Young Copper Dragon](young-copper-dragon.md)
+- [Adult Copper Dragon](adult-copper-dragon.md)
+- [Ancient Copper Dragon](ancient-copper-dragon.md)
+- [Couatl](couatl.md)
+- [Swarm of Crawling Claws](swarm-of-crawling-claws.md)
+- [Cultist](cultist.md)
+- [Cultist Fanatic](cultist-fanatic.md)

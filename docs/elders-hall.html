@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elder's Hall — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#d4b870;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(0,0,0,0.9);}
+header .sub{font-style:italic;color:#7a5820;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#7a5020,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#7a5020;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);border:2px solid #8a5820;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(0,0,0,0.1);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3810;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a4010;background:rgba(12,7,1,0.92);color:#bfa060;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a4010;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#7a4e10;margin-bottom:10px;border-bottom:1px solid rgba(90,48,16,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(90,48,16,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1808;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3810;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a2008;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a2008;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5020;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a4010;color:#c0982a;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a4010;color:#e8d090;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>Elder's Hall</h1>
+    <p class="sub">Seat of village authority · Council chamber of Fallowton</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+        </defs>
+        <rect width="500" height="310" fill="#e0cc90" filter="url(#parch)"/>
+
+        <!-- dais floor (north) -->
+        <rect x="12" y="12" width="476" height="68" fill="#c8a860" stroke="none"/>
+        <!-- main hall floor -->
+        <rect x="12" y="80" width="476" height="218" fill="#d8c284" stroke="none"/>
+
+        <!-- outer walls -->
+        <rect x="12" y="12" width="476" height="286" fill="none" stroke="#5a3010" stroke-width="3"/>
+        <!-- dais step -->
+        <line x1="12" y1="80" x2="488" y2="80" stroke="#7a5020" stroke-width="2"/>
+
+        <!-- Elder's chair (dais) -->
+        <rect x="210" y="22" width="80" height="48" fill="#8a5020" stroke="#5a2808" stroke-width="1.5" rx="2"/>
+        <rect x="220" y="28" width="60" height="36" fill="#6a3810" stroke="#3a1808" stroke-width="1" rx="1"/>
+        <text x="250" y="52" font-family="'IM Fell English',serif" font-size="8.5" fill="#e8d090" text-anchor="middle" font-style="italic">Elder's Chair</text>
+        <text x="250" y="74" font-family="'IM Fell English',serif" font-size="7.5" fill="#5a3010" text-anchor="middle" font-style="italic">— dais —</text>
+
+        <!-- council table -->
+        <rect x="80" y="105" width="340" height="120" fill="#b89858" stroke="#6a3810" stroke-width="2" rx="2"/>
+        <rect x="88" y="112" width="324" height="106" fill="#a88848" stroke="none" rx="1"/>
+        <text x="250" y="170" font-family="'IM Fell English',serif" font-size="10" fill="#2a1808" text-anchor="middle" font-style="italic">Council Table</text>
+
+        <!-- chairs around table -->
+        <!-- north side of table -->
+        <rect x="105" y="97" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <rect x="180" y="97" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <rect x="255" y="97" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <rect x="330" y="97" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <!-- south side of table -->
+        <rect x="105" y="225" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <rect x="180" y="225" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <rect x="255" y="225" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+        <rect x="330" y="225" width="22" height="8" fill="#7a5020" stroke="#5a2808" stroke-width="1" rx="1"/>
+
+        <!-- hearth (south wall) -->
+        <rect x="200" y="272" width="100" height="16" fill="#2e1508" stroke="#5a2808" stroke-width="1"/>
+        <rect x="210" y="265" width="80" height="23" fill="#1a0a04" stroke="#3a1808" stroke-width="1"/>
+        <text x="250" y="260" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a1808" text-anchor="middle" font-style="italic">hearth</text>
+
+        <!-- weapon rack east wall -->
+        <line x1="476" y1="100" x2="476" y2="230" stroke="#7a5020" stroke-width="2"/>
+        <line x1="470" y1="120" x2="488" y2="110" stroke="#8a6020" stroke-width="1.5"/>
+        <line x1="470" y1="150" x2="488" y2="140" stroke="#8a6020" stroke-width="1.5"/>
+        <line x1="470" y1="180" x2="488" y2="170" stroke="#8a6020" stroke-width="1.5"/>
+        <line x1="470" y1="210" x2="488" y2="200" stroke="#8a6020" stroke-width="1.5"/>
+        <text x="462" y="248" font-family="'IM Fell English',serif" font-size="7" fill="#3a1808" text-anchor="middle" font-style="italic">arms</text>
+
+        <!-- record shelf west wall -->
+        <rect x="12" y="100" width="18" height="120" fill="#a87840" stroke="#7a5020" stroke-width="1"/>
+        <text x="22" y="165" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle" font-style="italic" transform="rotate(-90,22,165)">Records</text>
+
+        <!-- main door gap (south) -->
+        <line x1="196" y1="298" x2="256" y2="298" stroke="#d8c284" stroke-width="4"/>
+        <path d="M196,298 Q226,284 256,298" stroke="#7a5020" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+
+        <!-- compass -->
+        <g transform="translate(455,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3010" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3010"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3010" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Ground Floor Plan — Elder's Hall</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        The hall is cold even in summer. Stone floor, bare rafters, a long table of dark oak worn smooth by generations of elbows. Shields hang above the weapons rack — old ones, unfamiliar heraldry. The Elder's chair at the north end sits on a raised platform, and behind it, a map of Fallowton's farmland has been pinned flat. Most of the land parcel names have been crossed out and rewritten.
+      </div>
+
+      <div class="parch info">
+        <h3>Who's Here</h3>
+        <div class="npc">
+          <div class="npc-name">Elder Bran Orwick</div>
+          <div class="npc-role">Village Elder · appointed for life · 60s, grey beard, careful hands</div>
+          <div class="npc-desc">Bran has governed Fallowton for twenty-two years by being slow to act and hard to surprise. He is not slow now. He wants the cave sealed, the wizard gone, and outsiders watched closely. He is afraid, and he knows that everyone can tell, and that makes him angrier.</div>
+        </div>
+        <div class="npc">
+          <div class="npc-name">Councilwoman Hilde Voss</div>
+          <div class="npc-role">Farmer-representative · practical, blunt</div>
+          <div class="npc-desc">Henric Voss's daughter. She was the one who pulled her father away from the sinkhole that first morning. She thinks the Elder is stalling and says so, loudly, at every meeting.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>Notable Details</h3>
+        <ul class="notable">
+          <li>A hand-drawn map of the north barley field is pinned to the east wall — the sinkhole location is marked with a red X.</li>
+          <li>The land ledger on the west shelf shows that Fallowton's grain surplus has been declining for three years.</li>
+          <li>A village bond agreement, half-written, sits on the table — Orwick is demanding strangers pay it before they may enter the cave.</li>
+          <li>The old shields on the east wall are unidentifiable — no kingdom currently uses those sigils.</li>
+          <li>A locked iron strongbox under the Elder's chair contains the village's coin reserve: 38 gold pieces.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>Elder Orwick knows more than he says. His grandfather's diary — kept behind the records shelf — references "the pale stair" and "the light that should not be disturbed." He inherited this knowledge and buried it. The village bond he demands is 10 gp total for the party, or useful collateral, framed as compensation for risk to Henric's field and village labor. If the party wins his trust (Persuasion DC 13, or by promising to protect Fallowton and return village goods), he waives the bond and may quietly share the diary. The diary mentions "First Light" and "what sleeps between the steps."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="bent-plow-inn.html">The Inn</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>

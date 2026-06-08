@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Grain Store — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#d4b870;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(0,0,0,0.9);}
+header .sub{font-style:italic;color:#7a5820;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#7a5020,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#7a5020;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);border:2px solid #8a5820;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(0,0,0,0.1);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3810;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a4010;background:rgba(12,7,1,0.92);color:#bfa060;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a4010;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#7a4e10;margin-bottom:10px;border-bottom:1px solid rgba(90,48,16,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(90,48,16,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1808;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3810;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a2008;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a2008;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5020;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a4010;color:#c0982a;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a4010;color:#e8d090;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>The Grain Store</h1>
+    <p class="sub">Communal barn · barley · rye · gray wheat · shared village reserve</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+        </defs>
+        <rect width="500" height="310" fill="#e0cc90" filter="url(#parch)"/>
+
+        <!-- loft floor (upper) -->
+        <rect x="12" y="12" width="476" height="120" fill="#c8b070" stroke="none"/>
+        <!-- threshing floor (lower) -->
+        <rect x="12" y="132" width="476" height="166" fill="#d8c07a" stroke="none"/>
+
+        <!-- outer walls -->
+        <rect x="12" y="12" width="476" height="286" fill="none" stroke="#5a3010" stroke-width="3"/>
+        <!-- loft partition (dashed) -->
+        <line x1="12" y1="132" x2="488" y2="132" stroke="#8a5020" stroke-width="1.5" stroke-dasharray="8,4"/>
+        <!-- loft label -->
+        <text x="250" y="75" font-family="'IM Fell English',serif" font-size="11" fill="#5a3010" text-anchor="middle" font-style="italic">Loft (upper level)</text>
+        <text x="250" y="95" font-family="'IM Fell English',serif" font-size="8.5" fill="#7a5020" text-anchor="middle" font-style="italic">grain sacks, loose straw, old tools</text>
+
+        <!-- loft ladder -->
+        <rect x="228" y="118" width="12" height="36" fill="#8a5820" stroke="#5a3010" stroke-width="1" rx="1"/>
+        <line x1="228" y1="125" x2="240" y2="125" stroke="#5a3010" stroke-width="1.2"/>
+        <line x1="228" y1="133" x2="240" y2="133" stroke="#5a3010" stroke-width="1.2"/>
+        <line x1="228" y1="141" x2="240" y2="141" stroke="#5a3010" stroke-width="1.2"/>
+        <text x="250" y="127" font-family="'IM Fell English',serif" font-size="7" fill="#3a2008" font-style="italic">ladder</text>
+
+        <!-- grain sacks along walls (threshing floor level) -->
+        <!-- west wall sacks -->
+        <rect x="16" y="140" width="55" height="25" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <rect x="16" y="169" width="55" height="25" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <rect x="16" y="198" width="55" height="25" fill="#b08040" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <rect x="16" y="227" width="55" height="25" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <text x="44" y="265" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic">barley</text>
+
+        <!-- east wall sacks -->
+        <rect x="429" y="140" width="55" height="25" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <rect x="429" y="169" width="55" height="25" fill="#b08040" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <rect x="429" y="198" width="55" height="25" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <rect x="429" y="227" width="55" height="25" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="3"/>
+        <text x="457" y="265" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic">rye</text>
+
+        <!-- central threshing floor area -->
+        <text x="250" y="200" font-family="'IM Fell English',serif" font-size="10.5" fill="#5a3010" text-anchor="middle" font-style="italic">Threshing Floor</text>
+        <!-- flail tool -->
+        <line x1="200" y1="218" x2="240" y2="235" stroke="#6a4010" stroke-width="2"/>
+        <line x1="240" y1="235" x2="256" y2="248" stroke="#6a4010" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="230" y="258" font-family="'IM Fell English',serif" font-size="7" fill="#3a2008" text-anchor="middle" font-style="italic">flail</text>
+
+        <!-- ledger desk (NE corner) -->
+        <rect x="400" y="18" width="80" height="42" fill="#c8a060" stroke="#8a5820" stroke-width="1" rx="1"/>
+        <text x="440" y="44" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">ledger desk</text>
+
+        <!-- measuring tools -->
+        <rect x="100" y="250" width="80" height="28" fill="#b89050" stroke="#7a5020" stroke-width="1" rx="1"/>
+        <text x="140" y="269" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">measures</text>
+
+        <!-- double door gap (south) -->
+        <line x1="150" y1="298" x2="350" y2="298" stroke="#d8c07a" stroke-width="4"/>
+        <path d="M150,298 Q250,278 350,298" stroke="#7a5020" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+        <text x="250" y="294" font-family="'IM Fell English',serif" font-size="7.5" fill="#7a5020" text-anchor="middle" font-style="italic">double doors</text>
+
+        <!-- compass -->
+        <g transform="translate(455,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3010" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3010"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3010" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Floor Plan — The Grain Store · Upper loft shown dashed</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        The barn smells of dust, dry grain, and the sweetness of cut straw. High above you, the loft groans faintly in the wind. The sacks along the walls are fewer than they should be at this time of year — noticeably so. Someone has drawn a tally on the eastern wall post in chalk: the numbers are not good.
+      </div>
+
+      <div class="parch info">
+        <h3>Who's Here</h3>
+        <div class="npc">
+          <div class="npc-name">Tomm Ashfield</div>
+          <div class="npc-role">Grain warden · Bessa's cousin · worried · keeps meticulous ledgers</div>
+          <div class="npc-desc">Tomm has been grain warden for twelve years. He is calm about most things but not about the current reserves. The harvest was poor before the sinkhole, and since it opened, three farmers have refused to bring their grain in — they don't want to walk past the north field. He has put the numbers in the ledger and not told Elder Orwick yet. He is building up to it.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>Notable Details</h3>
+        <ul class="notable">
+          <li>Current stores: roughly 60% of what this time of year should hold. Tomm's tally shows which farms have not contributed and why.</li>
+          <li>The loft is accessible by ladder. It holds loose straw, older cracked grain sacks, and three broken tools that have been "stored" rather than repaired for years.</li>
+          <li>Something has been in the grain. Two sacks in the west row have been gnawed through — but the holes are too large for rats, and there are no rat droppings. Tomm has not investigated.</li>
+          <li>The ledger desk holds detailed records going back forty years. The oldest entries are in a different hand and use a slightly different calendar system — off by three days.</li>
+          <li>A set of carved wooden measures on the south shelf predate Fallowton's founding. They use units that no one currently knows.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>The gnawed sacks were chewed from inside by Nail-Eater goblins who entered through a drain channel on the north side of the barn — the same drainage channel that connects, eventually, to the old underground water system below the hill. They are not living here peacefully; this was a surface raid made possible by weakened earth seals after the sinkhole opened. By default there are no four-goblin surface fights here. If you want a small complication, place one frightened Goblin Minion in the loft: it flees north toward the cave if discovered. The old measures on the south shelf are in Dawnweave standard units. A character with Arcana DC 12 or History DC 10 can identify them as pre-calendar. With a 16+, they can determine they match the unit system used in the carvings in the cave.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="elders-hall.html">Elder's Hall</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>

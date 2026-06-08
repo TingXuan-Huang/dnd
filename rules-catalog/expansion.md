@@ -1,0 +1,838 @@
+# Expansion Index
+
+Every entry referenced by a D&D Beyond link in the glossary, in the format:
+
+```
+- <type> | <name> | <source-book>
+```
+
+Source is the rulebook the entry comes from. Blank source means it could not
+be determined from the URL alone — verify by clicking through to D&D Beyond.
+
+Anything from PHB 2024 / DMG 2024 / MM 2024 (and most catalog entries) is
+behind a D&D Beyond paywall; treat those as expansion-only references.
+
+## equipment (195)
+
+- equipment | Acid | _unknown_
+- equipment | Airship | _unknown_
+- equipment | Alchemist’s Fire | _unknown_
+- equipment | Alchemist’s Supplies | _unknown_
+- equipment | Amulet | _unknown_
+- equipment | Antitoxin | _unknown_
+- equipment | Arcane Focus | _unknown_
+- equipment | Arrows | _unknown_
+- equipment | Backpack | _unknown_
+- equipment | Bagpipes | _unknown_
+- equipment | Ball Bearings | _unknown_
+- equipment | Barrel | _unknown_
+- equipment | Basic Poison | _unknown_
+- equipment | Basket | _unknown_
+- equipment | Battleaxe | _unknown_
+- equipment | Bedroll | _unknown_
+- equipment | Bell | _unknown_
+- equipment | Blanket | _unknown_
+- equipment | Block and Tackle | _unknown_
+- equipment | Blowgun | _unknown_
+- equipment | Bolts | _unknown_
+- equipment | Book | _unknown_
+- equipment | Breastplate | _unknown_
+- equipment | Bucket | _unknown_
+- equipment | Bullseye Lantern | _unknown_
+- equipment | Burglar’s Pack | _unknown_
+- equipment | Calligrapher’s Supplies | _unknown_
+- equipment | Caltrops | _unknown_
+- equipment | Camel | _unknown_
+- equipment | Candle | _unknown_
+- equipment | Carriage | _unknown_
+- equipment | Cart | _unknown_
+- equipment | Chain | _unknown_
+- equipment | Chain Mail | _unknown_
+- equipment | Chain Shirt | _unknown_
+- equipment | Chariot | _unknown_
+- equipment | Chest | _unknown_
+- equipment | Climber’s Kit | _unknown_
+- equipment | Club | _unknown_
+- equipment | Component Pouch | _unknown_
+- equipment | Costume | _unknown_
+- equipment | Crossbow Bolt Case | _unknown_
+- equipment | Crossbow Hand | _unknown_
+- equipment | Crossbow Heavy | _unknown_
+- equipment | Crossbow Light | _unknown_
+- equipment | Crowbar | _unknown_
+- equipment | crystal | _unknown_
+- equipment | Daggers | _unknown_
+- equipment | Dart | _unknown_
+- equipment | Dice | _unknown_
+- equipment | Horse, Draft | _unknown_
+- equipment | dragonchess | _unknown_
+- equipment | Druidic Focus | _unknown_
+- equipment | drum | _unknown_
+- equipment | dulcimer | _unknown_
+- equipment | Dungeoneer’s Pack | _unknown_
+- equipment | Elephant | _unknown_
+- equipment | Emblem | _unknown_
+- equipment | Entertainer’s Pack | _unknown_
+- equipment | Exotic Saddle | _unknown_
+- equipment | Explorer’s Pack | _unknown_
+- equipment | Feed Per Day | _unknown_
+- equipment | Fine Clothes | _unknown_
+- equipment | Firearm Bullets | _unknown_
+- equipment | Flail | _unknown_
+- equipment | Flask | _unknown_
+- equipment | flute | _unknown_
+- equipment | Galley | _unknown_
+- equipment | Glaive | _unknown_
+- equipment | Glass Bottle | _unknown_
+- equipment | Grappling Hook | _unknown_
+- equipment | Greataxe | _unknown_
+- equipment | Greatclub | _unknown_
+- equipment | Greatsword | _unknown_
+- equipment | Halberd | _unknown_
+- equipment | Half Plate | _unknown_
+- equipment | Handaxes | _unknown_
+- equipment | Healer’s Kit | _unknown_
+- equipment | Herbalism Kit | _unknown_
+- equipment | Hide Armor | _unknown_
+- equipment | Holy Symbol | _unknown_
+- equipment | Holy Water | _unknown_
+- equipment | Hooded Lantern | _unknown_
+- equipment | horn | _unknown_
+- equipment | Hunting Trap | _unknown_
+- equipment | Ink | _unknown_
+- equipment | Ink Pen | _unknown_
+- equipment | Iron Pot | _unknown_
+- equipment | Iron Spike | _unknown_
+- equipment | Javelins | _unknown_
+- equipment | Jeweler’s Tools | _unknown_
+- equipment | Jug | _unknown_
+- equipment | Keelboat | _unknown_
+- equipment | Ladder | _unknown_
+- equipment | Lamp | _unknown_
+- equipment | Lance | _unknown_
+- equipment | Leather Armor | _unknown_
+- equipment | Leatherworker’s Tools | _unknown_
+- equipment | Light Hammer | _unknown_
+- equipment | Lock | _unknown_
+- equipment | Longbow | _unknown_
+- equipment | Longship | _unknown_
+- equipment | Longsword | _unknown_
+- equipment | lute | _unknown_
+- equipment | lyre | _unknown_
+- equipment | Mace | _unknown_
+- equipment | Magnifying Glass | _unknown_
+- equipment | Manacles | _unknown_
+- equipment | Map | _unknown_
+- equipment | Map or Scroll Case | _unknown_
+- equipment | Mastiff | _unknown_
+- equipment | Maul | _unknown_
+- equipment | Military Saddle | _unknown_
+- equipment | Mirror | _unknown_
+- equipment | Morningstar | _unknown_
+- equipment | Mule | _unknown_
+- equipment | Musket | _unknown_
+- equipment | Needles | _unknown_
+- equipment | Net | _unknown_
+- equipment | Net | _unknown_
+- equipment | Oil | _unknown_
+- equipment | orb | _unknown_
+- equipment | Padded Armor | _unknown_
+- equipment | pan flute | _unknown_
+- equipment | Paper | _unknown_
+- equipment | Parchment | _unknown_
+- equipment | Perfume | _unknown_
+- equipment | Pike | _unknown_
+- equipment | Pistol | _unknown_
+- equipment | Plate Armor | _unknown_
+- equipment | playing cards | _unknown_
+- equipment | Poisoner’s Kit | _unknown_
+- equipment | Pole | _unknown_
+- equipment | Pony | _unknown_
+- equipment | Portable Ram | _unknown_
+- equipment | Pouches | _unknown_
+- equipment | Priest’s Pack | _unknown_
+- equipment | Quarterstaff | _unknown_
+- equipment | Quiver | _unknown_
+- equipment | Rapier | _unknown_
+- equipment | Rations | _unknown_
+- equipment | Reliquary | _unknown_
+- equipment | Horse, Riding | _unknown_
+- equipment | Riding Saddle | _unknown_
+- equipment | Ring Mail | _unknown_
+- equipment | Robe | _unknown_
+- equipment | Rod | _unknown_
+- equipment | Rope | _unknown_
+- equipment | Rowboat | _unknown_
+- equipment | Sack | _unknown_
+- equipment | Sailing Ship | _unknown_
+- equipment | Scale Mail | _unknown_
+- equipment | Scholar’s Pack | _unknown_
+- equipment | Scimitar | _unknown_
+- equipment | shawm | _unknown_
+- equipment | Shield | _unknown_
+- equipment | Shortbow | _unknown_
+- equipment | Shortsword | _unknown_
+- equipment | Shovel | _unknown_
+- equipment | Sickle | _unknown_
+- equipment | Signal Whistle | _unknown_
+- equipment | Sled | _unknown_
+- equipment | Sling | _unknown_
+- equipment | Sling Bullets | _unknown_
+- equipment | Smith’s Tools | _unknown_
+- equipment | Spear | _unknown_
+- equipment | Spellbook | _unknown_
+- equipment | Splint | _unknown_
+- equipment | sprig of mistletoe | _unknown_
+- equipment | Spyglass | _unknown_
+- equipment | Staff | _unknown_
+- equipment | String | _unknown_
+- equipment | Studded Leather Armor | _unknown_
+- equipment | Tent | _unknown_
+- equipment | Thieves’ Tools | _unknown_
+- equipment | three-dragon ante | _unknown_
+- equipment | Tinderbox | _unknown_
+- equipment | Tinker’s Tools | _unknown_
+- equipment | Torch | _unknown_
+- equipment | Traveler’s Clothes | _unknown_
+- equipment | Trident | _unknown_
+- equipment | Vial | _unknown_
+- equipment | viol | _unknown_
+- equipment | Wagon | _unknown_
+- equipment | Wand | _unknown_
+- equipment | War Pick | _unknown_
+- equipment | Warhammer | _unknown_
+- equipment | Warhorse | _unknown_
+- equipment | Warship | _unknown_
+- equipment | Waterskin | _unknown_
+- equipment | Weaver’s Tools | _unknown_
+- equipment | Whip | _unknown_
+- equipment | Woodcarver’s Tools | _unknown_
+- equipment | Wooden staff | _unknown_
+- equipment | Yew wand | _unknown_
+
+## feats (12)
+
+- feats | Alert | Basic Rules 2024 (free)
+- feats | Boon of Combat Prowess | Basic Rules 2024 (free)
+- feats | Boon of Dimensional Travel | Basic Rules 2024 (free)
+- feats | Boon of Fate | Basic Rules 2024 (free)
+- feats | Boon of Irresistible Offense | Basic Rules 2024 (free)
+- feats | Boon of Spell Recall | Basic Rules 2024 (free)
+- feats | Boon of the Night Spirit | Basic Rules 2024 (free)
+- feats | Boonofsense Truesightsense | Basic Rules 2024 (free)
+- feats | Defense | Basic Rules 2024 (free)
+- feats | Magic Initiate | Basic Rules 2024 (free)
+- feats | Savage Attacker | Basic Rules 2024 (free)
+- feats | Skilled | Basic Rules 2024 (free)
+
+## magic-items (64)
+
+- magic-items | +1 Ammunition | _unknown_
+- magic-items | Rare (+2) | _unknown_
+- magic-items | +3 Ammunition | _unknown_
+- magic-items | Rare (+1) | _unknown_
+- magic-items | Very Rare (+2) | _unknown_
+- magic-items | Legendary (+3) | _unknown_
+- magic-items | Bag of Holding | _unknown_
+- magic-items | Belt of Giant Strength (cloud) | _unknown_
+- magic-items | Belt of Dwarvenkind | _unknown_
+- magic-items | Belt of Giant Strength (fire) | _unknown_
+- magic-items | Belt of Giant Strength (frost) | _unknown_
+- magic-items | Belt of Giant Strength | _unknown_
+- magic-items | Belt of Giant Strength (hill) | _unknown_
+- magic-items | Belt of Giant Strength (stone) | _unknown_
+- magic-items | Belt of Giant Strength (storm) | _unknown_
+- magic-items | Boot of Elvenkind | _unknown_
+- magic-items | Boot of Striding and Springing | _unknown_
+- magic-items | Carpet of Flying | _unknown_
+- magic-items | Dust of Disappearance | _unknown_
+- magic-items | Gauntlets of Ogre Power | _unknown_
+- magic-items | Heward’s Handy Haversack | _unknown_
+- magic-items | Brass | _unknown_
+- magic-items | Bronze | _unknown_
+- magic-items | Iron | _unknown_
+- magic-items | Silver | _unknown_
+- magic-items | Immovable Rod | _unknown_
+- magic-items | +1 Lance | _unknown_
+- magic-items | +1 Leather Armor | _unknown_
+- magic-items | +1 Longsword | _unknown_
+- magic-items | +2 Longsword | _unknown_
+- magic-items | Oil of Etherealness | _unknown_
+- magic-items | Oil of Slipperiness | _unknown_
+- magic-items | Orb of Dragonkind | _unknown_
+- magic-items | +1 Armor (Plate Armor) | _unknown_
+- magic-items | Portable Hole | _unknown_
+- magic-items | Potion of Giant Strength (cloud) | _unknown_
+- magic-items | Potion of Giant Strength (fire) | _unknown_
+- magic-items | Potion of Giant Strength (frost) | _unknown_
+- magic-items | Potion of Healing | _unknown_
+- magic-items | Potion of Healing (greater) | _unknown_
+- magic-items | Potion of Healing (superior) | _unknown_
+- magic-items | Potion of Healing (supreme) | _unknown_
+- magic-items | Potion of Giant Strength (hill) | _unknown_
+- magic-items | Potion of Invisibility | _unknown_
+- magic-items | Potion of Giant Strength (stone) | _unknown_
+- magic-items | Potion of Giant Strength (storm) | _unknown_
+- magic-items | Potions of Healing | _unknown_
+- magic-items | Ring of Feather Falling | _unknown_
+- magic-items | Ring of Invisibility | _unknown_
+- magic-items | Ring of Protection | _unknown_
+- magic-items | Ring of Swimming | _unknown_
+- magic-items | Scroll of Protection | _unknown_
+- magic-items | +1 Shield | _unknown_
+- magic-items | +2 | _unknown_
+- magic-items | +3 | _unknown_
+- magic-items | Sovereign Glue | _unknown_
+- magic-items | Spell Scroll | _unknown_
+- magic-items | Sphere of Annihilation | _unknown_
+- magic-items | Staff of Striking | _unknown_
+- magic-items | Universal Solvent | _unknown_
+- magic-items | Wand of Fireballs | _unknown_
+- magic-items | +1 | _unknown_
+- magic-items | +2 | _unknown_
+- magic-items | +3 Weapon | _unknown_
+
+## monsters (132)
+
+- monsters | Adult Red Dragons | _unknown_
+- monsters | Air Elemental | _unknown_
+- monsters | Ape | _unknown_
+- monsters | Arcanaloth | _unknown_
+- monsters | Archmage | _unknown_
+- monsters | Assassin | _unknown_
+- monsters | Axe Beak | _unknown_
+- monsters | Baboon | _unknown_
+- monsters | Badger | _unknown_
+- monsters | Bandit Captain | _unknown_
+- monsters | Bat | _unknown_
+- monsters | Beholder | _unknown_
+- monsters | Berserker | _unknown_
+- monsters | Black Bear | _unknown_
+- monsters | Boar | _unknown_
+- monsters | Bone Devil | _unknown_
+- monsters | Brown Bear | _unknown_
+- monsters | Bugbear Warrior | _unknown_
+- monsters | Bulette | _unknown_
+- monsters | Cambion | _unknown_
+- monsters | Camel | _unknown_
+- monsters | Clay Golem | _unknown_
+- monsters | Cloud Giant | _unknown_
+- monsters | Constrictor Snake | _unknown_
+- monsters | Dao | _unknown_
+- monsters | Deva | _unknown_
+- monsters | Dire Wolf | _unknown_
+- monsters | Djinni | _unknown_
+- monsters | Doppelganger | _unknown_
+- monsters | Druid | _unknown_
+- monsters | Earth Elemental | _unknown_
+- monsters | Efreeti | _unknown_
+- monsters | Elephant | _unknown_
+- monsters | Erinyes | _unknown_
+- monsters | Ettin | _unknown_
+- monsters | Fire Elemental | _unknown_
+- monsters | Fire Giants | _unknown_
+- monsters | Flesh Golem | _unknown_
+- monsters | Fomorian | _unknown_
+- monsters | Frog | _unknown_
+- monsters | Frost Giant | _unknown_
+- monsters | Giant Badger | _unknown_
+- monsters | Giant Boar | _unknown_
+- monsters | Giant Constrictor Snake | _unknown_
+- monsters | Giant Elk | _unknown_
+- monsters | Giant Fly | _unknown_
+- monsters | Giant Goat | _unknown_
+- monsters | Giant Hyena | _unknown_
+- monsters | Giant Owl | _unknown_
+- monsters | Giant Rat | _unknown_
+- monsters | Giant Wasps | _unknown_
+- monsters | Giant Weasel | _unknown_
+- monsters | Githyanki Knight | _unknown_
+- monsters | Githzerai Zerth | _unknown_
+- monsters | Glabrezu | _unknown_
+- monsters | Gnoll Warrior | _unknown_
+- monsters | Goat | _unknown_
+- monsters | Goblin Warrior | _unknown_
+- monsters | Griffon | _unknown_
+- monsters | Guardian Naga | _unknown_
+- monsters | Hezrou | _unknown_
+- monsters | Hill Giant | _unknown_
+- monsters | Hobgoblin Warrior | _unknown_
+- monsters | Imp | _unknown_
+- monsters | Incubus | _unknown_
+- monsters | Invisible Stalker | _unknown_
+- monsters | Iron Golem | _unknown_
+- monsters | Jackal | _unknown_
+- monsters | Knight | _unknown_
+- monsters | Kobold Warrior | _unknown_
+- monsters | Lich | _unknown_
+- monsters | Lion | _unknown_
+- monsters | Marid | _unknown_
+- monsters | Marilith | _unknown_
+- monsters | Mastiff | _unknown_
+- monsters | Medusa | _unknown_
+- monsters | Mezzoloth | _unknown_
+- monsters | Mule | _unknown_
+- monsters | Mummy | _unknown_
+- monsters | Mummy Lord | _unknown_
+- monsters | Nalfeshnee | _unknown_
+- monsters | Night Hag | _unknown_
+- monsters | Nightmare | _unknown_
+- monsters | Nothics | _unknown_
+- monsters | Nycaloth | _unknown_
+- monsters | Ogre | _unknown_
+- monsters | Oni | _unknown_
+- monsters | Owl | _unknown_
+- monsters | Panther | _unknown_
+- monsters | Planetar | _unknown_
+- monsters | Priest | _unknown_
+- monsters | Pseudodragon | _unknown_
+- monsters | Quasit | _unknown_
+- monsters | Rat | _unknown_
+- monsters | Raven | _unknown_
+- monsters | Red Slaad | _unknown_
+- monsters | Rhinoceros | _unknown_
+- monsters | Riding Horse | _unknown_
+- monsters | Roc | _unknown_
+- monsters | Salamander | _unknown_
+- monsters | Shrieker Fungi | _unknown_
+- monsters | Skeleton | _unknown_
+- monsters | Slaad Tadpole | _unknown_
+- monsters | Solar | _unknown_
+- monsters | Specter | _unknown_
+- monsters | Sphinx of Wonder | _unknown_
+- monsters | Spider | _unknown_
+- monsters | Sprite | _unknown_
+- monsters | Stirges | _unknown_
+- monsters | Stone Golem | _unknown_
+- monsters | Succubus | _unknown_
+- monsters | Swarm of Bats | _unknown_
+- monsters | Swarm of Rats | _unknown_
+- monsters | Tiger | _unknown_
+- monsters | Treant | _unknown_
+- monsters | Troll | _unknown_
+- monsters | Troll Limb | _unknown_
+- monsters | Twig Blights | _unknown_
+- monsters | Ultroloth | _unknown_
+- monsters | Vampire Spawn | _unknown_
+- monsters | Venomous Snake | _unknown_
+- monsters | Vrock | _unknown_
+- monsters | Warhorse Skeleton | _unknown_
+- monsters | Warrior Veteran | _unknown_
+- monsters | Water Elemental | _unknown_
+- monsters | Water Weird | _unknown_
+- monsters | Weasel | _unknown_
+- monsters | Wight | _unknown_
+- monsters | Wolf | _unknown_
+- monsters | Wyvern | _unknown_
+- monsters | Xorn | _unknown_
+- monsters | Zombie | _unknown_
+
+## planes (22)
+
+- planes | Abyss | DMG 2024
+- planes | Acheron | DMG 2024
+- planes | Arborea | DMG 2024
+- planes | Arcadia | DMG 2024
+- planes | Astral Plane | DMG 2024
+- planes | Beastlands | DMG 2024
+- planes | Bytopia | DMG 2024
+- planes | Carceri | DMG 2024
+- planes | City of Brass | DMG 2024
+- planes | Elemental Plane of Air | DMG 2024
+- planes | Elysium | DMG 2024
+- planes | Ethereal Plane | DMG 2024
+- planes | Gehenna | DMG 2024
+- planes | Hades | DMG 2024
+- planes | Limbo | DMG 2024
+- planes | Material Plane | DMG 2024
+- planes | Mechanus | DMG 2024
+- planes | Mount Celestia | DMG 2024
+- planes | Nine Hells | DMG 2024
+- planes | Pandemonium | DMG 2024
+- planes | Sigil City of Doors | DMG 2024
+- planes | Ysgard | DMG 2024
+
+## spells (382)
+
+- spells | Acid Splash | _unknown_
+- spells | Aid | _unknown_
+- spells | Alarm | _unknown_
+- spells | Alter Self | _unknown_
+- spells | Animal Friendship | _unknown_
+- spells | Animal Messenger | _unknown_
+- spells | Animal Shapes | _unknown_
+- spells | Animate Dead | _unknown_
+- spells | Animate Objects | _unknown_
+- spells | Antilife Shell | _unknown_
+- spells | Antimagic Field | _unknown_
+- spells | Antipathy/Sympathy | _unknown_
+- spells | Arcane Eye | _unknown_
+- spells | Arcane Gate | _unknown_
+- spells | Arcane Lock | _unknown_
+- spells | Arcane Vigor | _unknown_
+- spells | Armor of Agathys | _unknown_
+- spells | Arms of Hadar | _unknown_
+- spells | Astral Projection | _unknown_
+- spells | Augury | _unknown_
+- spells | Aura of Life | _unknown_
+- spells | Aura of Purity | _unknown_
+- spells | Aura of Vitality | _unknown_
+- spells | Awaken | _unknown_
+- spells | Bane | _unknown_
+- spells | Banishing Smite | _unknown_
+- spells | Banishment | _unknown_
+- spells | Barkskin | _unknown_
+- spells | Beacon of Hope | _unknown_
+- spells | Beast Sense | _unknown_
+- spells | Befuddlement | _unknown_
+- spells | Bestow Curse | _unknown_
+- spells | Bigby’s Hand | _unknown_
+- spells | Blade Barrier | _unknown_
+- spells | Blade Ward | _unknown_
+- spells | Bless | _unknown_
+- spells | Blight | _unknown_
+- spells | Blinding Smite | _unknown_
+- spells | Blindness/Deafness | _unknown_
+- spells | Blink | _unknown_
+- spells | Blur | _unknown_
+- spells | Burning Hands | _unknown_
+- spells | Call Lightning | _unknown_
+- spells | Calm Emotions | _unknown_
+- spells | Chain Lightning | _unknown_
+- spells | Charm Monster | _unknown_
+- spells | Charm Person | _unknown_
+- spells | Chill Touch | _unknown_
+- spells | Chromatic Orb | _unknown_
+- spells | Circle of Death | _unknown_
+- spells | Circle of Power | _unknown_
+- spells | Clairvoyance | _unknown_
+- spells | Clone | _unknown_
+- spells | Cloud of Daggers | _unknown_
+- spells | Cloudkill | _unknown_
+- spells | Color Spray | _unknown_
+- spells | Command | _unknown_
+- spells | Commune | _unknown_
+- spells | Commune with Nature | _unknown_
+- spells | Compelled Duel | _unknown_
+- spells | Comprehend Languages | _unknown_
+- spells | Compulsion | _unknown_
+- spells | Cone of Cold | _unknown_
+- spells | Confusion | _unknown_
+- spells | Conjure Animals | _unknown_
+- spells | Conjure Barrage | _unknown_
+- spells | Conjure Celestial | _unknown_
+- spells | Conjure Elemental | _unknown_
+- spells | Conjure Fey | _unknown_
+- spells | Conjure Minor Elementals | _unknown_
+- spells | Conjure Volley | _unknown_
+- spells | Conjure Woodland Beings | _unknown_
+- spells | Contact Other Plane | _unknown_
+- spells | Contagion | _unknown_
+- spells | Contingency | _unknown_
+- spells | Continual Flame | _unknown_
+- spells | Control Water | _unknown_
+- spells | Control Weather | _unknown_
+- spells | Cordon of Arrows | _unknown_
+- spells | Counterspell | _unknown_
+- spells | Create Food and Water | _unknown_
+- spells | Create or Destroy Water | _unknown_
+- spells | Create Undead | _unknown_
+- spells | Creation | _unknown_
+- spells | Crown of Madness | _unknown_
+- spells | Crusader’s Mantle | _unknown_
+- spells | Cure Wounds | _unknown_
+- spells | Dancing Lights | _unknown_
+- spells | Darkness | _unknown_
+- spells | Darkvision | _unknown_
+- spells | Daylight | _unknown_
+- spells | Death Ward | _unknown_
+- spells | Delayed Blast Fireball | _unknown_
+- spells | Demiplane | _unknown_
+- spells | Destructive Wave | _unknown_
+- spells | Detect Evil and Good | _unknown_
+- spells | Detect Magic | _unknown_
+- spells | Detect Poison and Disease | _unknown_
+- spells | Detect Thoughts | _unknown_
+- spells | Dimension Door | _unknown_
+- spells | Disguise Self | _unknown_
+- spells | Disintegrate | _unknown_
+- spells | Dispel Evil and Good | _unknown_
+- spells | Dispel Magic | _unknown_
+- spells | Dissonant Whispers | _unknown_
+- spells | Divination | _unknown_
+- spells | Divine Favor | _unknown_
+- spells | Divine Smite | _unknown_
+- spells | Divine Word | _unknown_
+- spells | Dominate Beast | _unknown_
+- spells | Dominate Monster | _unknown_
+- spells | Dominate Person | _unknown_
+- spells | Dragon’s Breath | _unknown_
+- spells | Dream | _unknown_
+- spells | Druidcraft | _unknown_
+- spells | Earthquake | _unknown_
+- spells | Eldritch Blast | _unknown_
+- spells | Elemental Weapon | _unknown_
+- spells | Elementalism | _unknown_
+- spells | Enhance Ability | _unknown_
+- spells | Enlarge/Reduce | _unknown_
+- spells | Ensnaring Strike | _unknown_
+- spells | Entangle | _unknown_
+- spells | Enthrall | _unknown_
+- spells | Etherealness | _unknown_
+- spells | Expeditious Retreat | _unknown_
+- spells | Eyebite | _unknown_
+- spells | Fabricate | _unknown_
+- spells | Faerie Fire | _unknown_
+- spells | False Life | _unknown_
+- spells | Fear | _unknown_
+- spells | Feather Fall | _unknown_
+- spells | Feign Death | _unknown_
+- spells | Find Familiar | _unknown_
+- spells | Find Steed | _unknown_
+- spells | Find the Path | _unknown_
+- spells | Find Traps | _unknown_
+- spells | Finger of Death | _unknown_
+- spells | Fire Bolt | _unknown_
+- spells | Fire Shield | _unknown_
+- spells | Fire Storm | _unknown_
+- spells | Fireball | _unknown_
+- spells | Flame Blade | _unknown_
+- spells | Flame Strike | _unknown_
+- spells | Flaming Sphere | _unknown_
+- spells | Flesh to Stone | _unknown_
+- spells | Fly | _unknown_
+- spells | Fog Cloud | _unknown_
+- spells | Forbiddance | _unknown_
+- spells | Forcecage | _unknown_
+- spells | Foresight | _unknown_
+- spells | Fount of Moonlight | _unknown_
+- spells | Freedom of Movement | _unknown_
+- spells | Friends | _unknown_
+- spells | Gaseous Form | _unknown_
+- spells | Gate | _unknown_
+- spells | Geas | _unknown_
+- spells | Gentle Repose | _unknown_
+- spells | Giant Insect | _unknown_
+- spells | Glibness | _unknown_
+- spells | Globe of Invulnerability | _unknown_
+- spells | Glyph of Warding | _unknown_
+- spells | Goodberry | _unknown_
+- spells | Grasping Vine | _unknown_
+- spells | Grease | _unknown_
+- spells | Greater Invisibility | _unknown_
+- spells | Greater Restoration | _unknown_
+- spells | Guardian of Faith | _unknown_
+- spells | Guards and Wards | _unknown_
+- spells | Guidance | _unknown_
+- spells | Guiding Bolt | _unknown_
+- spells | Gust of Wind | _unknown_
+- spells | Hail of Thorns | _unknown_
+- spells | Hallow | _unknown_
+- spells | Hallucinatory Terrain | _unknown_
+- spells | Harm | _unknown_
+- spells | Haste | _unknown_
+- spells | Heal | _unknown_
+- spells | Healing Word | _unknown_
+- spells | Heat Metal | _unknown_
+- spells | Hellish Rebuke | _unknown_
+- spells | Heroes’ Feast | _unknown_
+- spells | Heroism | _unknown_
+- spells | Hex | _unknown_
+- spells | Hold Monster | _unknown_
+- spells | Hold Person | _unknown_
+- spells | Holy Aura | _unknown_
+- spells | Hunger of Hadar | _unknown_
+- spells | Hunter’s Mark | _unknown_
+- spells | Hypnotic Pattern | _unknown_
+- spells | Ice Knife | _unknown_
+- spells | Ice Storm | _unknown_
+- spells | Identify | _unknown_
+- spells | Illusory Script | _unknown_
+- spells | Imprisonment | _unknown_
+- spells | Incendiary Cloud | _unknown_
+- spells | Inflict Wounds | _unknown_
+- spells | Insect Plague | _unknown_
+- spells | Invisibility | _unknown_
+- spells | Jallarzi’s Storm of Radiance | _unknown_
+- spells | Jump | _unknown_
+- spells | Knock | _unknown_
+- spells | Legend Lore | _unknown_
+- spells | Leomund’s Tiny Hut | _unknown_
+- spells | Lesser Restoration | _unknown_
+- spells | Levitate | _unknown_
+- spells | Light | _unknown_
+- spells | Lightning Arrow | _unknown_
+- spells | Lightning Bolt | _unknown_
+- spells | Locate Animals or Plants | _unknown_
+- spells | Locate Creature | _unknown_
+- spells | Locate Object | _unknown_
+- spells | Longstrider | _unknown_
+- spells | Mage Armor | _unknown_
+- spells | Mage Hand | _unknown_
+- spells | Magic Circle | _unknown_
+- spells | Magic Jar | _unknown_
+- spells | Magic Missile | _unknown_
+- spells | Magic Mouth | _unknown_
+- spells | Magic Weapon | _unknown_
+- spells | Major Image | _unknown_
+- spells | Mass Cure Wounds | _unknown_
+- spells | Mass Heal | _unknown_
+- spells | Mass Healing Word | _unknown_
+- spells | Mass Suggestion | _unknown_
+- spells | Maze | _unknown_
+- spells | Meld into Stone | _unknown_
+- spells | Melf’s Acid Arrow | _unknown_
+- spells | Mending | _unknown_
+- spells | Message | _unknown_
+- spells | Meteor Swarm | _unknown_
+- spells | Mind Blank | _unknown_
+- spells | Mind Sliver | _unknown_
+- spells | Mind Spike | _unknown_
+- spells | Minor Illusion | _unknown_
+- spells | Mirage Arcane | _unknown_
+- spells | Mirror Image | _unknown_
+- spells | Mislead | _unknown_
+- spells | Misty Step | _unknown_
+- spells | Modify Memory | _unknown_
+- spells | Moonbeam | _unknown_
+- spells | Mordenkainen’s Magnificent Mansion | _unknown_
+- spells | Mordenkainen’s Private Sanctum | _unknown_
+- spells | Mordenkainen’s Sword | _unknown_
+- spells | Move Earth | _unknown_
+- spells | Nondetection | _unknown_
+- spells | Otiluke’s Freezing Sphere | _unknown_
+- spells | Otiluke’s Resilient Sphere | _unknown_
+- spells | Otto’s Irresistible Dance | _unknown_
+- spells | Pass without Trace | _unknown_
+- spells | Passwall | _unknown_
+- spells | Phantasmal Force | _unknown_
+- spells | Phantasmal Killer | _unknown_
+- spells | Phantom Steed | _unknown_
+- spells | Planar Ally | _unknown_
+- spells | Planar Binding | _unknown_
+- spells | Plane Shift | _unknown_
+- spells | Plant Growth | _unknown_
+- spells | Poison Spray | _unknown_
+- spells | Polymorph | _unknown_
+- spells | Power Word Fortify | _unknown_
+- spells | Power Word Heal | _unknown_
+- spells | Power Word Kill | _unknown_
+- spells | Power Word Stun | _unknown_
+- spells | Prayer of Healing | _unknown_
+- spells | Prestidigitation | _unknown_
+- spells | Prismatic Spray | _unknown_
+- spells | Prismatic Wall | _unknown_
+- spells | Produce Flame | _unknown_
+- spells | Programmed Illusion | _unknown_
+- spells | Project Image | _unknown_
+- spells | Protection from Energy | _unknown_
+- spells | Protection from Evil and Good | _unknown_
+- spells | Protection from Poison | _unknown_
+- spells | Purify Food and Drink | _unknown_
+- spells | Raise Dead | _unknown_
+- spells | Rary’s Telepathic Bond | _unknown_
+- spells | Ray of Enfeeblement | _unknown_
+- spells | Ray of Frost | _unknown_
+- spells | Ray of Sickness | _unknown_
+- spells | Regenerate | _unknown_
+- spells | Reincarnate | _unknown_
+- spells | Remove Curse | _unknown_
+- spells | Resistance | _unknown_
+- spells | Resurrection | _unknown_
+- spells | Reverse Gravity | _unknown_
+- spells | Revivify | _unknown_
+- spells | Rope Trick | _unknown_
+- spells | Sacred Flame | _unknown_
+- spells | Sanctuary | _unknown_
+- spells | Scorching Ray | _unknown_
+- spells | Scrying | _unknown_
+- spells | Searing Smite | _unknown_
+- spells | See Invisibility | _unknown_
+- spells | Seeming | _unknown_
+- spells | Sending | _unknown_
+- spells | Sequester | _unknown_
+- spells | Shapechange | _unknown_
+- spells | Shatter | _unknown_
+- spells | Shield | _unknown_
+- spells | Shield of Faith | _unknown_
+- spells | Shillelagh | _unknown_
+- spells | Shining Smite | _unknown_
+- spells | Shocking Grasp | _unknown_
+- spells | Silence | _unknown_
+- spells | Silent Image | _unknown_
+- spells | Simulacrum | _unknown_
+- spells | Sleep | _unknown_
+- spells | Sleet Storm | _unknown_
+- spells | Slow | _unknown_
+- spells | Sorcerous Burst | _unknown_
+- spells | Spare the Dying | _unknown_
+- spells | Speak with Animals | _unknown_
+- spells | Speak with Dead | _unknown_
+- spells | Speak with Plants | _unknown_
+- spells | Spider Climb | _unknown_
+- spells | Spike Growth | _unknown_
+- spells | Spirit Guardians | _unknown_
+- spells | Spiritual Weapon | _unknown_
+- spells | Staggering Smite | _unknown_
+- spells | Starry Wisp | _unknown_
+- spells | Steel Wind Strike | _unknown_
+- spells | Stinking Cloud | _unknown_
+- spells | Stone Shape | _unknown_
+- spells | Stoneskin | _unknown_
+- spells | Storm of Vengeance | _unknown_
+- spells | Suggestion | _unknown_
+- spells | Summon Aberration | _unknown_
+- spells | Summon Beast | _unknown_
+- spells | Summon Celestial | _unknown_
+- spells | Summon Dragon | _unknown_
+- spells | Summon Elemental | _unknown_
+- spells | Summon Fey | _unknown_
+- spells | Summon Fiend | _unknown_
+- spells | Summon Undead | _unknown_
+- spells | Sunbeam | _unknown_
+- spells | Sunburst | _unknown_
+- spells | Swift Quiver | _unknown_
+- spells | Symbol | _unknown_
+- spells | Synaptic Static | _unknown_
+- spells | Tasha’s Bubbling Cauldron | _unknown_
+- spells | Tasha’s Hideous Laughter | _unknown_
+- spells | Telekinesis | _unknown_
+- spells | Teleport | _unknown_
+- spells | Teleportation Circle | _unknown_
+- spells | Thaumaturgy | _unknown_
+- spells | Thorn Whip | _unknown_
+- spells | Thunderclap | _unknown_
+- spells | Thunderous Smite | _unknown_
+- spells | Thunderwave | _unknown_
+- spells | Time Stop | _unknown_
+- spells | Toll the Dead | _unknown_
+- spells | Tongues | _unknown_
+- spells | Transport via Plants | _unknown_
+- spells | Tree Stride | _unknown_
+- spells | True Polymorph | _unknown_
+- spells | True Resurrection | _unknown_
+- spells | True Seeing | _unknown_
+- spells | True Strike | _unknown_
+- spells | Tsunami | _unknown_
+- spells | Unseen Servant | _unknown_
+- spells | Vampiric Touch | _unknown_
+- spells | Vicious Mockery | _unknown_
+- spells | Vitriolic Sphere | _unknown_
+- spells | Wall of Fire | _unknown_
+- spells | Wall of Force | _unknown_
+- spells | Wall of Ice | _unknown_
+- spells | Wall of Stone | _unknown_
+- spells | Wall of Thorns | _unknown_
+- spells | Warding Bond | _unknown_
+- spells | Water Breathing | _unknown_
+- spells | Water Walk | _unknown_
+- spells | Web | _unknown_
+- spells | Weird | _unknown_
+- spells | Wind Walk | _unknown_
+- spells | Wind Wall | _unknown_
+- spells | Wish | _unknown_
+- spells | Witch Bolt | _unknown_
+- spells | Word of Recall | _unknown_
+- spells | Wrathful Smite | _unknown_
+- spells | Yolande’s Regal Presence | _unknown_
+- spells | Zone of Truth | _unknown_

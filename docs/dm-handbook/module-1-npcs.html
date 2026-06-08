@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 NPCs · Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Noto+Serif+SC:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English','Noto Serif SC',Georgia,serif;color:#c8a860;line-height:1.7;}
+.nav{position:sticky;top:0;z-index:100;background:linear-gradient(to bottom,#0d0a04 70%,transparent);padding:14px 22px;display:flex;gap:18px;align-items:center;border-bottom:1px solid rgba(122,80,32,0.3);}
+.nav a{color:#8a6030;font-size:0.72rem;letter-spacing:0.14em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav a:hover{color:#d4b870;}
+.nav .spacer{flex:1;}
+.page-wrap{max-width:1180px;margin:0 auto;padding:32px 26px 80px;}
+
+header{text-align:center;margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid rgba(122,80,32,0.3);}
+.overline{font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+header h1{font-size:2.4rem;color:#e4cc94;letter-spacing:0.04em;text-shadow:0 2px 22px rgba(0,0,0,0.9);margin-bottom:10px;}
+.subtitle{font-style:italic;color:#a08040;font-size:0.96rem;letter-spacing:0.04em;}
+
+h2{font-size:1.4rem;color:#d4b870;margin:34px 0 18px;letter-spacing:0.04em;border-bottom:1px solid rgba(122,80,32,0.25);padding-bottom:10px;}
+
+/* TOC */
+.toc{background:rgba(20,14,4,0.5);border:1px solid rgba(122,80,32,0.3);padding:18px 22px;margin-bottom:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;}
+@media(max-width:760px){.toc{grid-template-columns:1fr;}}
+.toc h2{grid-column:1/-1;font-size:1.0rem;border:none;padding:0;margin:0 0 6px;}
+.toc a{display:block;font-size:0.82rem;color:#a87830;text-decoration:none;letter-spacing:0.04em;padding:3px 0;}
+.toc a:hover{color:#e4cc94;}
+.toc a .role{font-size:0.7rem;color:#6a4818;font-style:italic;margin-left:6px;}
+
+/* NPC Card */
+.npc{background:linear-gradient(160deg,#1a1208 0%,#0e0904 100%);border:1px solid #5a3010;border-left-width:5px;padding:24px 28px;margin:24px 0;border-radius:2px;box-shadow:0 4px 22px rgba(0,0,0,0.5);position:relative;}
+.npc.ally{border-left-color:#4a7838;}
+.npc.gate{border-left-color:#a87830;}
+.npc.cipher{border-left-color:#6a4a9a;}
+.npc.lore{border-left-color:#7a8a40;}
+.npc.witness{border-left-color:#5a78a8;}
+.npc.peril{border-left-color:#8a3820;}
+.npc.minor{border-left-color:#5a3010;padding:18px 22px;}
+
+.npc-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(122,80,32,0.3);}
+.npc-name{font-size:1.7rem;color:#e4cc94;letter-spacing:0.03em;font-family:'IM Fell English',serif;}
+.npc-name .pronoun{font-size:0.72rem;color:#7a5020;letter-spacing:0.14em;margin-left:10px;}
+.npc-role{font-size:0.78rem;color:#a87830;font-style:italic;margin-top:4px;letter-spacing:0.04em;}
+.npc-archetype{font-size:0.66rem;color:#7a5020;letter-spacing:0.24em;text-transform:uppercase;text-align:right;padding-top:6px;}
+
+.npc-body{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;}
+@media(max-width:780px){.npc-body{grid-template-columns:1fr;}}
+
+.section{margin-bottom:14px;}
+.section h4{font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:#7a5020;margin-bottom:6px;border-bottom:1px solid rgba(122,80,32,0.2);padding-bottom:3px;}
+.section p, .section li{font-size:0.86rem;color:#bca870;line-height:1.65;}
+.section ul{list-style:none;padding-left:0;}
+.section ul li{padding:3px 0 3px 14px;position:relative;}
+.section ul li::before{content:'·';position:absolute;left:3px;color:#7a5020;}
+
+.lines{background:rgba(40,28,8,0.35);border-left:2px solid #7a5020;padding:10px 16px;margin:6px 0;}
+.lines p{font-style:italic;color:#d4b870;font-size:0.86rem;margin-bottom:6px;line-height:1.55;}
+.lines p:last-child{margin-bottom:0;}
+.lines p::before{content:'"';color:#7a5020;margin-right:2px;}
+.lines p::after{content:'"';color:#7a5020;margin-left:2px;}
+
+.dm-section{background:linear-gradient(160deg,#3a2008 0%,#1a0e04 100%);border:1px solid #6a3a20;color:#b89030;padding:14px 18px;margin-top:14px;border-radius:1px;position:relative;}
+.dm-section::before{content:'DM ONLY';position:absolute;top:-9px;left:14px;background:#0d0a04;padding:2px 10px;font-size:0.6rem;letter-spacing:0.22em;color:#a87830;}
+.dm-section h4{color:#c89040;margin-bottom:6px;font-size:0.66rem;letter-spacing:0.2em;}
+.dm-section p, .dm-section li{font-size:0.8rem;color:#a87830;line-height:1.6;}
+
+.stat-block{background:rgba(0,0,0,0.4);border:1px solid #5a3010;padding:12px 16px;margin-top:10px;font-size:0.78rem;color:#a89060;}
+.stat-block .name{font-weight:bold;color:#d4b870;font-size:0.84rem;letter-spacing:0.03em;margin-bottom:6px;display:block;}
+.stat-block .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px;font-size:0.76rem;}
+.stat-block .stats div{padding:2px 0;}
+.stat-block .stats strong{color:#d4b870;}
+.stat-block .traits{margin-top:8px;}
+.stat-block .traits p{margin:3px 0;}
+.stat-block .traits strong{color:#c89040;}
+
+.check-mini{display:inline-block;font-size:0.72rem;padding:2px 8px;margin:2px 4px 2px 0;border-radius:1px;background:rgba(0,0,0,0.3);}
+.check-mini.open{border:1px solid #3a5a98;color:#90b8e0;}
+.check-mini.silent{border:1px solid #4a3a78;color:#a890e0;}
+
+.minors-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:760px){.minors-grid{grid-template-columns:1fr;}}
+
+footer{margin-top:50px;padding-top:24px;border-top:1px solid rgba(122,80,32,0.3);text-align:center;font-size:0.78rem;color:#7a5020;}
+footer .nav-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:14px;}
+footer .nav-links a{color:#a87830;text-decoration:none;letter-spacing:0.1em;padding:6px 14px;border:1px solid #5a3010;transition:all .2s;}
+footer .nav-links a:hover{background:#3a2008;color:#e4cc94;}
+
+.archetype-key{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px;font-size:0.74rem;}
+.archetype-key span{padding:3px 12px;border-left:3px solid;color:#a89060;letter-spacing:0.08em;}
+
+.hook-table{background:rgba(20,14,4,0.5);border:1px solid rgba(122,80,32,0.3);padding:18px 22px;margin-bottom:28px;}
+.hook-table h2{font-size:1.0rem;border:none;padding:0;margin:0 0 10px;}
+.hook-table table{width:100%;border-collapse:collapse;font-size:0.84rem;}
+.hook-table th, .hook-table td{padding:6px 10px;text-align:left;border-bottom:1px solid rgba(122,80,32,0.15);}
+.hook-table th{color:#7a5020;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:normal;}
+.hook-table td{color:#bca870;}
+.hook-table td:first-child{color:#d4b870;font-weight:bold;width:50px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="module-1-play.html">← Play</a>
+  <a href="module-1-checks.md">Checks</a>
+  <a href="module-1-dm-flow.md">DM Flow</a>
+  <span class="spacer"></span>
+  <a href="../fallowton-map.html">Map</a>
+</nav>
+
+<div class="page-wrap">
+
+<header>
+  <p class="overline">Module 1 · Cast</p>
+  <h1>NPCs of Fallowton</h1>
+  <p class="subtitle">Seven faces. Three farmers. One missing daughter. Voice them, then watch them remember.</p>
+</header>
+
+<div class="archetype-key">
+  <span style="border-color:#4a7838;color:#a8d090;">ALLY · helps if asked well</span>
+  <span style="border-color:#a87830;color:#e4cc94;">GATE · controls access</span>
+  <span style="border-color:#6a4a9a;color:#a890e0;">CIPHER · hides truth</span>
+  <span style="border-color:#7a8a40;color:#c8d090;">LORE · holds memory</span>
+  <span style="border-color:#5a78a8;color:#a8c0e0;">WITNESS · saw something</span>
+  <span style="border-color:#8a3820;color:#e0a890;">PERIL · cost-attached</span>
+</div>
+
+<div class="toc">
+  <h2>Cast list</h2>
+  <a href="#mordren">Mordren Vale<span class="role">cipher · wizard scholar</span></a>
+  <a href="#bran">Elder Bran Orwick<span class="role">gate · authority</span></a>
+  <a href="#henric">Old Henric Voss<span class="role">peril · field owner</span></a>
+  <a href="#elra">Sister Elra<span class="role">lore · faith</span></a>
+  <a href="#bessa">Bessa Thorn<span class="role">ally · innkeeper</span></a>
+  <a href="#garret">Garret<span class="role">witness · miller</span></a>
+  <a href="#tamsin">Tamsin Bellows<span class="role">ally · smith</span></a>
+  <a href="#minors">Supporting cast<span class="role">grain keeper · Maerla · Lila · 3 farmers</span></a>
+  <a href="#hooks">Why are you in Fallowton? (d8)</a>
+</div>
+
+<!-- ====================================================================== -->
+
+<h2>The Seven</h2>
+
+<!-- MORDREN -->
+<div id="mordren" class="npc cipher">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Mordren Vale <span class="pronoun">he/him · ~38</span></div>
+      <div class="npc-role">Travelling wizard-scholar · arrived three days after the sinkhole opened</div>
+    </div>
+    <div class="npc-archetype">Cipher</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Black travel robes, road-dusted. Silver rings on three fingers. A pale wood staff he never raises in anger but never sets out of reach. He listens longer than he speaks. When he speaks, the room quiets without anyone asking it to.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>To know whether the sinkhole structure is a Dawnweave Converter, not a temple</li>
+          <li>To recover any writing, relic, or "living flame" from below</li>
+          <li>To do this <em>without</em> the village deciding to seal the site</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>Being right — about what it cost the old world to make free magic</li>
+          <li>The villagers turning him out before he learns</li>
+          <li>His own debt to the seal beneath Fallowton (cast in his sleep, the runes on his rings flicker)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice (sample lines)</h4>
+        <div class="lines">
+          <p>I am a scholar of ruins. I am not a hero. I will pay you for being braver than I am.</p>
+          <p>Touch nothing you do not understand. And if you find an altar — do not pray at it.</p>
+          <p>Free magic was never free. Someone paid. We are still paying.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Soft register. Pauses before nouns. Uses "perhaps" and "I think" even when certain — a habit, not a hedge. Never sits with his back to a door.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play him</h4>
+        <ul>
+          <li>Polite but never warm. Smiles only at irony.</li>
+          <li>Pays in clean coin, counted twice.</li>
+          <li>If pressed about himself: deflects to the work. "We can discuss me when the village is safe."</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">Insight DC 12 (his pitch)</span>
+        <span class="check-mini open">Persuasion DC 14 (cottage invite)</span>
+        <span class="check-mini silent">Passive Perc 13 (ring flicker)</span>
+        <span class="check-mini silent">Insight 14 (relief at "wait")</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets · what Mordren is hiding</h4>
+    <ul>
+      <li><strong>Identity:</strong> He has royal backing. A sealed letter in his cottage carries the wax seal of the Crown's Office of Recovery — a body the public does not know exists. <em>Reveal only at end of campaign arc 1.</em></li>
+      <li><strong>Thesis:</strong> Dawnweave magic was not "free." Converters consumed living memory. He suspects this ruin is one. He has no proof yet — that's why he hires the party.</li>
+      <li><strong>Personal cost:</strong> He owes one Weave Strain debt that has not yet come due. He never casts in front of villagers because the cost is visible (his eyes go grey for an hour).</li>
+      <li><strong>Loyalty:</strong> He will not betray the party for gold, but he will betray them for evidence he cannot otherwise obtain. Make him sympathetic, not safe.</li>
+    </ul>
+    <h4>If killed in Module 1 (don't let this happen, but if):</h4>
+    <p>The royal seal becomes the campaign's biggest loose thread. Within two weeks of in-fiction time, a Crown agent arrives in Fallowton looking for him. The party's job offer transfers to them — at twice the pay and twice the danger.</p>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Mordren Vale · Wizard (Tradition: undeclared) · CR 1</span>
+    <div class="stats">
+      <div><strong>AC</strong> 12 (mage armor reflex)</div>
+      <div><strong>HP</strong> 22 (5d8)</div>
+      <div><strong>Speed</strong> 30 ft</div>
+      <div><strong>STR</strong> 9 (−1)</div>
+      <div><strong>DEX</strong> 14 (+2)</div>
+      <div><strong>CON</strong> 12 (+1)</div>
+      <div><strong>INT</strong> 16 (+3)</div>
+      <div><strong>WIS</strong> 13 (+1)</div>
+      <div><strong>CHA</strong> 12 (+1)</div>
+    </div>
+    <div class="traits">
+      <p><strong>Cantrips (free):</strong> mage hand, light, prestidigitation, mind sliver</p>
+      <p><strong>1st-level (2 slots):</strong> shield, sleep, detect magic, comprehend languages</p>
+      <p><strong>Staff:</strong> +4 to hit, 1d6+2 bludgeoning. Will not strike to kill unless cornered.</p>
+      <p><strong>Quirk:</strong> When he casts a leveled spell, his eyes go grey for 1 hour and his breath visibly clouds even in warm rooms. Villagers notice.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BRAN -->
+<div id="bran" class="npc gate">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Elder Bran Orwick <span class="pronoun">he/him · 64</span></div>
+      <div class="npc-role">Village elder · third of his name · de facto magistrate</div>
+    </div>
+    <div class="npc-archetype">Gate</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Broad-shouldered, narrow-eyed, weathered to the color of cured oak. Wears the village ring of office — a thumb-ring of plain iron, polished by sixty years of worry. Stands with his weight forward, like he's expecting to refuse something.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>Fallowton, intact, when his term ends in two springs</li>
+          <li>The sinkhole sealed, not opened — but he knows that may not be possible</li>
+          <li>For strangers to <em>earn</em> the right to walk under his earth</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>That his refusal to act will kill the village while his permission to act also kills it</li>
+          <li>That the old stories — the ones his grandfather refused to tell him — were true</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice</h4>
+        <div class="lines">
+          <p>Nothing good comes from beneath old earth.</p>
+          <p>You want to walk under our fields, disturb our dead earth, and call it courage? Then convince me Fallowton is not the one paying your price.</p>
+          <p>Pay the bond, or give me a reason. I do not need both.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Slow. Stops mid-sentence to choose the next word. Will not be hurried. Repeats important things twice — once with weight, once with quiet.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play him</h4>
+        <ul>
+          <li>Fronts hostile, isn't. Wants to be persuaded.</li>
+          <li>Respects honesty, even rude honesty. Despises flattery.</li>
+          <li>If Sinkhole Witness PC is present, he will give them <em>one</em> chance to speak as a Fallowton voice. Advantage on that one roll.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">Persuasion DC 13 (waive bond)</span>
+        <span class="check-mini open">Intimidation DC 15 (force pass)</span>
+        <span class="check-mini open">History DC 14 (cite Dawnweave)</span>
+        <span class="check-mini silent">Insight 12 (he is afraid)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets</h4>
+    <ul>
+      <li>Bran's grandfather Wendel was the one who reburied the ruin sixty years ago. Bran does not know this — but if the H.V./W.V. dagger surfaces and is shown to him, he will sit down hard, and say only: "I thought that was a story."</li>
+      <li>He has already drafted a letter to the regional lord asking for soldiers. He has not sent it. The letter is in the Elder's Hall desk, second drawer down.</li>
+      <li>If the party fails him publicly, he does not retaliate — he withdraws. The village follows him. By Module 3, no door in Fallowton will open to a stranger.</li>
+    </ul>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Elder Bran Orwick · Commoner (veteran posture)</span>
+    <div class="stats">
+      <div><strong>AC</strong> 10</div>
+      <div><strong>HP</strong> 9</div>
+      <div><strong>Speed</strong> 30 ft</div>
+      <div><strong>STR</strong> 12 (+1)</div>
+      <div><strong>DEX</strong> 10 (+0)</div>
+      <div><strong>CON</strong> 12 (+1)</div>
+      <div><strong>INT</strong> 11 (+0)</div>
+      <div><strong>WIS</strong> 14 (+2)</div>
+      <div><strong>CHA</strong> 13 (+1)</div>
+    </div>
+    <div class="traits">
+      <p><strong>Walking staff:</strong> +1 to hit, 1d4 bludgeoning. He has not raised it in twenty years.</p>
+      <p><strong>Voice of Fallowton:</strong> When Bran speaks in his own village, villagers gain +2 morale against fear effects.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HENRIC -->
+<div id="henric" class="npc peril">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Old Henric Voss <span class="pronoun">he/him · 71</span></div>
+      <div class="npc-role">Farmer · owner of the north barley field · found the stairs</div>
+    </div>
+    <div class="npc-archetype">Peril</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Tall once, stooped now. Hands like old maps — every line a year of frost. Smells of damp wool, wet earth, and the specific bitterness of barley smut. His left eye waters constantly; he does not bother to wipe it.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>His field restored — or compensation enough to buy seed for next spring</li>
+          <li>A share of any gold the party recovers ("My field. My share.")</li>
+          <li>To not be the man who broke Fallowton</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>That his family already knew. (They did.)</li>
+          <li>That his daughter Lila will grow up over the same ground.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice</h4>
+        <div class="lines">
+          <p>If there's gold down there, some of it is mine. Bran can shake his head all he wants.</p>
+          <p>My grandfather Wendel Voss — he wouldn't go near the north field after dusk. I never asked why. Now I think I should have.</p>
+          <p>You bring me back anything from down there, anything at all, you let me see it first.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Rural cadence — drops articles, leans on "well" and "so." Stops mid-sentence to spit. When upset, does not raise his voice; lowers it.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play him</h4>
+        <ul>
+          <li>Greedy and grieving, at the same time. Both real.</li>
+          <li>Cannot read. Will ask a PC to read any writing he is shown.</li>
+          <li>If the broken dagger with H.V./W.V. is shown to him — he goes silent for a full minute. Then: "That. That is Wendel's. My grandfather. He told me to never dig in the north field."</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">Persuasion DC 11 (share gold)</span>
+        <span class="check-mini open">History DC 12 (dagger ID via him)</span>
+        <span class="check-mini silent">Insight 11 (he already knew)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets · the Voss hook</h4>
+    <ul>
+      <li><strong>Wendel Voss (grandfather, dec'd ~60 years ago):</strong> went into the ruin once, came out changed, told no one what he saw, told his children "never dig the north field." He may be the dagger's owner — initials W.V. He may also be one of Edras's <em>oath-bound dead</em> in Tunnel 1, if you want a haunting payoff later.</li>
+      <li><strong>Henric himself was warned and forgot.</strong> He remembers his grandfather's silence, not the words. The forgetting may be magical (Converter residue) — make this DM's choice for the campaign tone.</li>
+      <li><strong>Lila (daughter, ~9):</strong> if option C fires, she is the one who goes missing — drawn to the rim by curiosity, not malice from the ruin. She returns in Module 2 with a name carved in her palm she cannot read.</li>
+      <li><strong>Maerla (wife, 64):</strong> in ending C, she is the one who forgets her brother's name. The brother is buried in the village shrine plot. Sister Elra knows this and does not yet know to be afraid.</li>
+    </ul>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Old Henric Voss · Commoner</span>
+    <div class="stats">
+      <div><strong>AC</strong> 10</div>
+      <div><strong>HP</strong> 4</div>
+      <div><strong>Speed</strong> 25 ft</div>
+      <div><strong>STR</strong> 10</div>
+      <div><strong>DEX</strong> 9</div>
+      <div><strong>CON</strong> 10</div>
+      <div><strong>INT</strong> 8</div>
+      <div><strong>WIS</strong> 13 (+1)</div>
+      <div><strong>CHA</strong> 10</div>
+    </div>
+    <div class="traits">
+      <p><strong>Spade:</strong> +0 to hit, 1d6 bludgeoning. Will not use unless his daughter is in front of him.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ELRA -->
+<div id="elra" class="npc lore">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Sister Elra <span class="pronoun">she/her · 52</span></div>
+      <div class="npc-role">Keeper of the village shrine · folk-priest of the old roadside faith</div>
+    </div>
+    <div class="npc-archetype">Lore</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Grey robe, salt-and-pepper braid wrapped twice around her head. Her hands are always stained at the fingertips — from grinding shrine-incense, not from any holier thing. She kneels when she prays, never bows; her people don't bow to anything.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>Old magic to go back to sleep</li>
+          <li>To not be the priest who failed during the awakening</li>
+          <li>A clear conscience about Maerla's brother (whose name is in the shrine plot)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>That her prayers are in a language she does not understand — and that the language is <em>Dawnweave</em></li>
+          <li>That blessing the party will count as participation</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice</h4>
+        <div class="lines">
+          <p>If old magic is waking, then something holy has failed.</p>
+          <p>Keeper of the first light, do not wake. I am old and small and I will not stop you. I only ask you to stay asleep one more season.</p>
+          <p>I will bless your torch. I will not bless your sword.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Quiet. Patient. Uses old turns of phrase no one teaches anymore. When she chants, the room cools by a half-degree even in summer — small enough that you might be imagining it.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play her</h4>
+        <ul>
+          <li>Will not be paid for blessings — she will accept a gift of clean salt, fresh bread, or honest service.</li>
+          <li>If asked to bless something, she touches it with her left hand, lips moving silently. The blessing is real (advantage on first save vs. ruin-sourced fear in Module 2).</li>
+          <li>Hostile to leveled spellcasting in her shrine. Will ask the caster to leave.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">Religion DC 12 (catch prayer phrase)</span>
+        <span class="check-mini open">Persuasion DC 13 (request blessing)</span>
+        <span class="check-mini silent">History 14 (her chant is Dawnweave)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets</h4>
+    <ul>
+      <li><strong>The prayer she has chanted for thirty years is a Dawnweave invocation</strong> — passed down orally through the shrine line. She has been petitioning the Converter to remain dormant, without knowing what she was petitioning.</li>
+      <li>If a PC translates the chant for her — Arcana DC 15 or Comprehend Languages — she sits down, very slowly, and asks them to never tell another soul.</li>
+      <li>She holds the shrine ledger of village dead. Maerla's brother is in there. If the forgotten-name ending fires, she is the one who notices first.</li>
+    </ul>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Sister Elra · Acolyte (folk-priest)</span>
+    <div class="stats">
+      <div><strong>AC</strong> 10</div>
+      <div><strong>HP</strong> 9</div>
+      <div><strong>Speed</strong> 30 ft</div>
+      <div><strong>STR</strong> 10</div>
+      <div><strong>DEX</strong> 10</div>
+      <div><strong>CON</strong> 10</div>
+      <div><strong>INT</strong> 10</div>
+      <div><strong>WIS</strong> 14 (+2)</div>
+      <div><strong>CHA</strong> 11</div>
+    </div>
+    <div class="traits">
+      <p><strong>Bless (1/day):</strong> Touches a torch, weapon, or water flask. The first time the bearer rolls a saving throw vs. fear or charm in the ruin, advantage.</p>
+      <p><strong>Healer's hand (3/day):</strong> 1d4+2 HP, no slot needed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BESSA -->
+<div id="bessa" class="npc ally">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Bessa Thorn <span class="pronoun">she/her · 47</span></div>
+      <div class="npc-role">Innkeeper of the Bent Plow · third generation · rumor hub</div>
+    </div>
+    <div class="npc-archetype">Ally</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Broad woman, flour-dusted arms, eyes that don't miss the second coin in the second pocket. Runs the inn briskly; remembers every face that ever ate her stew twice.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>The inn full and the rumors flowing</li>
+          <li>The sinkhole resolved before her trade dries up</li>
+          <li>To not be afraid in her own common room</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>Mordren — not what he is, what he <em>listens</em> for</li>
+          <li>That she will be the last innkeeper of the Bent Plow if the village empties</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice</h4>
+        <div class="lines">
+          <p>Stew is two coppers, ale is one, room is three silver, and no, I don't take wizard credit.</p>
+          <p>He mutters in his sleep. "House of First Light," he says. Don't ask me what it means — I just clean the room.</p>
+          <p>If you mean to die down there, settle your tab first.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Quick, dry, mid-register. Wipes the bar with one hand while talking with the other. Will laugh — sharp, brief — at the right joke. Looks people in the eye.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play her</h4>
+        <ul>
+          <li>Cheap to bribe with conversation, expensive to bribe with coin (she'll take both).</li>
+          <li>Knows where every other NPC lives, what they eat, who they owe.</li>
+          <li>Will warn the party once if she likes them: "If you go down, take three torches and a friend, in that order."</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">Persuasion DC 12 (Mordren rumor)</span>
+        <span class="check-mini open">Bribe 2 rounds (farmer rumors)</span>
+        <span class="check-mini silent">Insight 13 (she is scared)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets</h4>
+    <ul>
+      <li><strong>She is keeping a tab for Mordren</strong> she doesn't expect to be paid. She lets him have hot water and corner tables because she thinks he is the only person in Fallowton who might fix this. She would deny this to her death.</li>
+      <li>The wanted notice tacked near the door — three counties away, never removed — names a man who matches Mordren's height, build, and a younger face. <em>Probably</em> coincidence.</li>
+      <li><strong>Clem Thorn (late husband, d. 3 winters ago):</strong> ran the Bent Plow before her; found the inn maid as an abandoned infant on the doorstep and raised her without making a ceremony of it. Bessa did not choose the arrangement but never undid it. She does not know how to say she's glad the girl stayed. She has not tried. If asked about Clem, she wipes the bar and changes the subject. He is the reason she still lights the lamp in the back room.</li>
+    </ul>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Bessa Thorn · Commoner</span>
+    <div class="stats">
+      <div><strong>AC</strong> 10</div>
+      <div><strong>HP</strong> 6</div>
+      <div><strong>Speed</strong> 30 ft</div>
+      <div><strong>STR</strong> 11</div>
+      <div><strong>DEX</strong> 10</div>
+      <div><strong>CON</strong> 11</div>
+      <div><strong>INT</strong> 12 (+1)</div>
+      <div><strong>WIS</strong> 13 (+1)</div>
+      <div><strong>CHA</strong> 13 (+1)</div>
+    </div>
+    <div class="traits">
+      <p><strong>Iron skillet:</strong> +1 to hit, 1d6 bludgeoning. She has cracked one man's head with it. He deserved it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GARRET -->
+<div id="garret" class="npc witness">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Garret <span class="pronoun">he/him · 41</span></div>
+      <div class="npc-role">Miller · first to see the blue light · believed by no one</div>
+    </div>
+    <div class="npc-archetype">Witness</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Short, heavy, perpetually flour-grey. One eye drifts slightly. He laughs nervously at things that aren't jokes. Smells of millstone and yeast and three days without sleep.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>To be believed</li>
+          <li>To not be the village fool</li>
+          <li>For his wife Anel to stop looking at him like he's broken</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>That he saw correctly</li>
+          <li>That the light will come back</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice</h4>
+        <div class="lines">
+          <p>Three nights before the field fell, I saw light come <em>up</em> through the ground. Blue. Not lantern-blue. The blue of a dead thing's eye when the lamp catches it sideways.</p>
+          <p>I didn't drink that night. I haven't drunk in two years. Tell my wife.</p>
+          <p>It came up through the mill stone. Came up, and went back down, and the stone was warm in the morning. Warm. Stone shouldn't be warm.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Fast, urgent, low. Repeats words for emphasis. Looks at hands while speaking, not faces. Cracks knuckles unconsciously.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play him</h4>
+        <ul>
+          <li>Believes immediately that the party will believe him — which is why he opens up so fast.</li>
+          <li>If a <strong>Sinkhole Witness PC</strong> is present, he speaks to that PC alone, low. Treat as "best friend who has been waiting two months for someone to listen."</li>
+          <li>Will draw, on the mill-shed floor in flour, the exact shape of light he saw. (It's a Dawnweave seal — Arcana DC 13.)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">Insight DC 10 (he's telling truth)</span>
+        <span class="check-mini open">Arcana DC 13 (decipher flour drawing)</span>
+        <span class="check-mini silent">Perc 12 (mill stone still warm)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets</h4>
+    <ul>
+      <li><strong>The mill stone is still slightly warm</strong>, half a degree above ambient, and has been for two months. If a PC touches it, they pass a Wisdom save DC 12 or feel an irrational urge to stay another minute. (Nothing happens. The urge passes. But the urge is real.)</li>
+      <li>Garret cannot draw the Dawnweave seal anywhere except on his mill floor in flour. He has tried. He doesn't know why. (The mill is on a thin spot of the seal.)</li>
+    </ul>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Garret · Commoner</span>
+    <div class="stats">
+      <div><strong>AC</strong> 10</div>
+      <div><strong>HP</strong> 7</div>
+      <div><strong>Speed</strong> 30 ft</div>
+      <div><strong>STR</strong> 14 (+2)</div>
+      <div><strong>DEX</strong> 10</div>
+      <div><strong>CON</strong> 12 (+1)</div>
+      <div><strong>INT</strong> 9</div>
+      <div><strong>WIS</strong> 11</div>
+      <div><strong>CHA</strong> 9</div>
+    </div>
+    <div class="traits">
+      <p><strong>Mill-pick:</strong> +2 to hit, 1d6+2 piercing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAMSIN -->
+<div id="tamsin" class="npc ally">
+  <div class="npc-head">
+    <div>
+      <div class="npc-name">Tamsin Bellows <span class="pronoun">she/her · 36</span></div>
+      <div class="npc-role">Village smith · weapons and metalwork only · widowed three winters ago</div>
+    </div>
+    <div class="npc-archetype">Ally</div>
+  </div>
+
+  <div class="npc-body">
+    <div>
+      <div class="section">
+        <h4>Snapshot</h4>
+        <p>Tall, scarred forearms, leather apron that has burned through and been patched twice. Sleeves rolled to the elbow regardless of weather. Soot in the creases at the corners of her eyes — permanent, not new.</p>
+      </div>
+
+      <div class="section">
+        <h4>Wants</h4>
+        <ul>
+          <li>The party armed properly — she does not trust adventurers to do it themselves</li>
+          <li>To not have to bury another villager</li>
+          <li>To finish the spearhead she's been forging for two months (it's for nothing in particular; she just needs to finish it)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Fears</h4>
+        <ul>
+          <li>Her late husband Joren went into the western forest five years ago and came back wrong. He died last winter. She does not say it was the forest. She knows it was the forest.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Voice</h4>
+        <div class="lines">
+          <p>I don't sell rations. I don't sell rope. I sell things that cut.</p>
+          <p>Five silver for the sharpen. One gold for the new edge. Don't haggle — I haggle worse than you do.</p>
+          <p>That stone you brought me — it's not from here. Not within fifty miles of here. Where did you find it?</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <h4>Speech &amp; posture</h4>
+        <p>Direct, declarative. Will not look up from the anvil unless the conversation is interesting. Smiles rarely; when she does, it's slow and earned.</p>
+      </div>
+
+      <div class="section">
+        <h4>How to play her</h4>
+        <ul>
+          <li>Believes the party will need her, eventually. Doesn't say so.</li>
+          <li>Will sharpen a blade in one hour for 5 sp (first damage roll in the ruin: +2).</li>
+          <li>Can identify the sinkhole stone if shown a chip — "not local, not within fifty miles." History DC — she rolls free if asked.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Active checks</h4>
+        <span class="check-mini open">History DC 0 (stone ID, she just knows)</span>
+        <span class="check-mini open">Persuasion DC 12 (price haggle)</span>
+        <span class="check-mini silent">Insight 14 (her grief is fresh)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dm-section">
+    <h4>Secrets</h4>
+    <ul>
+      <li><strong>The spearhead she's been forging for two months</strong> is unconsciously following a Dawnweave reinforcement pattern — Arcana DC 16 from a PC who sees her finish it. She has never been taught the pattern. She does not know she's doing it. If completed and gifted to a PC, it functions as a <strong>+1 spear that does an extra 1d4 radiant against undead and aberrations</strong>. <em>Recommended payoff for Module 3 or 4.</em></li>
+      <li>Joren's death certificate, in Sister Elra's ledger, lists "natural causes." It was not natural causes.</li>
+    </ul>
+  </div>
+
+  <div class="stat-block">
+    <span class="name">Tamsin Bellows · Commoner (smith)</span>
+    <div class="stats">
+      <div><strong>AC</strong> 11 (apron)</div>
+      <div><strong>HP</strong> 12</div>
+      <div><strong>Speed</strong> 30 ft</div>
+      <div><strong>STR</strong> 15 (+2)</div>
+      <div><strong>DEX</strong> 11</div>
+      <div><strong>CON</strong> 14 (+2)</div>
+      <div><strong>INT</strong> 11</div>
+      <div><strong>WIS</strong> 12 (+1)</div>
+      <div><strong>CHA</strong> 10</div>
+    </div>
+    <div class="traits">
+      <p><strong>Smith's hammer:</strong> +4 to hit, 1d8+2 bludgeoning.</p>
+      <p><strong>Forge sense:</strong> Auto-identifies the regional origin of any worked metal or shaped stone she handles.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================================== -->
+
+<h2 id="minors">Supporting cast</h2>
+
+<div class="minors-grid">
+
+  <div class="npc minor">
+    <div class="npc-head">
+      <div>
+        <div class="npc-name" style="font-size:1.2rem;">Maerla Voss</div>
+        <div class="npc-role">Henric's wife · 64 · keeps chickens</div>
+      </div>
+    </div>
+    <div class="section">
+      <p>Quiet, observant, the village's best baker. If <strong>ending C</strong> fires, she is the one who forgets her brother's name. Until then she is a comfortable, almost invisible presence — exactly the kind of person whose forgetting matters most.</p>
+      <div class="lines"><p>Henric won't tell you, but the field has been wrong for years. I knew before the rain.</p></div>
+    </div>
+  </div>
+
+  <div class="npc minor">
+    <div class="npc-head">
+      <div>
+        <div class="npc-name" style="font-size:1.2rem;">Lila Voss</div>
+        <div class="npc-role">Henric's daughter · 9 · curious</div>
+      </div>
+    </div>
+    <div class="section">
+      <p>Bright, undersized, asks questions adults won't answer. If <strong>option C (refuse to descend)</strong> fires, she sneaks to the rim that night and is found at dawn with no memory of how she got there. Returns in Module 2 with a name carved in her left palm, in a script she cannot read. The wound does not bleed.</p>
+      <div class="lines"><p>Da says I'm not allowed near the hole. But the hole is interested in me. That's not the same thing.</p></div>
+    </div>
+  </div>
+
+  <div class="npc minor">
+    <div class="npc-head">
+      <div>
+        <div class="npc-name" style="font-size:1.2rem;">The Grain-Store Keeper</div>
+        <div class="npc-role">unnamed · ~50 · nervous</div>
+      </div>
+    </div>
+    <div class="section">
+      <p>Refuses to be named ("just call me keeper"). Has been losing grain at night for two weeks and has not told Bran because Bran will raise the bond on the next traveling merchant, which will hurt the village. Will show the party the chewed sack if Persuasion DC 11.</p>
+      <div class="lines"><p>Don't tell the elder. He has enough to worry over. I'm handling it.</p></div>
+    </div>
+  </div>
+
+  <div class="npc minor">
+    <div class="npc-head">
+      <div>
+        <div class="npc-name" style="font-size:1.2rem;">Three Farmers</div>
+        <div class="npc-role">chorus · always at the Bent Plow</div>
+      </div>
+    </div>
+    <div class="section">
+      <p>Theo, Jord, and Old Marn. Argue every evening about the sinkhole. They will share <em>everything</em> they have heard for the price of a round of ale (2 cp). Theo thinks it's an omen, Jord thinks it's a mine, Old Marn says nothing and watches.</p>
+      <div class="lines">
+        <p>Theo: It's an omen. My mother dreamed of holes like that the year of the bad winter.</p>
+        <p>Jord: It's a mine. There's gold in old places. There's <em>always</em> gold.</p>
+        <p>Marn: ...</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====================================================================== -->
+
+<h2 id="hooks">Why are you in Fallowton? · d8 hook table</h2>
+
+<div class="hook-table">
+  <table>
+    <thead>
+      <tr><th>d8</th><th>Hook</th><th>How it lands the PC in the inn at sunrise</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Local of Fallowton</td><td>You live here. You know Bran's voice. You know which way the door of the Bent Plow swings.</td></tr>
+      <tr><td>2</td><td>Traveler trapped by rain</td><td>You came through last week, the road south flooded, you are still here, drinking down a tab.</td></tr>
+      <tr><td>3</td><td>Hired village guard</td><td>Bran hired you a season ago to walk the wall at night. You've never had to draw a weapon. Until maybe now.</td></tr>
+      <tr><td>4</td><td>Came with / for Mordren</td><td>An apprentice, a debtor, a hire, a sibling, or someone he asked to meet here.</td></tr>
+      <tr><td>5</td><td>Treasure rumor</td><td>You heard, in a city tavern five days away, that a hole had opened in a place called Fallowton.</td></tr>
+      <tr><td>6</td><td>Personal tie to magic / visions</td><td>You dreamed of the sinkhole before it opened. You woke up walking north. You arrived three days ago.</td></tr>
+      <tr><td>7</td><td>Debt or desperation</td><td>You owe coin to someone unkind. The advance of 1 sp at the inn is meaningful to you.</td></tr>
+      <tr><td>8</td><td>Sinkhole Witness (background)</td><td>You saw it. You were near the field when it fell. You have not slept fully since.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>Module 1 · NPCs · last revised for play 2026-05-21</p>
+  <div class="nav-links">
+    <a href="module-1-play.html">Play Script</a>
+    <a href="module-1-checks.md">Checks Catalog</a>
+    <a href="module-1-dm-flow.md">DM Flow Cheat</a>
+    <a href="../fallowton-map.html">Map</a>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

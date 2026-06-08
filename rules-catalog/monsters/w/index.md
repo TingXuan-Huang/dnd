@@ -1,0 +1,22 @@
+# Monsters (W)
+
+Stat blocks split from `/Users/tingxuanhuang/Desktop/raw/Creature Stat Blocks.md`.
+
+- [Warrior Infantry](warrior-infantry.md)
+- [Warrior Veteran](warrior-veteran.md)
+- [Water Elemental](water-elemental.md)
+- [Werebear](werebear.md)
+- [Wereboar](wereboar.md)
+- [Wererat](wererat.md)
+- [Weretiger](weretiger.md)
+- [Werewolf](werewolf.md)
+- [White Dragon Wyrmling](white-dragon-wyrmling.md)
+- [Young White Dragon](young-white-dragon.md)
+- [Adult White Dragon](adult-white-dragon.md)
+- [Ancient White Dragon](ancient-white-dragon.md)
+- [Wight](wight.md)
+- [Will-o’-Wisp](will-o-wisp.md)
+- [Winter Wolf](winter-wolf.md)
+- [Worg](worg.md)
+- [Wraith](wraith.md)
+- [Wyvern](wyvern.md)

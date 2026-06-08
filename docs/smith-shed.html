@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Smith Shed — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#d4b870;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(0,0,0,0.9);}
+header .sub{font-style:italic;color:#7a5820;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#7a5020,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#7a5020;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);border:2px solid #8a5820;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(0,0,0,0.1);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3810;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a4010;background:rgba(12,7,1,0.92);color:#bfa060;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a4010;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#7a4e10;margin-bottom:10px;border-bottom:1px solid rgba(90,48,16,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(90,48,16,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1808;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3810;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a2008;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a2008;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5020;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a4010;color:#c0982a;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a4010;color:#e8d090;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>The Smith Shed</h1>
+    <p class="sub">Forge · tools · horseshoes · iron work · the smell of burning coal</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+        </defs>
+        <rect width="500" height="310" fill="#e0cc90" filter="url(#parch)"/>
+
+        <!-- forge area floor (NE) -->
+        <rect x="280" y="12" width="208" height="178" fill="#c0a060" stroke="none"/>
+        <!-- main working floor -->
+        <rect x="12" y="12" width="268" height="286" fill="#d0b870" stroke="none"/>
+        <!-- south storage floor -->
+        <rect x="280" y="190" width="208" height="108" fill="#c8b068" stroke="none"/>
+
+        <!-- outer walls -->
+        <rect x="12" y="12" width="476" height="286" fill="none" stroke="#5a3010" stroke-width="3"/>
+        <!-- forge partition -->
+        <line x1="280" y1="12" x2="280" y2="298" stroke="#7a5020" stroke-width="1.5"/>
+        <!-- storage partition in forge section -->
+        <line x1="280" y1="190" x2="488" y2="190" stroke="#7a5020" stroke-width="1.5"/>
+
+        <!-- forge / furnace (prominent circle) -->
+        <circle cx="384" cy="100" r="55" fill="#3a1808" stroke="#6a2808" stroke-width="2"/>
+        <circle cx="384" cy="100" r="44" fill="#1a0804"/>
+        <circle cx="384" cy="100" r="28" fill="#8a3010" opacity="0.7"/>
+        <!-- heat glow -->
+        <circle cx="384" cy="100" r="55" fill="none" stroke="#d4601a" stroke-width="1" opacity="0.4"/>
+        <text x="384" y="104" font-family="'IM Fell English',serif" font-size="9" fill="#e8b030" text-anchor="middle" font-style="italic">Forge</text>
+
+        <!-- anvil -->
+        <rect x="308" y="155" width="38" height="22" fill="#4a3020" stroke="#2a1808" stroke-width="1.5" rx="1"/>
+        <rect x="316" y="142" width="22" height="13" fill="#5a3828" stroke="#2a1808" stroke-width="1"/>
+        <text x="327" y="193" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">anvil</text>
+
+        <!-- water trough -->
+        <rect x="420" y="152" width="60" height="20" fill="#4a6878" stroke="#3a5060" stroke-width="1" rx="2"/>
+        <text x="450" y="187" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic">trough</text>
+
+        <!-- tool wall (west side) -->
+        <rect x="12" y="12" width="16" height="286" fill="#b88840" stroke="#7a5020" stroke-width="0.5"/>
+        <line x1="20" y1="50" x2="20" y2="70" stroke="#5a3010" stroke-width="1.5"/>
+        <line x1="20" y1="90" x2="20" y2="110" stroke="#5a3010" stroke-width="1.5"/>
+        <line x1="20" y1="130" x2="20" y2="150" stroke="#5a3010" stroke-width="1.5"/>
+        <line x1="20" y1="170" x2="20" y2="190" stroke="#5a3010" stroke-width="1.5"/>
+        <line x1="20" y1="210" x2="20" y2="230" stroke="#5a3010" stroke-width="1.5"/>
+        <text x="46" y="165" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic" transform="rotate(-90,46,165)">Tool Rack</text>
+
+        <!-- workbench south -->
+        <rect x="30" y="268" width="220" height="18" fill="#a07838" stroke="#6a4010" stroke-width="1" rx="1"/>
+        <text x="140" y="264" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a2008" text-anchor="middle" font-style="italic">workbench</text>
+
+        <!-- coal/fuel storage SW -->
+        <rect x="30" y="220" width="80" height="44" fill="#3a2808" stroke="#5a3010" stroke-width="1" rx="1"/>
+        <text x="70" y="246" font-family="'IM Fell English',serif" font-size="7.5" fill="#c0a060" text-anchor="middle" font-style="italic">fuel</text>
+
+        <!-- storage bins south of partition -->
+        <rect x="290" y="200" width="50" height="36" fill="#a88848" stroke="#6a3810" stroke-width="1" rx="1"/>
+        <text x="315" y="222" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle">goods</text>
+        <rect x="360" y="200" width="50" height="36" fill="#a88848" stroke="#6a3810" stroke-width="1" rx="1"/>
+        <text x="385" y="222" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle">stock</text>
+
+        <!-- open front gap (east wall) -->
+        <line x1="488" y1="100" x2="488" y2="180" stroke="#d0b870" stroke-width="4"/>
+        <text x="492" y="147" font-family="'IM Fell English',serif" font-size="7.5" fill="#7a5020" text-anchor="start" font-style="italic">open</text>
+
+        <!-- main door south -->
+        <line x1="180" y1="298" x2="240" y2="298" stroke="#d0b870" stroke-width="4"/>
+        <path d="M180,298 Q210,284 240,298" stroke="#7a5020" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+
+        <!-- labels -->
+        <text x="150" y="140" font-family="'IM Fell English',serif" font-size="10" fill="#3a2008" text-anchor="middle" font-style="italic">Working Floor</text>
+        <text x="385" y="245" font-family="'IM Fell English',serif" font-size="8.5" fill="#3a2008" text-anchor="middle" font-style="italic">Storage</text>
+
+        <!-- compass -->
+        <g transform="translate(455,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3010" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3010"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3010" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Floor Plan — The Smith Shed</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        Before you see it, you hear it — a rhythmic ring of iron on iron, steady as a heartbeat. Then the heat finds you. The forge dominates the eastern half of the shed, its coals banked high and orange. The smith's back is to you. He does not look up. On the workbench: six iron door bars, half-finished. He has been making them all week.
+      </div>
+
+      <div class="parch info">
+        <h3>Who's Here</h3>
+        <div class="npc">
+          <div class="npc-name">Tamsin Bellows</div>
+          <div class="npc-role">Machine-smith · soot-stained · practical · third generation in this shed</div>
+          <div class="npc-desc">Tamsin is not a woman who wastes words. She communicates through what she makes: door bars, window latches, farm repairs, and small crank-driven devices that do exactly one useful thing. Since the sinkhole opened, she has been making iron door bars and one very heavy lock. She sells weapons, tools, and hardware, not comfort.</div>
+        </div>
+        <div class="npc">
+          <div class="npc-name">Pip (apprentice)</div>
+          <div class="npc-role">Boy of ~14 · curious · talks too much</div>
+          <div class="npc-desc">Sweeps, pumps the bellows, runs errands. Has crept to the edge of the sinkhole twice to look down. Knows more about village gossip than anyone. Will trade gossip for copper pieces or interesting stories.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>Notable Details</h3>
+        <ul class="notable">
+          <li>Iron door bars for sale: 2sp each. Currently has 4 finished, 6 in progress.</li>
+          <li>Tamsin can repair armor and weapons. Full repair: 10% of item value, 1 day per item.</li>
+          <li>A crude sketch has been pinned to the south wall — Pip drew the pyramid structure from memory after sneaking to the sinkhole. Accurate enough to be useful.</li>
+          <li>A large locked chest under the workbench contains the smith's savings (22gp) and an iron key on a chain that she never removes from her neck.</li>
+          <li>The forge chimney points north, toward the Old Hill. At night, Tamsin has noticed that the chimney smoke sometimes bends toward the hill instead of rising. She will not explain this unless she trusts the party.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>The iron key around Tamsin's neck unlocks the storage chest. Inside the chest, beneath the coins, is a fragment of pale gray stone — the same material as the buried structure. Tamsin found it in the collapsed soil when she helped dig out old Henric Voss's fence posts. She has not told anyone. It has not rusted; iron set beside it rusts in hours. Tamsin suspects it is connected to something dangerous and has been trying to decide whether to throw it in the river. Pip's drawing, if the party examines it closely, shows two details Pip does not understand: kneeling figures whose shadows flow upward, and a central shape that looks like a door.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="bent-plow-inn.html">The Inn</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>

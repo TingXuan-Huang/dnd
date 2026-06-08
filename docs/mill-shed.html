@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mill Shed — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#d4b870;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(0,0,0,0.9);}
+header .sub{font-style:italic;color:#7a5820;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#7a5020,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#7a5020;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#e4cc94 0%,#d4b868 60%,#c8a850 100%);border:2px solid #8a5820;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(0,0,0,0.1);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3810;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a4010;background:rgba(12,7,1,0.92);color:#bfa060;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a4010;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#7a4e10;margin-bottom:10px;border-bottom:1px solid rgba(90,48,16,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(90,48,16,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1808;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3810;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a2008;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a2008;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5020;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#3a2808 0%,#221404 100%);border:1px solid #5a3010;color:#b89030;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5020;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a4010;color:#c0982a;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a4010;color:#e8d090;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>The Mill Shed</h1>
+    <p class="sub">Outside the east gate · waterwheel · Greywater Beck side channel · flour mill</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+        </defs>
+        <rect width="500" height="310" fill="#e0cc90" filter="url(#parch)"/>
+
+        <!-- waterwheel (external, west, dashed) -->
+        <circle cx="38" cy="175" r="52" fill="#8ab0b8" stroke="#5a7888" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>
+        <line x1="38" y1="123" x2="38" y2="227" stroke="#5a7888" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <line x1="-14" y1="175" x2="90" y2="175" stroke="#5a7888" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <line x1="-2" y1="138" x2="78" y2="212" stroke="#5a7888" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <line x1="-2" y1="212" x2="78" y2="138" stroke="#5a7888" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <circle cx="38" cy="175" r="10" fill="#7a9098" stroke="#5a7888" stroke-width="1"/>
+        <text x="38" y="240" font-family="'IM Fell English',serif" font-size="7.5" fill="#5a7888" text-anchor="middle" font-style="italic">waterwheel</text>
+        <text x="38" y="250" font-family="'IM Fell English',serif" font-size="7" fill="#7a9098" text-anchor="middle" font-style="italic">(external)</text>
+
+        <!-- main building floor -->
+        <rect x="80" y="12" width="330" height="286" fill="#d8c07a" stroke="none"/>
+        <!-- office partition -->
+        <rect x="296" y="12" width="114" height="110" fill="#c8b068" stroke="none"/>
+
+        <!-- outer walls -->
+        <rect x="80" y="12" width="330" height="286" fill="none" stroke="#5a3010" stroke-width="3"/>
+        <!-- office partition wall -->
+        <line x1="296" y1="12" x2="296" y2="110" stroke="#7a5020" stroke-width="1.5"/>
+        <line x1="296" y1="110" x2="410" y2="110" stroke="#7a5020" stroke-width="1.5"/>
+        <!-- office door gap -->
+        <line x1="296" y1="64" x2="296" y2="92" stroke="#d8c07a" stroke-width="3"/>
+
+        <!-- millstone (central, prominent) -->
+        <circle cx="188" cy="188" r="68" fill="#9a8858" stroke="#6a5028" stroke-width="2.5"/>
+        <circle cx="188" cy="188" r="52" fill="#8a7848" stroke="#5a4018" stroke-width="1.5"/>
+        <circle cx="188" cy="188" r="20" fill="#6a5830" stroke="#4a3818" stroke-width="1.5"/>
+        <!-- millstone grooves -->
+        <line x1="188" y1="120" x2="188" y2="256" stroke="#7a6038" stroke-width="0.8" opacity="0.5"/>
+        <line x1="120" y1="188" x2="256" y2="188" stroke="#7a6038" stroke-width="0.8" opacity="0.5"/>
+        <line x1="140" y1="140" x2="236" y2="236" stroke="#7a6038" stroke-width="0.6" opacity="0.4"/>
+        <line x1="236" y1="140" x2="140" y2="236" stroke="#7a6038" stroke-width="0.6" opacity="0.4"/>
+        <text x="188" y="192" font-family="'IM Fell English',serif" font-size="8.5" fill="#e0cc80" text-anchor="middle" font-style="italic">Millstone</text>
+
+        <!-- grain hopper (above millstone, N side) -->
+        <polygon points="155,18 221,18 205,70 171,70" fill="#b89040" stroke="#7a5820" stroke-width="1.5"/>
+        <text x="188" y="54" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">hopper</text>
+
+        <!-- flour bins (south) -->
+        <rect x="88" y="262" width="44" height="28" fill="#d4c068" stroke="#8a6020" stroke-width="1" rx="1"/>
+        <text x="110" y="281" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle">flour</text>
+        <rect x="142" y="262" width="44" height="28" fill="#d4c068" stroke="#8a6020" stroke-width="1" rx="1"/>
+        <text x="164" y="281" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle">bran</text>
+
+        <!-- axle connection (west wall) -->
+        <rect x="80" y="168" width="22" height="20" fill="#7a5820" stroke="#5a3810" stroke-width="1"/>
+        <text x="91" y="162" font-family="'IM Fell English',serif" font-size="7" fill="#3a2008" text-anchor="middle" font-style="italic">axle</text>
+
+        <!-- office contents -->
+        <rect x="306" y="22" width="96" height="40" fill="#c0a060" stroke="#8a5820" stroke-width="1" rx="1"/>
+        <text x="354" y="48" font-family="'IM Fell English',serif" font-size="7.5" fill="#2a1808" text-anchor="middle" font-style="italic">ledger & desk</text>
+        <rect x="306" y="72" width="40" height="28" fill="#a87838" stroke="#7a5020" stroke-width="1" rx="1"/>
+        <text x="326" y="90" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle">tools</text>
+
+        <!-- tool rack east wall -->
+        <rect x="392" y="130" width="16" height="150" fill="#b88840" stroke="#7a5020" stroke-width="0.5"/>
+        <text x="400" y="210" font-family="'IM Fell English',serif" font-size="7" fill="#2a1808" text-anchor="middle" font-style="italic" transform="rotate(-90,400,210)">tools</text>
+
+        <!-- door gap (east, toward village) -->
+        <line x1="410" y1="150" x2="410" y2="230" stroke="#d8c07a" stroke-width="4"/>
+        <path d="M410,150 Q425,190 410,230" stroke="#7a5020" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+
+        <!-- compass -->
+        <g transform="translate(446,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3010" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3010"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3010" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Floor Plan — The Mill Shed · Waterwheel external (west, dashed)</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        The mill wheel turns constantly, even when there is nothing to grind. The sound of it — a slow, wet, grinding rhythm — is audible from the east gate. Inside, flour dust hangs in the air like pale fog. The miller stands at the high window, his back to you, watching the Old Hill across the village wall. He does not hear you come in over the sound of the stone.
+      </div>
+
+      <div class="parch info">
+        <h3>Who's Here</h3>
+        <div class="npc">
+          <div class="npc-name">Garret Sule</div>
+          <div class="npc-role">Miller · solitary · 40s, flour-dusted, tired eyes · the only person who works outside the palisade wall daily</div>
+          <div class="npc-desc">Garret works alone and prefers it. He has seen the blue light from the cave on every clear night for the past two weeks, before the collapse. He kept this to himself because he did not think anyone would believe him, and because he was afraid of what it might mean if they did. Since the sinkhole opened, he has become very quiet and very watchful. He mills grain, charges fair rates, and watches the hill.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>Notable Details</h3>
+        <ul class="notable">
+          <li>The millstone was milled from granite quarried thirty miles east. Garret can quote the weight and origin of every stone he has ever used.</li>
+          <li>The high north window has a direct sightline to the sinkhole. Garret has made no attempt to block or curtain it.</li>
+          <li>In the office ledger: standard milling records going back eighteen years, then a gap of two pages that have been carefully cut out. The cut is recent — within the last month.</li>
+          <li>The east-facing door that opens toward the village has a new, heavy bar on it — one of Tamsin's iron bars, installed two days ago. The door facing the river does not.</li>
+          <li>A small folded note is tucked under the desk blotter: it reads "Three nights, same light, same hour. Not the moon." No date, no signature. Garret's handwriting.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>Garret saw the blue light before the cave collapsed because the Converter's seals had already begun to fail from water pressure — the prolonged rains accelerated something that was already weakening. He made a note in his ledger (now cut out) and then decided to destroy the evidence when the sinkhole became public, because he was afraid of being blamed. The cut-out pages, if found (they are burned, ash in a bucket in the office), described the light as "rising from the north field, not from the sky." More importantly: Garret regularly walks the riverbank south of the mill before dawn. On three separate occasions, he has seen a figure standing in the water — not moving, waist-deep, facing upriver. He has never mentioned this to anyone. He does not know who or what it is. The figure is a manifestation of old Dawnweave memory trapped in the groundwater — a fragment of someone who fed the Converter centuries ago. It is not dangerous. It is simply waiting to be acknowledged.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="bent-plow-inn.html">The Inn</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Monsters (M)
+
+Stat blocks split from `/Users/tingxuanhuang/Desktop/raw/Creature Stat Blocks.md`.
+
+- [Mage](mage.md)
+- [Archmage](archmage.md)
+- [Magmin](magmin.md)
+- [Manticore](manticore.md)
+- [Marilith](marilith.md)
+- [Medusa](medusa.md)
+- [Dust Mephit](dust-mephit.md)
+- [Ice Mephit](ice-mephit.md)
+- [Magma Mephit](magma-mephit.md)
+- [Steam Mephit](steam-mephit.md)
+- [Merfolk Skirmisher](merfolk-skirmisher.md)
+- [Merrow](merrow.md)
+- [Mimic](mimic.md)
+- [Minotaur of Baphomet](minotaur-of-baphomet.md)
+- [Mummy](mummy.md)
+- [Mummy Lord](mummy-lord.md)

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wizard's Cottage — Fallowton</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0a04;min-height:100vh;font-family:'IM Fell English',Georgia,serif;color:#c8a860;}
+.back{position:fixed;top:16px;left:20px;z-index:100;color:#8a6030;font-size:0.75rem;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back:hover{color:#d4b870;}
+.page-wrap{max-width:1060px;margin:0 auto;padding:52px 22px 44px;}
+header{text-align:center;margin-bottom:28px;}
+header h1{font-size:2.1rem;color:#c0a8d4;letter-spacing:0.05em;text-shadow:0 2px 18px rgba(60,20,80,0.9);}
+header .sub{font-style:italic;color:#7a5870;font-size:0.88rem;margin-top:6px;letter-spacing:0.07em;}
+.divider{margin:16px auto 26px;width:260px;height:1px;background:linear-gradient(to right,transparent,#6a4870,transparent);position:relative;}
+.divider::after{content:'✦';position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);top:50%;color:#6a4870;font-size:0.72rem;background:#0d0a04;padding:0 6px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.parch{background:linear-gradient(160deg,#ddc8e4 0%,#c8acd0 60%,#b898c0 100%);border:2px solid #7a5880;box-shadow:0 4px 28px rgba(0,0,0,0.75),inset 0 0 40px rgba(40,0,60,0.12);border-radius:1px;}
+.fp-wrap{padding:14px;}
+.fp-wrap svg{width:100%;height:auto;display:block;}
+.fp-cap{font-size:0.68rem;color:#5a3868;text-align:center;margin-top:7px;font-style:italic;letter-spacing:0.07em;}
+.details{display:flex;flex-direction:column;gap:14px;}
+.read-aloud{padding:18px 20px;border-left:3px solid #6a3878;background:rgba(8,4,14,0.95);color:#b090c8;font-style:italic;line-height:1.75;font-size:0.86rem;letter-spacing:0.02em;}
+.read-aloud::before{content:'Read Aloud';display:block;font-size:0.62rem;font-style:normal;letter-spacing:0.2em;text-transform:uppercase;color:#6a3878;margin-bottom:8px;}
+.info{padding:16px 18px;}
+.info h3{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#6a4870;margin-bottom:10px;border-bottom:1px solid rgba(100,48,110,0.35);padding-bottom:5px;}
+.npc{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(100,48,110,0.22);}
+.npc:last-child{border:none;margin:0;padding:0;}
+.npc-name{font-size:0.98rem;color:#2a1030;font-weight:bold;}
+.npc-role{font-size:0.7rem;font-style:italic;color:#6a3870;margin-bottom:4px;}
+.npc-desc{font-size:0.79rem;color:#3a1840;line-height:1.65;}
+ul.notable{list-style:none;}
+ul.notable li{font-size:0.79rem;color:#3a1840;line-height:1.6;padding:2px 0 2px 14px;position:relative;}
+ul.notable li::before{content:'·';position:absolute;left:3px;color:#8a5090;}
+.dm-box{padding:16px 18px;background:linear-gradient(160deg,#241030 0%,#140820 100%);border:1px solid #5a3068;color:#b090c8;font-size:0.78rem;line-height:1.65;}
+.dm-box h3{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#7a5090;margin-bottom:8px;}
+.dm-box p{font-style:italic;}
+.bottom-nav{margin-top:28px;text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #6a3870;color:#c0a0d0;font-family:'IM Fell English',Georgia,serif;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;transition:all .2s;}
+.btn:hover{background:#6a3870;color:#e0c8f0;}
+</style>
+</head>
+<body>
+<a class="back" href="fallowton-map.html">← Map</a>
+<div class="page-wrap">
+  <header>
+    <h1>The Wizard's Cottage</h1>
+    <p class="sub">Rented · currently occupied by Mordren Vale · approach with caution</p>
+  </header>
+  <div class="divider"></div>
+
+  <div class="grid">
+    <div class="parch fp-wrap">
+      <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="parch" x="-2%" y="-2%" width="104%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="n"/>
+            <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+            <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+          </filter>
+          <radialGradient id="arcane-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#8866cc" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#8866cc" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="500" height="310" fill="#dcc4e0" filter="url(#parch)"/>
+
+        <!-- study floor -->
+        <rect x="60" y="12" width="380" height="190" fill="#c8acd8" stroke="none"/>
+        <!-- sleeping nook floor -->
+        <rect x="60" y="202" width="380" height="96" fill="#b898c4" stroke="none"/>
+
+        <!-- outer walls -->
+        <rect x="60" y="12" width="380" height="286" fill="none" stroke="#5a3068" stroke-width="3"/>
+        <!-- partition (curtain line) -->
+        <line x1="60" y1="202" x2="440" y2="202" stroke="#7a5088" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+        <!-- arcane circle (central, prominent) -->
+        <circle cx="250" cy="118" r="70" fill="url(#arcane-glow)" stroke="#8866cc" stroke-width="1.5"/>
+        <circle cx="250" cy="118" r="55" fill="none" stroke="#8866cc" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <circle cx="250" cy="118" r="38" fill="none" stroke="#6644aa" stroke-width="1"/>
+        <!-- runes on outer ring -->
+        <text x="250" y="48" font-family="'IM Fell English',serif" font-size="8" fill="#8866cc" text-anchor="middle">✦</text>
+        <text x="320" y="122" font-family="'IM Fell English',serif" font-size="8" fill="#8866cc" text-anchor="middle">✦</text>
+        <text x="250" y="196" font-family="'IM Fell English',serif" font-size="8" fill="#8866cc" text-anchor="middle">✦</text>
+        <text x="178" y="122" font-family="'IM Fell English',serif" font-size="8" fill="#8866cc" text-anchor="middle">✦</text>
+        <text x="250" y="123" font-family="'IM Fell English',serif" font-size="8" fill="#9977bb" text-anchor="middle" font-style="italic">sending circle</text>
+
+        <!-- writing desk (NE) -->
+        <rect x="340" y="22" width="88" height="55" fill="#b090b8" stroke="#7a5088" stroke-width="1" rx="1"/>
+        <rect x="350" y="26" width="68" height="12" fill="#9078a0" stroke="#5a3068" stroke-width="0.8" rx="1"/>
+        <text x="384" y="92" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a1848" text-anchor="middle" font-style="italic">writing desk</text>
+
+        <!-- bookshelves (N wall) -->
+        <rect x="62" y="12" width="265" height="16" fill="#9878b0" stroke="#7a5088" stroke-width="1"/>
+        <text x="196" y="24" font-family="'IM Fell English',serif" font-size="7.5" fill="#e8d0f0" text-anchor="middle" font-style="italic">bookshelves</text>
+
+        <!-- bookshelves (W wall) -->
+        <rect x="60" y="12" width="16" height="190" fill="#9878b0" stroke="#7a5088" stroke-width="1"/>
+        <text x="76" y="107" font-family="'IM Fell English',serif" font-size="7.5" fill="#e8d0f0" text-anchor="middle" font-style="italic" transform="rotate(-90,76,107)">shelves</text>
+
+        <!-- locked trunk (SE of study) -->
+        <rect x="372" y="155" width="56" height="36" fill="#6a4050" stroke="#5a3068" stroke-width="1.5" rx="2"/>
+        <rect x="380" y="163" width="40" height="6" fill="#3a2038" stroke="#2a1028" stroke-width="0.8"/>
+        <!-- lock icon -->
+        <circle cx="400" cy="172" r="5" fill="none" stroke="#c0a0d0" stroke-width="1.2"/>
+        <rect x="397" y="172" width="6" height="7" fill="#3a2038"/>
+        <text x="400" y="204" font-family="'IM Fell English',serif" font-size="7.5" fill="#3a1848" text-anchor="middle" font-style="italic">locked chest</text>
+
+        <!-- sleeping area contents -->
+        <rect x="80" y="212" width="150" height="72" fill="#c0a0c0" stroke="#8a6090" stroke-width="1" rx="2"/>
+        <text x="155" y="252" font-family="'IM Fell English',serif" font-size="8" fill="#3a1848" text-anchor="middle" font-style="italic">bed</text>
+        <text x="320" y="252" font-family="'IM Fell English',serif" font-size="9" fill="#4a2860" text-anchor="middle" font-style="italic">— sleeping nook —</text>
+
+        <!-- curtain partition label -->
+        <text x="250" y="198" font-family="'IM Fell English',serif" font-size="7.5" fill="#8866aa" text-anchor="middle" font-style="italic">— curtain —</text>
+
+        <!-- main door gap (S) -->
+        <line x1="196" y1="298" x2="256" y2="298" stroke="#c8acd8" stroke-width="4"/>
+        <path d="M196,298 Q226,284 256,298" stroke="#8a5090" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+
+        <!-- compass -->
+        <g transform="translate(455,265)">
+          <line x1="0" y1="14" x2="0" y2="-2" stroke="#5a3068" stroke-width="1.2"/>
+          <polygon points="0,-8 -4,0 4,0" fill="#5a3068"/>
+          <text x="0" y="22" font-family="'IM Fell English',serif" font-size="8" fill="#5a3068" text-anchor="middle">N</text>
+        </g>
+      </svg>
+      <p class="fp-cap">Floor Plan — The Wizard's Cottage · The arcane circle is fresh</p>
+    </div>
+
+    <div class="details">
+      <div class="read-aloud">
+        The door is unlocked. Inside, the air is wrong — it smells like ash, old paper, and something metallic that has no name. Books are stacked against two walls with no apparent order. In the center of the floor, drawn in what looks like chalk and silver dust, is a large circle with rings inside it. The lines are precise. Whatever it is, it was not done carelessly.
+      </div>
+
+      <div class="parch info">
+        <h3>Mordren Vale</h3>
+        <div class="npc">
+          <div class="npc-name">Mordren Vale</div>
+          <div class="npc-role">Wizard · ruin scholar · arrived three days after the collapse · Age: apparent 40s, actual unknown</div>
+          <div class="npc-desc">Polite and correct in all things. Never raises his voice. Has an answer ready for every suspicious question and the answers are always just plausible enough. Claims to be documenting pre-Dawnweave ruins. Pays rent in advance. Speaks to no one casually.</div>
+        </div>
+      </div>
+
+      <div class="parch info">
+        <h3>What Is Here</h3>
+        <ul class="notable">
+          <li>Arcane circle (center floor): a Sending circle, recently used. It points roughly north-northeast — toward the cave.</li>
+          <li>Bookshelves: texts on ruin architecture, several in languages that predate the current calendar, one book with no cover whose pages feel warm.</li>
+          <li>Writing desk: contains correspondence in cipher, blank parchment, silver ink, and a strip of black cloth used as a bookmark.</li>
+          <li>Locked chest (DC 18 to pick): contains a brass cylinder sealed with dark wax, a folded map with the pyramid labeled "The House of First Light," and two vials of something that smells like burnt copper.</li>
+          <li>Under the bed: three spent candles arranged in a triangle, a smear of ash, and a single pale gray stone chip — same material as the buried structure.</li>
+          <li>Windows: all sealed from inside with strips of blackened cloth. Light does not enter.</li>
+        </ul>
+      </div>
+
+      <div class="dm-box">
+        <h3>DM Only</h3>
+        <p>Mordren Vale is not lying about being a ruin scholar — that is exactly what he is. He has studied the Dawnweave for thirty years and suspects the buried structure is not a temple but a Converter. He does not know the full truth. The sealed brass cylinder contains royal-backed research papers and a coded warrant from an office that tracks dangerous ruins and magical disturbances; breaking the seal too early hints at his government connection without explaining it. Mordren came to Fallowton after the sinkhole was confirmed, but his papers show he had been watching reports of strange resonance in the region before then. If confronted with evidence, he negotiates rather than fights. His goal is knowledge and control of the investigation, not random evil.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="btn" href="fallowton-map.html">← Back to Map</a>
+    <a class="btn" href="bent-plow-inn.html">The Inn</a>
+    <a class="btn" href="dungeon-zones.html">The Cave ↓</a>
+  </div>
+</div>
+</body>
+</html>
